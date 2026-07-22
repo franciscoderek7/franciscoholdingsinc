@@ -1,0 +1,22 @@
+[
+{
+"floor":1,
+"name":"FHI Headquarters",
+"purpose":"Command Center"
+},
+{
+"floor":2,
+"name":"OmniGuard",
+"purpose":"Security Operations"
+},
+{
+"floor":3,
+"name":"PrimeDox AI",
+"purpose":"AI Intelligence"
+},
+{
+"floor":4,
+"name":"Gap Hunter",
+"purpose":"Opportunity Research"
+}
+]
