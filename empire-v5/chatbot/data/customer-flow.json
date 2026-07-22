@@ -1,0 +1,11 @@
+{
+  "steps": [
+    "Visitor arrives",
+    "Concierge opens",
+    "Intent detected",
+    "Agent selected",
+    "Lead captured",
+    "Offer presented",
+    "Customer checkout"
+  ]
+}

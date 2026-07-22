@@ -1,0 +1,16 @@
+{
+  "offers": [
+    {
+      "name": "AI Consultation",
+      "price": 499,
+      "currency": "USD",
+      "status": "active"
+    },
+    {
+      "name": "PrimeDox AI Subscription",
+      "price": 49,
+      "currency": "USD",
+      "status": "planned"
+    }
+  ]
+}
