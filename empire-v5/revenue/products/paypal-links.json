@@ -1,0 +1,15 @@
+{
+  "status":"verification_required",
+  "products":[
+    {
+      "name":"PrimeDox AI",
+      "checkout":"",
+      "verified":false
+    },
+    {
+      "name":"AI Consultation",
+      "checkout":"",
+      "verified":false
+    }
+  ]
+}

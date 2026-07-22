@@ -1,0 +1,36 @@
+{
+  "tiers": [
+    {
+      "range":"1-50",
+      "price":"49/month"
+    },
+    {
+      "range":"51-100",
+      "price":"99/month"
+    },
+    {
+      "range":"101-150",
+      "price":"499/month"
+    },
+    {
+      "range":"151-200",
+      "price":"999/month"
+    },
+    {
+      "range":"201-250",
+      "price":"2999/month"
+    },
+    {
+      "range":"251-300",
+      "price":"9999/month"
+    },
+    {
+      "range":"301-350",
+      "price":"49999/month"
+    },
+    {
+      "range":"351-392",
+      "price":"custom"
+    }
+  ]
+}

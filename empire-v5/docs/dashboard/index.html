@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Empire Command Center</title>
+</head>
+
+<body>
+
+<h1>EmpireHQ Dashboard</h1>
+
+<div>
+Revenue:
+<span id="revenue">Loading</span>
+</div>
+
+<div>
+Visitors:
+<span id="visitors">Loading</span>
+</div>
+
+<script>
+
+let data =
+JSON.parse(
+localStorage.getItem("empireRevenue")
+|| "{}"
+);
+
+document.getElementById("revenue")
+.innerText =
+data.monthlyRevenue || 0;
+
+document.getElementById("visitors")
+.innerText =
+data.visitors || 0;
+
+</script>
+
+</body>
+</html>
