@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>OmniGuard Status</title>
+
+</head>
+
+
+<body>
+
+<h1>OmniGuard Monitoring</h1>
+
+<div id="agents">
+Loading...
+</div>
+
+
+<script>
+
+fetch("../../security/agents/status.json")
+
+.then(r=>r.json())
+
+.then(data=>{
+
+document.getElementById("agents")
+.innerHTML=
+
+data.agents.map(a=>
+`
+<p>
+${a.name}:
+${a.status}
+</p>
+`
+).join("");
+
+});
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+{
+  "agents":[
+    {
+      "name":"PrimeDox AI",
+      "status":"online",
+      "lastCheck":""
+    },
+    {
+      "name":"OmniGuard",
+      "status":"online",
+      "lastCheck":""
+    },
+    {
+      "name":"Gap Hunter",
+      "status":"standby",
+      "lastCheck":""
+    },
+    {
+      "name":"Empire Concierge",
+      "status":"online",
+      "lastCheck":""
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+ "sites":[
+  {
+   "name":"franciscoholdingsinc.com",
+   "status":"checking"
+  },
+  {
+   "name":"primedoxai.com",
+   "status":"checking"
+  },
+  {
+   "name":"omniaguard.com",
+   "status":"checking"
+  }
+ ]
+}
