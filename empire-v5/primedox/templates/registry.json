@@ -1,0 +1,24 @@
+{
+  "templates":[
+    {
+      "name":"Demand Letter",
+      "category":"business",
+      "status":"active"
+    },
+    {
+      "name":"Affidavit Draft Template",
+      "category":"legal_education",
+      "status":"review_required"
+    },
+    {
+      "name":"Motion Draft Template",
+      "category":"legal_education",
+      "status":"review_required"
+    },
+    {
+      "name":"Business Proposal",
+      "category":"business",
+      "status":"active"
+    }
+  ]
+}
