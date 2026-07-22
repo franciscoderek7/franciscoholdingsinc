@@ -1,0 +1,90 @@
+DATE:
+Wed Jul 22 08:00:23 EDT 2026
+
+DIRECTORY:
+/data/data/com.termux/files/home/FHI_EMPIRE
+
+MEMORY:
+               total        used        free      shared  buff/cache   available
+Mem:            10Gi       8.4Gi       103Mi       119Mi       2.4Gi       2.5Gi
+Swap:           11Gi       6.1Gi       5.9Gi
+
+DISK:
+Filesystem        Size Used Avail Use% Mounted on
+/dev/block/dm-14  7.9G 7.9G     0 100% /
+tmpfs             5.0G 2.9M  5.0G   1% /dev
+tmpfs             5.0G    0  5.0G   0% /mnt
+/dev/block/dm-15  170M 170M     0 100% /system_ext
+/dev/block/dm-16  1.3G 1.3G     0 100% /product
+/dev/block/dm-17  3.5G 3.5G     0 100% /vendor
+/dev/block/dm-18   38M  38M     0 100% /vendor_dlkm
+/dev/block/dm-20  231M 231M     0 100% /odm
+/dev/block/dm-21  465M 465M     0 100% /prism
+/dev/block/dm-22  136K 136K     0 100% /optics
+tmpfs             5.0G  28K  5.0G   1% /apex
+/dev/block/loop38 2.0M 2.0M     0 100% /apex/com.android.hardware.drm.clearkey@1
+/dev/block/loop4  232K  24K  204K  11% /apex/com.samsung.android.vital@340000000
+/dev/block/loop13 232K  56K  172K  25% /apex/com.samsung.android.lifeguard@362606011
+/dev/block/loop7  232K  24K  204K  11% /apex/com.samsung.android.sfa@362509180
+/dev/block/loop19 232K  44K  184K  20% /apex/com.samsung.android.media.swcodec.vendor@362511051
+/dev/block/loop46  94M  94M     0 100% /apex/com.android.virt@3
+/dev/block/loop8  232K  24K  204K  11% /apex/com.samsung.android.biometrics.fingerprint@311722300
+/dev/block/loop39 336K 304K   28K  92% /apex/com.samsung.android.shell@362606011
+/dev/block/loop16  36M  36M     0 100% /apex/com.android.i18n@1
+/dev/block/loop14 232K 196K   32K  86% /apex/com.android.hardware.cas.lazy@1
+/dev/block/loop20 8.3M 8.3M     0 100% /apex/com.android.runtime@1
+/dev/block/loop6  232K  32K  196K  15% /apex/com.samsung.android.media.extractor@342505131
+/dev/block/loop11 232K  24K  204K  11% /apex/com.samsung.android.biometrics.face@311722300
+/dev/block/loop12 240K 208K   28K  89% /apex/com.android.devicelock@1
+/dev/block/loop9  2.3M 2.3M     0 100% /apex/com.samsung.android.spqr@432
+/dev/block/loop29  12M  12M     0 100% /apex/com.samsung.android.media.imagecodec.system@342511251
+/dev/block/loop21 4.0M 3.9M     0 100% /apex/com.android.compos@3
+/dev/block/loop48 5.1M 5.1M     0 100% /apex/com.google.android.widevine@190250226
+/dev/block/loop10 232K  44K  184K  20% /apex/com.samsung.android.media.swcodec.system@362511051
+/dev/block/loop23 232K 108K  120K  48% /apex/com.android.apex.cts.shim@1
+/dev/block/dm-62  804K 772K   16K  98% /apex/com.android.tzdata@371020540
+/dev/block/dm-56  6.0M 6.0M     0 100% /apex/com.android.extservices@370549343
+/dev/block/loop51 232K  24K  204K  11% /apex/com.samsung.android.camera.unihal@360023200
+/dev/block/loop52  24M  24M     0 100% /apex/com.android.bt@361099999
+/dev/block/dm-46  6.7M 6.7M     0 100% /apex/com.android.uwb@361099999
+/dev/block/dm-45  4.6M 4.6M     0 100% /apex/com.android.neuralnetworks@370547060
+/dev/block/dm-52  836K 808K   12K  99% /apex/com.android.ipsec@370547060
+/dev/block/dm-40  232K  24K  204K  11% /apex/com.android.resolv@371020260
+/dev/block/dm-44   29M  29M     0 100% /apex/com.android.permission@371017160
+/dev/block/dm-61   22M  22M     0 100% /apex/com.android.adservices@361153320
+/dev/block/dm-25  1.8M 1.8M     0 100% /apex/com.android.profiling@361099999
+/dev/block/dm-54  5.4M 5.4M     0 100% /apex/com.android.configinfrastructure@371017160
+/dev/block/dm-47   13M  13M     0 100% /apex/com.android.ondevicepersonalization@361153320
+/dev/block/dm-49   31M  31M     0 100% /apex/com.android.mediaprovider@371020440
+/dev/block/dm-38  1.1M 1.0M   12K  99% /apex/com.android.sdkext@370547060
+/dev/block/dm-51  3.3M 3.3M     0 100% /apex/com.android.uprobestats@361099999
+/dev/block/dm-66  8.6M 8.6M     0 100% /apex/com.android.wifi@361099999
+/dev/block/dm-53   16M  16M     0 100% /apex/com.android.healthfitness@370547060
+/dev/block/dm-55  512K 484K   20K  97% /apex/com.android.telephonycore@361099999
+/dev/block/dm-37   28M  28M     0 100% /apex/com.android.tethering@371021120
+/dev/block/dm-60   23M  23M     0 100% /apex/com.android.cellbroadcast@371017160
+/dev/block/dm-63  5.4M 5.4M     0 100% /apex/com.android.conscrypt@370549380
+/dev/block/dm-43   34M  34M     0 100% /apex/com.android.media.swcodec@371018040
+/dev/block/dm-50  7.8M 7.8M     0 100% /apex/com.android.adbd@370547060
+/dev/block/dm-59   30M  30M     0 100% /apex/com.android.art@371000140
+/dev/block/dm-39  232K 104K  124K  46% /apex/com.android.scheduling@370549100
+/dev/block/dm-71  4.2M 4.2M     0 100% /apex/com.android.appsearch@370549320
+/dev/block/dm-64  3.2M 3.1M     0 100% /apex/com.android.os.statsd@371020260
+/dev/block/dm-68  1.3M 1.3M     0 100% /apex/com.android.rkpd@370549040
+/dev/block/dm-69  6.0M 6.0M     0 100% /apex/com.android.media@371018040
+tmpfs             5.0G 4.0K  5.0G   1% /bootstrap-apex
+/dev/block/loop3   94M  94M     0 100% /bootstrap-apex/com.android.virt@3
+/dev/block/loop2  788K 756K   16K  98% /bootstrap-apex/com.android.tzdata@361153320
+/dev/block/loop1  8.3M 8.3M     0 100% /bootstrap-apex/com.android.runtime@1
+/dev/block/loop0   36M  36M     0 100% /bootstrap-apex/com.android.i18n@1
+tmpfs             5.0G    0  5.0G   0% /tmp
+/dev/block/sda36   35M 1.5M   33M   5% /cache
+/dev/block/sda7    16M  10M  5.7M  63% /efs
+/dev/block/sda37   16M  24K   15M   1% /omr
+/dev/block/dm-73  458G  75G  383G  17% /data
+/dev/fuse         458G  75G  383G  17% /storage/emulated
+tmpfs             5.2G    0  5.2G   0% /data/data
+tmpfs             5.2G    0  5.2G   0% /data/user
+tmpfs             5.2G    0  5.2G   0% /data/user_de
+tmpfs             5.2G    0  5.2G   0% /data/misc/profiles/cur
+tmpfs             5.2G    0  5.2G   0% /data/misc/profiles/ref

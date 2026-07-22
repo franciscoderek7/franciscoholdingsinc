@@ -103,3 +103,23 @@ Creating logs
 Running tests
 Permission system passed
 Agent monitoring passed
+[master 68d8bc3] FHI OmniGuard Governance Wave 12
+ 1 file changed, 17 insertions(+)
+=====================================
+OMNIGUARD WAVE 12 COMPLETE
+=====================================
+=====================================
+FHI GAP HUNTER WAVE 13
+OPPORTUNITY INTELLIGENCE FOUNDATION
+=====================================
+Creating opportunity model
+Creating scoring engine
+Creating industry library
+Creating report generator
+Creating demo access layer
+Creating data storage
+Running tests
+Opportunity model passed
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'src.gaphunter.scoring.engine'; 'src.gaphunter.scoring' is not a package
