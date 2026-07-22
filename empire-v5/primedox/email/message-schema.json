@@ -1,0 +1,10 @@
+{
+  "message_id":"",
+  "sender":"",
+  "subject":"",
+  "received":"",
+  "category":"",
+  "attachments":[],
+  "linked_case":"",
+  "status":"unprocessed"
+}

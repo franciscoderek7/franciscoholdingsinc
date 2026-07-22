@@ -1,0 +1,14 @@
+{
+ "case_id":"CASE-DEMO-001",
+ "title":"Example Case",
+ "status":"open",
+ "timeline":[
+  {
+   "event":"created",
+   "date":""
+  }
+ ],
+ "documents":[],
+ "emails":[],
+ "attachments":[]
+}

@@ -1,0 +1,10 @@
+{
+ "states":[
+  "received",
+  "classified",
+  "review_required",
+  "draft_created",
+  "sent",
+  "completed"
+ ]
+}
