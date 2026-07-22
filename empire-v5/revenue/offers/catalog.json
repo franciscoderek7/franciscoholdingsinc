@@ -1,0 +1,24 @@
+{
+ "offers":[
+  {
+   "name":"PrimeDox AI Pro",
+   "price":49,
+   "billing":"monthly"
+  },
+  {
+   "name":"PrimeDox AI Enterprise",
+   "price":199,
+   "billing":"monthly"
+  },
+  {
+   "name":"AI Business Automation Consultation",
+   "price":499,
+   "billing":"one-time"
+  },
+  {
+   "name":"Custom AI Website Build",
+   "price":"custom",
+   "billing":"project"
+  }
+ ]
+}
