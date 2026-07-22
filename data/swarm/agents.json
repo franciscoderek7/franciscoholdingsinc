@@ -1,0 +1,22 @@
+[
+{
+"name":"PrimeDox AI",
+"role":"orchestrator"
+},
+{
+"name":"Gap Hunter AI",
+"role":"research"
+},
+{
+"name":"OmniGuard",
+"role":"security"
+},
+{
+"name":"Sales Agent",
+"role":"revenue"
+},
+{
+"name":"Content Agent",
+"role":"marketing"
+}
+]
