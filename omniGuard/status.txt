@@ -1,1 +1,1 @@
-OmniGuard initialized
+Security Monitoring Enabled
