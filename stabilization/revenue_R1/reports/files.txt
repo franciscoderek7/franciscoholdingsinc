@@ -1,0 +1,16 @@
+src/crm/models/__init__.py
+src/crm/models/contact.py
+src/crm/models/deal.py
+src/crm/models/__pycache__/__init__.cpython-313.pyc
+src/crm/models/__pycache__/contact.cpython-313.pyc
+src/crm/models/__pycache__/deal.cpython-313.pyc
+src/crm/services/__init__.py
+src/crm/services/pipeline.py
+src/crm/services/scoring.py
+src/crm/services/followup.py
+src/crm/services/__pycache__/__init__.cpython-313.pyc
+src/crm/services/__pycache__/followup.cpython-313.pyc
+src/crm/services/__pycache__/pipeline.cpython-313.pyc
+src/crm/services/__pycache__/scoring.cpython-313.pyc
+src/crm/__init__.py
+src/crm/__pycache__/__init__.cpython-313.pyc
