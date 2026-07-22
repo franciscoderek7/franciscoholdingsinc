@@ -1,0 +1,10 @@
+src/agents/__init__.py
+src/agents/agent.py
+src/agents/registry.py
+src/agents/permissions.py
+src/agents/health.py
+src/agents/__pycache__/__init__.cpython-313.pyc
+src/agents/__pycache__/agent.cpython-313.pyc
+src/agents/__pycache__/health.cpython-313.pyc
+src/agents/__pycache__/permissions.cpython-313.pyc
+src/agents/__pycache__/registry.cpython-313.pyc
