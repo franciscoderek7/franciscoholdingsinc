@@ -1,0 +1,17 @@
+total 57
+drwx------. 15 u0_a451 u0_a451 3452 Jul 22 07:33 .
+drwx------. 24 u0_a451 u0_a451 3452 Jul 22 07:33 ..
+-rw-------.  1 u0_a451 u0_a451   49 Jul 22 07:33 README.md
+drwx------.  2 u0_a451 u0_a451 3452 Jul 22 07:33 agents
+drwx------.  2 u0_a451 u0_a451 3452 Jul 22 07:33 audit
+drwx------.  2 u0_a451 u0_a451 3452 Jul 22 07:33 backups
+drwx------.  2 u0_a451 u0_a451 3452 Jul 22 07:33 config
+drwx------.  2 u0_a451 u0_a451 3452 Jul 22 07:33 domains
+drwx------.  2 u0_a451 u0_a451 3452 Jul 22 07:33 empireConsole
+drwx------.  2 u0_a451 u0_a451 3452 Jul 22 07:33 gapHunter
+drwx------.  2 u0_a451 u0_a451 3452 Jul 22 07:33 logs
+drwx------.  2 u0_a451 u0_a451 3452 Jul 22 07:33 omniGuard
+drwx------.  2 u0_a451 u0_a451 3452 Jul 22 07:33 primeDox
+drwx------.  2 u0_a451 u0_a451 3452 Jul 22 07:33 reports
+drwx------.  2 u0_a451 u0_a451 3452 Jul 22 07:33 revenue
+drwx------.  2 u0_a451 u0_a451 3452 Jul 22 07:33 scripts

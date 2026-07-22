@@ -1,0 +1,6 @@
+Optimization rules:
+1. Audit before changes
+2. Backup before deployment
+3. Test before scaling
+4. Protect customer data
+5. Verify revenue systems
