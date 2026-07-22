@@ -1,0 +1,7 @@
+{
+"mode":"production",
+"logging":true,
+"monitoring":true,
+"backup":true,
+"testing":true
+}

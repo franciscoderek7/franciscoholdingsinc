@@ -1,0 +1,30 @@
+{
+"systems":[
+
+{
+"name":"PrimeDox AI",
+"role":"intelligence"
+},
+
+{
+"name":"OmniGuard",
+"role":"security"
+},
+
+{
+"name":"Gap Hunter",
+"role":"discovery"
+},
+
+{
+"name":"Revenue Engine",
+"role":"monetization"
+},
+
+{
+"name":"Command Center",
+"role":"control"
+}
+
+]
+}

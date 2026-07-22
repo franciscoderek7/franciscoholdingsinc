@@ -1,0 +1,4 @@
+Running FHI tests
+[{'event': 'system.started', 'data': {'status': 'online'}}]
+{'files': 1378, 'status': 'healthy'}
+Tests complete
