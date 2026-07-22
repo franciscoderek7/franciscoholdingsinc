@@ -1,0 +1,37 @@
+{
+ "services":[
+  {
+   "name":"PrimeDox AI",
+   "keywords":[
+    "document",
+    "automation",
+    "template",
+    "workflow"
+   ]
+  },
+  {
+   "name":"OmniGuard",
+   "keywords":[
+    "security",
+    "monitor",
+    "protect"
+   ]
+  },
+  {
+   "name":"Gap Hunter",
+   "keywords":[
+    "market",
+    "business",
+    "opportunity"
+   ]
+  },
+  {
+   "name":"Custom AI Build",
+   "keywords":[
+    "website",
+    "agent",
+    "custom"
+   ]
+  }
+ ]
+}

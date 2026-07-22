@@ -1,0 +1,8 @@
+{
+ "events":[
+  "visitor.started",
+  "service.selected",
+  "lead.created",
+  "followup.required"
+ ]
+}
