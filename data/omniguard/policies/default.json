@@ -1,0 +1,9 @@
+{
+"rules":[
+"authenticate_users",
+"verify_permissions",
+"log_actions",
+"protect_customer_data",
+"monitor_agents"
+]
+}
