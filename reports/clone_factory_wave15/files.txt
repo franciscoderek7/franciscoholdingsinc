@@ -1,0 +1,8 @@
+src/clone_factory_v2/config/clone.py
+src/clone_factory_v2/config/__pycache__/clone.cpython-313.pyc
+src/clone_factory_v2/deploy/package.py
+src/clone_factory_v2/deploy/__pycache__/package.cpython-313.pyc
+src/clone_factory_v2/branding/profile.py
+src/clone_factory_v2/branding/__pycache__/profile.cpython-313.pyc
+src/clone_factory_v2/industry/templates.py
+src/clone_factory_v2/industry/__pycache__/templates.cpython-313.pyc
