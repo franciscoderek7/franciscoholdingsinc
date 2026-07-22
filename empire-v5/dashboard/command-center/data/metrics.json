@@ -1,0 +1,28 @@
+{
+ "business":{
+  "revenue":0,
+  "customers":0,
+  "leads":0,
+  "demos":0
+ },
+ "systems":{
+  "website":"online",
+  "concierge":"online",
+  "primedox":"online",
+  "omniguard":"online"
+ },
+ "agents":[
+  {
+   "name":"PrimeDox AI",
+   "status":"online"
+  },
+  {
+   "name":"OmniGuard",
+   "status":"online"
+  },
+  {
+   "name":"Gap Hunter",
+   "status":"standby"
+  }
+ ]
+}
