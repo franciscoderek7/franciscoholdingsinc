@@ -1,0 +1,36 @@
+{
+  "empire":{
+    "name":"Francisco Holdings Inc.",
+    "version":"v5"
+  },
+  "metrics":{
+    "revenue":0,
+    "visitors":0,
+    "leads":0,
+    "customers":0
+  },
+  "agents":[
+    {
+      "name":"PrimeDox AI",
+      "status":"online"
+    },
+    {
+      "name":"OmniGuard",
+      "status":"online"
+    },
+    {
+      "name":"Gap Hunter",
+      "status":"standby"
+    }
+  ],
+  "domains":[
+    {
+      "name":"franciscoholdingsinc.com",
+      "status":"active"
+    },
+    {
+      "name":"primedoxai.com",
+      "status":"needs review"
+    }
+  ]
+}
