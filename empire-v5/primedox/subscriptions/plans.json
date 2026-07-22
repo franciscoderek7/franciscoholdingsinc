@@ -1,0 +1,16 @@
+{
+ "plans":[
+  {
+   "name":"PrimeDox Free",
+   "price":0
+  },
+  {
+   "name":"PrimeDox Pro",
+   "price":49
+  },
+  {
+   "name":"PrimeDox Enterprise",
+   "price":199
+  }
+ ]
+}

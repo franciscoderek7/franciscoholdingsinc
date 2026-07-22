@@ -1,0 +1,29 @@
+{
+ "roles":[
+  {
+   "name":"visitor",
+   "permissions":[
+    "view_demo"
+   ]
+  },
+  {
+   "name":"customer",
+   "permissions":[
+    "create_documents",
+    "view_history"
+   ]
+  },
+  {
+   "name":"enterprise",
+   "permissions":[
+    "all_features"
+   ]
+  },
+  {
+   "name":"admin",
+   "permissions":[
+    "system_management"
+   ]
+  }
+ ]
+}
