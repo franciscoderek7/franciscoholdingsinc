@@ -1,0 +1,20 @@
+{
+ "rules":[
+  {
+   "signal":"business_email",
+   "points":10
+  },
+  {
+   "signal":"requested_demo",
+   "points":25
+  },
+  {
+   "signal":"enterprise_interest",
+   "points":40
+  },
+  {
+   "signal":"pricing_question",
+   "points":15
+  }
+ ]
+}
