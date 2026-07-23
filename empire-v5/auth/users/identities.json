@@ -1,0 +1,19 @@
+{
+ "identities":[
+  {
+   "id":"admin",
+   "role":"administrator",
+   "active":true
+  },
+  {
+   "id":"primedox",
+   "role":"agent",
+   "active":true
+  },
+  {
+   "id":"omniguard",
+   "role":"security_agent",
+   "active":true
+  }
+ ]
+}

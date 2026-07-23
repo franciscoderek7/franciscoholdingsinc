@@ -1,0 +1,26 @@
+{
+ "roles":{
+
+  "administrator":[
+   "manage_system",
+   "view_dashboard",
+   "manage_agents"
+  ],
+
+  "customer":[
+   "view_services",
+   "view_account"
+  ],
+
+  "agent":[
+   "execute_tasks",
+   "read_assigned_data"
+  ],
+
+  "security_agent":[
+   "monitor_events",
+   "create_alerts"
+  ]
+
+ }
+}
