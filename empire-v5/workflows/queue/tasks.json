@@ -1,0 +1,14 @@
+{
+  "tasks": [
+    {
+      "id": "task-1784764944934",
+      "agent": "primedox",
+      "type": "document_analysis",
+      "payload": {
+        "file": "example"
+      },
+      "status": "running",
+      "created": "2026-07-23T00:02:24.934Z"
+    }
+  ]
+}
