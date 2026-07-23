@@ -1,0 +1,13 @@
+{
+  "users": [
+    {
+      "id": "user-1784765152622",
+      "name": "Test Customer",
+      "email": "test@example.com",
+      "services": [
+        "primedox-pro"
+      ],
+      "created": "2026-07-23T00:05:52.622Z"
+    }
+  ]
+}

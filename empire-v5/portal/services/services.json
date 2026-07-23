@@ -1,0 +1,19 @@
+{
+ "services":[
+  {
+   "id":"primedox-pro",
+   "name":"PrimeDox AI Pro",
+   "status":"available"
+  },
+  {
+   "id":"omniguard",
+   "name":"OmniGuard Security",
+   "status":"available"
+  },
+  {
+   "id":"ai-consulting",
+   "name":"AI Business Consulting",
+   "status":"available"
+  }
+ ]
+}
