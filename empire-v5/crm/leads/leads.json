@@ -1,0 +1,12 @@
+{
+  "leads": [
+    {
+      "id": "lead-1784765110949",
+      "name": "Demo Customer",
+      "email": "customer@example.com",
+      "source": "website",
+      "stage": "qualified",
+      "created": "2026-07-23T00:05:10.949Z"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+ "stages":[
+  "new_lead",
+  "contacted",
+  "qualified",
+  "proposal_sent",
+  "negotiation",
+  "customer",
+  "retained"
+ ]
+}
