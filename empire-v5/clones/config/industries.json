@@ -1,0 +1,24 @@
+{
+ "industries":[
+  {
+   "name":"Legal Services",
+   "agent":"PrimeDox AI",
+   "offer":"Document workflow automation"
+  },
+  {
+   "name":"Small Business",
+   "agent":"Empire Concierge",
+   "offer":"AI business automation"
+  },
+  {
+   "name":"Security",
+   "agent":"OmniGuard",
+   "offer":"Monitoring and protection systems"
+  },
+  {
+   "name":"Automotive",
+   "agent":"Vault Velocity",
+   "offer":"Luxury automotive solutions"
+  }
+ ]
+}
