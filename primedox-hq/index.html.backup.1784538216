@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>PrimeDox AI HQ</title>
+<link rel="manifest" href="/primedox-hq/manifest.json"/>
+<style>
+body { margin:0; font-family: Arial; background:#05070a; color:#00d4ff; }
+header { padding:12px; border-bottom:1px solid #00d4ff33; display:flex; justify-content:space-between; align-items:center; }
+.brand { color:#d4af37; font-weight:bold; font-size:18px; }
+.layout { display:grid; grid-template-columns:260px 1fr; height:calc(100vh - 60px); }
+nav { border-right:1px solid #00d4ff33; padding:10px; }
+nav button { width:100%; margin-bottom:10px; padding:10px; background:#0b0f14; border:1px solid #00d4ff33; color:#00d4ff; cursor:pointer; }
+nav button:hover { background:#00d4ff22; }
+main { padding:12px; display:flex; flex-direction:column; }
+textarea,input,select { background:#0b0f14; color:#00d4ff; border:1px solid #00d4ff33; padding:8px; width:100%; box-sizing:border-box; margin:5px 0; }
+.chat { flex:1; overflow:auto; border:1px solid #00d4ff33; padding:10px; margin-bottom:10px; }
+.msg-user { color:white; margin:6px 0; }
+.msg-ai { color:#00d4ff; margin:6px 0; }
+#status { font-size:12px; color:#d4af37; }
+button.action { background:#d4af37; color:#000; border:none; padding:10px; cursor:pointer; font-weight:bold; margin:5px 5px 5px 0; }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">PrimeDox AI HQ</div>
+  <div id="status">Ready</div>
+</header>
+<div class="layout">
+<nav>
+  <button onclick="show('chat')">AI Chat</button>
+  <button onclick="show('doc')">Document Generator</button>
+  <button onclick="show('pricing')">Pricing</button>
+  <div id="status" style="margin-top:20px;">Empire Floor 3</div>
+</nav>
+<main>
+<div id="chatView">
+  <div id="chat" class="chat"></div>
+  <input id="input" placeholder="Ask PrimeDox AI..." onkeypress="if(event.key==='Enter')sendChat()" />
+  <button class="action" onclick="sendChat()">Send</button>
+</div>
+<div id="docView" style="display:none;">
+  <h3 style="color:#d4af37;">Document Generator</h3>
+  <select id="template">
+    <option>Legal Contract</option>
+    <option>Business Proposal</option>
+    <option>Policy Document</option>
+    <option>Cannabis Law Brief</option>
+    <option>Constitutional Advocacy</option>
+  </select>
+  <textarea id="prompt" rows="8" placeholder="Describe your document..."></textarea>
+  <button class="action" onclick="generateDoc()">Generate</button>
+  <pre id="output" style="background:#0b0f14;padding:10px;border:1px solid #00d4ff33;white-space:pre-wrap;min-height:100px;"></pre>
+  <button class="action" onclick="exportPDF()">Export PDF</button>
+  <button class="action" onclick="exportDOCX()">Export DOCX</button>
+</div>
+<div id="pricingView" style="display:none;">
+  <h3 style="color:#d4af37;">PrimeDox AI Pricing</h3>
+  <p style="color:#00d4ff;">Legal Intelligence Platform</p>
+  <button class="action" onclick="pay(29)">Starter — $29</button>
+  <button class="action" onclick="pay(99)">Pro — $99</button>
+  <button class="action" onclick="pay(299)">Empire — $299</button>
+</div>
+</main>
+</div>
+<script>
+function show(v) {
+  document.getElementById("chatView").style.display = v === "chat" ? "block" : "none";
+  document.getElementById("docView").style.display = v === "doc" ? "block" : "none";
+  document.getElementById("pricingView").style.display = v === "pricing" ? "block" : "none";
+}
+function sendChat() {
+  const input = document.getElementById("input");
+  const chat = document.getElementById("chat");
+  const text = input.value; input.value = "";
+  chat.innerHTML += '<div class="msg-user">You: ' + text + '</div>';
+  const replies = {
+    contract: "Generating structured legal contract with clause hierarchy and risk scoring...",
+    policy: "Policy engine activated: compliance + enforcement framework loaded.",
+    legal: "Legal analysis mode active. Constitutional advocacy and cannabis law expertise loaded.",
+    cannabis: "Cannabis law intelligence: medical marijuana regulations, constitutional challenges, and compliance frameworks.",
+    constitutional: "Constitutional advocacy engine: Section 7, Section 15, and Charter arguments loaded."
+  };
+  let reply = "PrimeDox AI processing legal + business intelligence layers...";
+  for (const key in replies) { if (text.toLowerCase().includes(key)) reply = replies[key]; }
+  setTimeout(() => chat.innerHTML += '<div class="msg-ai">PrimeDox: ' + reply + '</div>', 500);
+}
+function generateDoc() {
+  const template = document.getElementById("template").value;
+  const prompt = document.getElementById("prompt").value;
+  document.getElementById("output").textContent = 'PRIMEDOX AI DOCUMENT\n\nTemplate: ' + template + '\n\nCONTENT:\n' + prompt + '\n\n--------------------------------\nRisk Score: LOW-MEDIUM (simulated)\nClassification: GENERATED\nLegal Review: RECOMMENDED\n--------------------------------\nGenerated by PrimeDox AI HQ\n"Most dangerous legal education platform in the world"';
+}
+function exportPDF() {
+  const text = document.getElementById("output").textContent;
+  const blob = new Blob([text], { type: "application/pdf" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a"); a.href = url; a.download = "primedox-document.pdf"; a.click();
+}
+function exportDOCX() {
+  const text = document.getElementById("output").textContent;
+  const blob = new Blob([text], { type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a"); a.href = url; a.download = "primedox-document.docx"; a.click();
+}
+function pay(amount) {
+  window.open('https://paypal.me/techpetcage?amount=' + amount, '_blank');
+}
+</script>
+</body>
+</html>

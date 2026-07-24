@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Floor 1 — Francisco Holdings HQ</title>
+<link rel="manifest" href="/manifest-fhinc.json"/>
+<style>
+body { margin:0; background:#000; color:#d4af37; font-family:'Georgia',serif; overflow:hidden; }
+#canvas { position:fixed; top:0; left:0; width:100%; height:100%; }
+#ui { position:fixed; top:0; left:0; width:100%; height:100%; z-index:10; pointer-events:none; }
+.header { position:fixed; top:0; left:0; right:0; padding:20px; background:rgba(0,0,0,0.8); border-bottom:2px solid #d4af37; display:flex; justify-content:space-between; align-items:center; z-index:20; }
+.header h1 { margin:0; font-size:24px; }
+.header .badge { background:#d4af37; color:#000; padding:5px 15px; font-size:12px; font-weight:bold; }
+.nav { position:fixed; bottom:30px; left:50%; transform:translateX(-50%); display:flex; gap:20px; z-index:20; }
+.nav a { padding:15px 30px; background:#d4af37; color:#000; text-decoration:none; font-weight:bold; border:2px solid #d4af37; }
+.nav a:hover { background:#000; color:#d4af37; }
+.info-panel { position:fixed; right:30px; top:100px; width:300px; background:rgba(0,0,0,0.9); border:1px solid #d4af37; padding:20px; z-index:20; pointer-events:auto; }
+.info-panel h2 { color:#d4af37; margin-top:0; }
+.info-panel .feature { margin:10px 0; padding:10px; background:rgba(212,175,55,0.1); border-left:3px solid #d4af37; }
+.empire-status { position:fixed; bottom:30px; right:30px; background:rgba(0,0,0,0.9); border:1px solid #00ff88; padding:15px; z-index:20; font-size:12px; }
+.empire-status .online { color:#00ff88; }
+.notification { position:fixed; top:100px; left:30px; background:rgba(255,51,85,0.9); color:#fff; padding:15px; z-index:50; display:none; border:2px solid #ff3355; }
+</style>
+</head>
+<body>
+<div id="canvas"></div>
+<div id="ui">
+  <div class="header">
+    <h1>FLOOR 1 — FRANCISCO HOLDINGS HQ</h1>
+    <div class="badge">EMPIRE COMMAND</div>
+  </div>
+  
+  <div class="info-panel">
+    <h2>HQ Features</h2>
+    <div class="feature">🏢 Real Estate Empire</div>
+    <div class="feature">⚖️ Legal Services</div>
+    <div class="feature">💰 Revenue Command</div>
+    <div class="feature">📊 Empire Dashboard</div>
+    <div class="feature">🎯 Strategic Operations</div>
+    <hr style="border-color:#d4af37; margin:20px 0;"/>
+    <h3>Human-in-the-Loop</h3>
+    <p style="font-size:12px; color:#00d4ff;">Derek Francisco is monitoring all empire operations. Critical alerts trigger immediate notification.</p>
+  </div>
+  
+  <div class="nav">
+    <a href="/">← Empire Hub</a>
+    <a href="/floor2/">Floor 2 →</a>
+  </div>
+  
+  <div class="empire-status">
+    <div class="online">● EMPIRE ONLINE</div>
+    <div style="margin-top:5px;">OmniGuard: ACTIVE</div>
+    <div>PrimeDox: ACTIVE</div>
+    <div>Revenue: TRACKING</div>
+  </div>
+  
+  <div class="notification" id="urgent-notify">
+    <strong>URGENT:</strong> Authorization required for empire expansion.<br/>
+    <button onclick="acknowledge()" style="margin-top:10px; padding:5px 15px; background:#fff; color:#ff3355; border:none; cursor:pointer;">ACKNOWLEDGE</button>
+  </div>
+</div>
+
+<script type="module">
+import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js";
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, innerWidth/innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(innerWidth, innerHeight);
+document.getElementById('canvas').appendChild(renderer.domElement);
+
+// Luxury lobby
+const floorGeo = new THREE.PlaneGeometry(40, 40);
+const floorMat = new THREE.MeshStandardMaterial({ color: 0x1a1a1a, metalness: 0.8, roughness: 0.2 });
+const floor = new THREE.Mesh(floorGeo, floorMat);
+floor.rotation.x = -Math.PI/2;
+scene.add(floor);
+
+// Gold pillars
+for (let i = 0; i < 4; i++) {
+  const pillarGeo = new THREE.CylinderGeometry(1, 1, 15, 16);
+  const pillarMat = new THREE.MeshStandardMaterial({ color: 0xd4af37, metalness: 0.9, roughness: 0.1 });
+  const pillar = new THREE.Mesh(pillarGeo, pillarMat);
+  pillar.position.set((i%2===0?1:-1)*15, 7.5, (i<2?1:-1)*15);
+  scene.add(pillar);
+}
+
+// Chandelier
+const chandelierGeo = new THREE.OctahedronGeometry(3, 2);
+const chandelierMat = new THREE.MeshStandardMaterial({ color: 0xd4af37, emissive: 0xd4af37, emissiveIntensity: 0.8 });
+const chandelier = new THREE.Mesh(chandelierGeo, chandelierMat);
+chandelier.position.set(0, 12, 0);
+scene.add(chandelier);
+
+// Lighting
+const ambient = new THREE.AmbientLight(0x404040, 2);
+scene.add(ambient);
+const goldLight = new THREE.PointLight(0xd4af37, 3, 50);
+goldLight.position.set(0, 15, 0);
+scene.add(goldLight);
+
+camera.position.set(0, 10, 30);
+camera.lookAt(0, 5, 0);
+
+function animate() {
+  requestAnimationFrame(animate);
+  chandelier.rotation.y += 0.01;
+  renderer.render(scene, camera);
+}
+animate();
+
+// Simulate urgent notification
+setTimeout(() => {
+  document.getElementById('urgent-notify').style.display = 'block';
+  // In production, this would trigger: SMS, call, email to Derek
+  console.log('URGENT: Derek Francisco notified via SMS/Email/Call');
+}, 5000);
+
+window.acknowledge = function() {
+  document.getElementById('urgent-notify').style.display = 'none';
+};
+
+window.addEventListener('resize', () => {
+  camera.aspect = innerWidth/innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+</script>
+</body>
+</html>

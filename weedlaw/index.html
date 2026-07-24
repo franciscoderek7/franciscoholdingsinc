@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeedLaw | Cannabis Legal Education</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:system-ui,-apple-system,sans-serif;background:#0a0a0a;color:#fff;line-height:1.6}
+        .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;background:radial-gradient(ellipse at 50% 0%,#064e3b 0%,#0a0a0a 70%)}
+        .hero h1{font-size:clamp(2rem,5vw,4rem);font-weight:900;margin-bottom:1rem;background:linear-gradient(135deg,#10b981,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .hero p{color:#94a3b8;max-width:600px;margin-bottom:2rem;font-size:1.1rem}
+        .pricing{padding:4rem 1rem;max-width:1100px;margin:0 auto}
+        .pricing h2{text-align:center;font-size:2.5rem;margin-bottom:3rem}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+        .card{background:#1e293b;border:1px solid #334155;border-radius:16px;padding:2rem;transition:all .3s}
+        .card:hover{border-color:#10b981;transform:translateY(-4px)}
+        .card.popular{border-color:#f59e0b;position:relative}
+        .badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:#f59e0b;color:#000;padding:.4rem 1.2rem;border-radius:0 0 12px 12px;font-weight:700;font-size:.75rem}
+        .price{font-size:3rem;font-weight:900;color:#fff}
+        .price span{font-size:1rem;color:#94a3b8;font-weight:400}
+        .features{list-style:none;margin:1.5rem 0}
+        .features li{padding:.5rem 0;color:#cbd5e1}
+        .features li:before{content:"✓ ";color:#10b981;font-weight:700}
+        .btn{display:block;width:100%;padding:1rem;border-radius:12px;font-weight:700;font-size:1rem;text-align:center;text-decoration:none;transition:all .3s;border:none;cursor:pointer}
+        .btn-green{background:#10b981;color:#fff}
+        .btn-green:hover{background:#059669}
+        .btn-gold{background:#f59e0b;color:#000}
+        .btn-gold:hover{background:#d97706}
+        .btn-blue{background:#0070ba;color:#fff}
+        .btn-blue:hover{background:#005ea6}
+        .note{font-size:.8rem;color:#64748b;text-align:center;margin-top:.5rem}
+        .disclaimer{background:#1e293b;padding:2rem;text-align:center;border-top:1px solid #334155}
+        .disclaimer-box{max-width:700px;margin:0 auto;background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.2);border-radius:12px;padding:1.5rem}
+        .disclaimer-box h4{color:#ef4444;font-size:.8rem;margin-bottom:.5rem}
+        .disclaimer-box p{color:#94a3b8;font-size:.85rem}
+        footer{text-align:center;padding:2rem;color:#64748b;font-size:.85rem;border-top:1px solid #334155}
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>The Most Dangerous<br>Legal Education Platform<br>in the World</h1>
+        <p>20+ years of self-represented cannabis litigation. Constitutional advocacy. Not legal representation.</p>
+        <a href="#pricing" class="btn btn-green" style="max-width:300px">🚀 Enroll Now</a>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <h2>Choose Your Path</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🌱 Cannabis Essentials</h3>
+                <div class="price">$99<span> CAD</span></div>
+                <ul class="features">
+                    <li>MMAR / MMPR / ACMPR Overview</li>
+                    <li>Personal Production Rights</li>
+                    <li>Document Templates</li>
+                    <li>Community Access</li>
+                </ul>
+                <a href="https://paypal.me/TechPetCage/99CAD" target="_blank" class="btn btn-green">💳 Pay $99 — Enroll</a>
+                <div class="note">🔒 Secure PayPal checkout</div>
+            </div>
+
+            <div class="card popular">
+                <div class="badge">MOST POPULAR</div>
+                <h3>⚖️ Legal Pro Bundle</h3>
+                <div class="price">$199<span> CAD</span></div>
+                <ul class="features">
+                    <li>Everything in Essentials</li>
+                    <li>Charter Arguments (S.7, S.15)</li>
+                    <li>Case Law Database</li>
+                    <li>AI Document Generator</li>
+                    <li>Priority Support</li>
+                </ul>
+                <a href="https://paypal.me/TechPetCage/199CAD" target="_blank" class="btn btn-gold">💎 Pay $199 — Enroll</a>
+                <div class="note">🔒 Secure PayPal checkout</div>
+            </div>
+
+            <div class="card">
+                <h3>🏛️ Enterprise Compliance</h3>
+                <div class="price">$497<span> CAD</span></div>
+                <ul class="features">
+                    <li>Everything in Pro Bundle</li>
+                    <li>Custom Compliance Audits</li>
+                    <li>Staff Training Program</li>
+                    <li>Direct Consultation (1hr)</li>
+                    <li>Annual Updates</li>
+                </ul>
+                <a href="https://paypal.me/TechPetCage/497CAD" target="_blank" class="btn btn-blue">🏆 Pay $497 — Enroll</a>
+                <div class="note">🔒 Secure PayPal checkout</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="disclaimer">
+        <div class="disclaimer-box">
+            <h4>⚠️ IMPORTANT LEGAL NOTICE</h4>
+            <p><strong>Doc Weedlaw is a legal educator, not a lawyer.</strong> All content is for educational purposes only. NOT legal advice. No lawyer-client relationship is created. Always consult a qualified legal professional.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Francisco Holdings Inc. • Doc Weedlaw</p>
+        <p><a href="https://zprimedoxaihq.com" style="color:#10b981">PrimeDox AI</a> • <a href="https://ccldr.net" style="color:#10b981">CCLDR</a></p>
+    </footer>
+</body>
+</html>
