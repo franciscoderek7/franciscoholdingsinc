@@ -1,0 +1,42 @@
+25 Jul 01:51:10 - [info] 
+
+Welcome to Node-RED
+===================
+
+25 Jul 01:51:10 - [info] Node-RED version: v5.0.1
+25 Jul 01:51:10 - [info] Node.js  version: v26.3.1
+25 Jul 01:51:10 - [info] Linux 6.1.145-android14-11-abX238UVLU5BZE8 arm64 LE
+25 Jul 01:51:10 - [info] Loading palette nodes
+25 Jul 01:51:12 - [info] Settings file  : /data/data/com.termux/files/home/.node-red/settings.js
+25 Jul 01:51:12 - [info] Context store  : 'default' [module=memory]
+25 Jul 01:51:12 - [info] User directory : /data/data/com.termux/files/home/.node-red
+25 Jul 01:51:12 - [warn] Projects disabled : set editorTheme.projects.enabled=true to enable
+25 Jul 01:51:12 - [info] Flows file     : /data/data/com.termux/files/home/.node-red/0.0.0.0
+25 Jul 01:51:12 - [info] Creating new flow file
+25 Jul 01:51:12 - [warn] Encrypted credentials not found
+25 Jul 01:51:12 - [info] Server now running at http://127.0.0.1:1880/
+25 Jul 01:51:12 - [info] Starting flows
+25 Jul 01:51:12 - [info] Started flows
+25 Jul 02:09:06 - [info] Stopping flows
+25 Jul 02:09:06 - [info] Stopped flows
+25 Jul 02:09:06 - [info] Updated flows
+25 Jul 02:09:06 - [info] Starting flows
+25 Jul 02:09:06 - [error] [function:Process Sale] SyntaxError: Unexpected token '}' (body:line 13)
+25 Jul 02:09:06 - [info] Started flows
+25 Jul 02:15:20 - [info] Stopping flows
+25 Jul 02:15:20 - [info] Stopped flows
+25 Jul 02:15:20 - [info] Updated flows
+25 Jul 02:15:20 - [info] Starting flows
+25 Jul 02:15:20 - [info] Started flows
+25 Jul 02:45:40 - [info] Stopping flows
+25 Jul 02:45:40 - [info] Stopped flows
+25 Jul 02:45:40 - [info] Updated flows
+25 Jul 02:45:40 - [info] Starting flows
+25 Jul 02:45:40 - [info] Started flows
+25 Jul 03:06:57 - [info] Stopping flows
+25 Jul 03:06:57 - [info] Stopped flows
+25 Jul 03:06:57 - [info] Updated flows
+25 Jul 03:06:57 - [info] Starting flows
+25 Jul 03:06:57 - [info] Started flows
+25 Jul 03:40:53 - [info] Stopping flows
+25 Jul 03:40:53 - [info] Stopped flows
