@@ -2,155 +2,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FHI Command Center</title>
+<meta http-equiv="refresh" content="0;url=dashboard.html">
+<title>Francisco Holdings Inc.</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#000;color:#0f0;font-family:monospace;height:100vh;overflow:hidden}
-#setup{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999}
-#setup h1{font-size:20px;margin-bottom:10px}
-#setup p{color:#0f0aa;font-size:12px;margin-bottom:20px;text-align:center;max-width:300px}
-#setup input{background:#111;border:2px solid #0f0;color:#0f0;padding:15px;font-size:18px;text-align:center;width:280px;letter-spacing:4px;margin:5px}
-#setup button{background:#0f0;color:#000;border:none;padding:12px 40px;font-size:16px;font-weight:bold;margin-top:15px;cursor:pointer}
-#lock{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;display:none;flex-direction:column;align-items:center;justify-content:center;z-index:999}
-#lock h1{font-size:24px;letter-spacing:4px;margin-bottom:10px}
-#lock input{background:#111;border:2px solid #0f0;color:#0f0;padding:15px;font-size:20px;text-align:center;width:280px;letter-spacing:4px}
-#lock button{background:#0f0;color:#000;border:none;padding:12px 40px;font-size:16px;font-weight:bold;margin-top:20px;cursor:pointer}
-#err{color:#f00;margin-top:15px;font-size:12px}
-#dash{display:none;grid-template-columns:1fr 1fr 1fr;grid-template-rows:50px 1fr 1fr;height:100vh}
-.header{grid-column:1/4;background:#111;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #0f0}
-.header span{font-size:11px}
-.panel{background:#0a0a0a;border:1px solid #0f022;padding:12px;overflow-y:auto;font-size:11px;line-height:1.6}
-.panel h3{font-size:10px;color:#0f0;margin-bottom:8px;text-transform:uppercase;letter-spacing:2px;border-bottom:1px solid #0f033;padding-bottom:5px}
-.row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #0f022}
-.red{color:#f00}.yellow{color:#ff0}.green{color:#0f0}.purple{color:#f0f}
-.chatbox{height:calc(100% - 70px);overflow-y:auto;margin-bottom:8px}
-.chatmsg{padding:6px;margin:4px 0;border-radius:4px;font-size:10px}
-.aibg{background:#0f022;border-left:3px solid #0f0}
-.userbg{background:#220;border-left:3px solid #ff0;margin-left:15px}
-input[type=text]{width:calc(100% - 55px);background:#111;border:1px solid #0f0;color:#0f0;padding:6px;font-family:monospace;font-size:11px}
-button.send{background:#0f0;color:#000;border:none;padding:6px 12px;font-weight:bold;cursor:pointer;font-size:11px}
-.btn{background:#0f022;border:1px solid #0f0;color:#0f0;padding:4px 10px;font-family:monospace;font-size:10px;cursor:pointer;margin:2px}
-.btn:hover{background:#0f044}
+body{background:#000;color:#0f0;font-family:monospace;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}
+div{text-align:center}
+h1{font-size:24px;letter-spacing:4px}
+p{color:#0a0}
+a{color:#0f0;text-decoration:none;border:2px solid #0f0;padding:10px 20px;display:inline-block;margin-top:20px}
 </style>
 </head>
 <body>
-
-<div id="setup">
-  <h1>🛡️ FIRST TIME SETUP</h1>
-  <p>Welcome, Emperor.<br>Create your secure lock code.<br>Type it 3 times to confirm.</p>
-  <input type="password" id="p1" placeholder="Enter code" maxlength="20">
-  <input type="password" id="p2" placeholder="Confirm code" maxlength="20">
-  <input type="password" id="p3" placeholder="Confirm again" maxlength="20">
-  <button onclick="setPin()">LOCK THE EMPIRE</button>
-  <p id="serr" style="color:#f00;margin-top:10px"></p>
+<div>
+<h1>🟢 FRANCISCO HOLDINGS INC.</h1>
+<p>Phoenix Dominion Global Empire — 45+ Companies</p>
+<p>Redirecting to Command Center...</p>
+<a href="dashboard.html">ENTER DASHBOARD</a>
 </div>
-
-<div id="lock">
-  <h1>🛡️ OMNIAGUARD SECURE</h1>
-  <p style="color:#0f0aa;margin-bottom:20px">Francisco Holdings Inc. — Authorized Only</p>
-  <input type="password" id="pin" placeholder="ENTER CODE" maxlength="20" onkeydown="if(event.key==='Enter')unlock()">
-  <br><button onclick="unlock()">UNLOCK</button>
-  <p id="err"></p>
-</div>
-
-<div id="dash">
-  <div class="header">
-    <div><span style="font-size:14px;font-weight:bold">🟢 FHI COMMAND CENTER</span> <span style="margin-left:15px;color:#ff0">⚠️ AUG 31 COURT</span></div>
-    <div><span>45+ COMPANIES</span> <span style="margin-left:12px">12,847 AGENTS</span> <span style="margin-left:12px;color:#f00">REVENUE: $0</span> <button onclick="lock()" style="background:#f00;color:#fff;border:none;padding:4px 12px;cursor:pointer;margin-left:12px;font-family:monospace">LOCK</button></div>
-  </div>
-
-  <div class="panel">
-    <h3>⚖️ LITIGATION — AUG 31 PRIORITY</h3>
-    <div class="row"><span>CV-26-00000064-0000</span><span class="red">$3.3M</span></div>
-    <div style="color:#0f0aa;font-size:10px;margin:4px 0">vs Denby et al | Lindsay | Aug 31, 2026<br>Gwen: DEFAULT | 2413319 Ontario Inc. ADDED</div>
-    <div class="row"><span>CV-26-00000063-0000</span><span class="yellow">$35M</span></div>
-    <div style="color:#0f0aa;font-size:10px;margin:4px 0">Constitutional vs AG Canada</div>
-    <div class="row"><span>v. CIBC/Kudos/Telus</span><span class="purple">$331K+</span></div>
-    <div style="color:#0f0aa;font-size:10px;margin:4px 0">Slopianka #5420 | Kudos fraud $490</div>
-    <div style="margin-top:8px">
-      <button class="btn" onclick="cmd('Draft motion Aug 31')">Draft Motion</button>
-      <button class="btn" onclick="cmd('Speaking notes Aug 31')">Speaking Notes</button>
-      <button class="btn" onclick="cmd('Demand CIBC')">Demand CIBC</button>
-    </div>
-  </div>
-
-  <div class="panel">
-    <h3>🧬 PRIMEDOX AI — DEREK'S CLONE</h3>
-    <div class="chatbox" id="chat">
-      <div class="chatmsg aibg"><b>PRIMEDOX:</b> Emperor, I'm online. 28 days to Aug 31. I handle: motions, demands, Gmail, deploy, revenue, security. Ask me anything. If I need you, I'll say so.</div>
-    </div>
-    <div>
-      <input type="text" id="msg" placeholder="Command PrimeDox..." onkeydown="if(event.key==='Enter')send()">
-      <button class="send" onclick="send()">SEND</button>
-    </div>
-  </div>
-
-  <div class="panel">
-    <h3>🏢 EMPIRE HEALTH</h3>
-    <div class="row"><span>franciscoholdingsinc.com</span><span class="green">LIVE</span></div>
-    <div class="row"><span>zprimedoxaihq.com</span><span class="green">LIVE</span></div>
-    <div class="row"><span>omniaguard.com</span><span class="green">LIVE</span></div>
-    <div class="row"><span>ccldr.net</span><span class="green">LIVE</span></div>
-    <div class="row"><span>vaultvelocityauto.com</span><span class="yellow">BUILD</span></div>
-    <div class="row"><span>vigilax.com</span><span class="red">DNS</span></div>
-    <div class="row"><span>cleanswarm.com</span><span class="red">DNS</span></div>
-    <div class="row"><span>kiaros.com</span><span class="red">DNS</span></div>
-    <div style="margin-top:8px">
-      <button class="btn" onclick="cmd('Deploy all')">DEPLOY</button>
-      <button class="btn" onclick="cmd('Add floor')">+ FLOOR</button>
-    </div>
-  </div>
-
-  <div class="panel">
-    <h3>💰 REVENUE — $0 (BLOCKED)</h3>
-    <div class="row"><span>PrimeDox AI</span><span>$0/mo</span></div>
-    <div class="row"><span>OmniAGuard</span><span>$0/mo</span></div>
-    <div class="row"><span>CCLDR Courses</span><span>$0</span></div>
-    <div class="row"><span>Vault Velocity</span><span>$0</span></div>
-    <div style="margin-top:8px;color:#ff0;font-size:10px">🚨 PayPal.me/techpetcage is charging YOU not customers. This blocks ALL revenue.</div>
-    <div style="margin-top:8px">
-      <button class="btn" onclick="cmd('Fix PayPal')" style="border-color:#f00;color:#f00">🚨 FIX PAYPAL</button>
-      <button class="btn" onclick="cmd('Get first sale')">💰 FIRST SALE</button>
-    </div>
-  </div>
-
-  <div class="panel">
-    <h3>🛡️ OMNIAGUARD</h3>
-    <div class="row"><span>Threat Level</span><span class="green">MINIMAL</span></div>
-    <div class="row"><span>Agents Online</span><span class="green">12,847</span></div>
-    <div class="row"><span>Last Breach</span><span class="green">NONE</span></div>
-    <div class="row"><span>SSL Status</span><span class="green">VALID</span></div>
-    <div style="margin-top:8px">
-      <button class="btn" onclick="cmd('Security scan')">SCAN</button>
-      <button class="btn" onclick="cmd('Agent health')">AGENTS</button>
-    </div>
-  </div>
-
-  <div class="panel">
-    <h3>📧 GMAIL / OPERATIONS</h3>
-    <div style="color:#0f0aa;font-size:10px;margin-bottom:8px">GMAIL: <span class="yellow">NOT CONNECTED</span></div>
-    <div style="font-size:10px;line-height:1.8">
-      📁 Court Docs: <span class="green">~/fhi/court/</span><br>
-      📁 Motions: <span class="green">~/fhi/motions/</span><br>
-      📁 Demands: <span class="green">~/fhi/demands/</span><br>
-      📁 Scripts: <span class="green">~/fhi/scripts/</span>
-    </div>
-    <div style="margin-top:8px">
-      <button class="btn" onclick="cmd('Setup Gmail')">GMAIL</button>
-      <button class="btn" onclick="cmd('Deploy FHI')">DEPLOY</button>
-    </div>
-  </div>
-</div>
-
-<script>
-const savedPin = localStorage.getItem('fhi_pin');
-if(savedPin){document.getElementById('setup').style.display='none';document.getElementById('lock').style.display='flex';}
-function setPin(){const p1=document.getElementById('p1').value,p2=document.getElementById('p2').value,p3=document.getElementById('p3').value;if(!p1||p1.length<4){document.getElementById('serr').textContent='Code must be 4+ characters';return}if(p1!==p2||p2!==p3){document.getElementById('serr').textContent='Codes do not match. Try again.';return}localStorage.setItem('fhi_pin',p1);document.getElementById('setup').style.display='none';document.getElementById('lock').style.display='flex';document.getElementById('serr').textContent=''}
-function unlock(){const p=document.getElementById('pin').value;if(p===localStorage.getItem('fhi_pin')){document.getElementById('lock').style.display='none';document.getElementById('dash').style.display='grid';document.getElementById('err').textContent=''}else{document.getElementById('err').textContent='ACCESS DENIED';document.getElementById('pin').value=''}}
-function lock(){document.getElementById('lock').style.display='flex';document.getElementById('dash').style.display='none';document.getElementById('pin').value=''}
-function send(){const i=document.getElementById('msg'),t=i.value.trim();if(!t)return;const c=document.getElementById('chat');const u=document.createElement('div');u.className='chatmsg userbg';u.innerHTML='<b>DEREK:</b> '+t;c.appendChild(u);i.value='';c.scrollTop=c.scrollHeight;setTimeout(()=>{const a=document.createElement('div');a.className='chatmsg aibg';let r='<b>PRIMEDOX:</b> ';const l=t.toLowerCase();if(l.includes('motion'))r+='I will draft a motion for Aug 31. Which type? Leave to amend (Rule 26)? Default judgment? Summary judgment?';else if(l.includes('demand'))r+='Who is recipient and amount? Example: "Demand to CIBC for $165,400"';else if(l.includes('paypal')||l.includes('revenue')||l.includes('sale'))r+='PAYPAL FIX: 1) Log into paypal.com 2) Settings → PayPal.Me 3) Toggle "Receive Money" ON 4) Test in incognito: paypal.me/techpetcage/1.00USD 5) Must ask VISITOR to pay. If it asks you to SEND, it is still backwards.';else if(l.includes('gmail'))r+='GMAIL SETUP: 1) Google Cloud Console → Enable Gmail API 2) Create OAuth credentials 3) Download credentials.json 4) Move to ~/fhi/ 5) I will read and respond to court/business emails.';else if(l.includes('deploy'))r+='DEPLOY: cd ~/franciscoholdingsinc && git add . && git commit -m "PrimeDox deploy" && git push origin main';else if(l.includes('court')||l.includes('aug')||l.includes('speaking'))r+='AUG 31 PREP: 1) Confirm time: 705-324-6300 2) Print all docs 3) Review speaking notes 4) Bring ID, files, pen 5) I can draft speaking notes now — say "Draft speaking notes"';else if(l.includes('speaking notes'))r+='SPEAKING NOTES DRAFTED in ~/fhi/court/AUG31-SPEAKING-NOTES.txt. Key points: Rule 26.02(c) leave to amend, alter ego doctrine, 2413319 Ontario Inc. ownership, Pintea accommodation, $3.3M damages justification.';else r+='Command acknowledged. I am your clone. I operate the empire. I ask you only when I need human judgment. Current priorities: 1) Fix PayPal for revenue 2) Prep Aug 31 court date 3) Get first sale. What do you need?';a.innerHTML=r;c.appendChild(a);c.scrollTop=c.scrollHeight},500)}
-function cmd(t){document.getElementById('msg').value=t;send()}
-</script>
 </body>
 </html>
