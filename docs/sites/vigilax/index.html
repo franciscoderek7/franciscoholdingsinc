@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vigilax | Watch. Protect. Prevail.</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#050505;color:#ccc;font-family:'Courier New',monospace;overflow-x:hidden}
+.hero{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(ellipse at center,#1a0000 0%,#000 70%);position:relative}
+.scanline{position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(255,0,0,0.03) 50%);background-size:100% 4px;pointer-events:none;z-index:10}
+.hero-content{position:relative;z-index:5}
+.logo{font-size:56px;font-weight:700;letter-spacing:15px;color:#ff0000;text-shadow:0 0 30px rgba(255,0,0,0.5);margin-bottom:20px}
+.tagline{font-size:16px;letter-spacing:6px;color:#800;margin-bottom:40px}
+.mission{font-size:13px;color:#666;max-width:550px;margin:0 auto 50px;line-height:1.8}
+.cta{display:inline-block;background:#ff0000;color:#000;padding:16px 45px;font-size:12px;font-weight:900;letter-spacing:3px;text-decoration:none;transition:0.3s}
+.cta:hover{box-shadow:0 0 30px rgba(255,0,0,0.5)}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:1000px;margin:80px auto;padding:0 20px}
+.svc-card{background:rgba(255,0,0,0.03);border:1px solid rgba(255,0,0,0.15);padding:40px;text-align:center;transition:0.3s}
+.svc-card:hover{border-color:#ff0000;background:rgba(255,0,0,0.06)}
+.svc-icon{font-size:36px;margin-bottom:15px}
+.svc-name{font-size:13px;letter-spacing:3px;color:#ff0000;margin-bottom:10px}
+.svc-desc{font-size:11px;color:#555}
+.pricing{background:#0a0a0a;padding:80px 20px;text-align:center;border-top:1px solid #1a0000}
+.price-tier{display:inline-block;background:rgba(255,0,0,0.03);border:1px solid rgba(255,0,0,0.2);padding:40px 50px;margin:15px;min-width:280px}
+.price-tier h3{color:#ff0000;font-size:20px;letter-spacing:4px;margin-bottom:10px}
+.price-tier .price{font-size:42px;font-weight:100;color:#fff;margin-bottom:20px}
+.price-tier .price span{font-size:14px;color:#444}
+.price-tier ul{list-style:none;color:#666;font-size:12px;line-height:2.2;text-align:left}
+.price-tier .buy{display:inline-block;margin-top:25px;background:#ff0000;color:#000;padding:12px 35px;text-decoration:none;font-weight:900;letter-spacing:2px;font-size:11px}
+.footer{text-align:center;padding:40px;color:#222;font-size:10px;letter-spacing:2px;border-top:1px solid #111}
+.lock{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.lock h2{color:#ff0000;letter-spacing:10px;font-size:14px;margin-bottom:30px}
+.lock input{width:60px;height:80px;background:rgba(255,0,0,0.05);border:2px solid #ff0000;color:#ff0000;font-size:36px;text-align:center;margin:0 10px}
+.lock-btn{background:#ff0000;color:#000;border:none;padding:15px 50px;font-size:12px;font-weight:900;cursor:pointer;letter-spacing:3px;margin-top:30px}
+@media(max-width:768px){.services{grid-template-columns:1fr}.price-tier{min-width:auto;width:90%}}
+</style>
+</head>
+<body>
+
+<div class="lock" id="lock">
+<h2>SECURITY CLEARANCE REQUIRED</h2>
+<div style="display:flex"><input type="password" maxlength="1" id="p1" onkeyup="if(this.value.length===1)p2.focus()"><input type="password" maxlength="1" id="p2" onkeyup="if(this.value.length===1)p3.focus()"><input type="password" maxlength="1" id="p3" onkeyup="if(this.value.length===1)p4.focus()"><input type="password" maxlength="1" id="p4"></div>
+<button class="lock-btn" onclick="unlock()">AUTHENTICATE</button>
+</div>
+
+<div class="hero">
+<div class="scanline"></div>
+<div class="hero-content">
+<div class="logo">VIGILAX</div>
+<div class="tagline">Watch. Protect. Prevail.</div>
+<p class="mission">Vigilax — The eyes that never close. Corporate intelligence, digital surveillance, and background verification for those who demand absolute certainty. We operate in the shadows so you remain in the light.</p>
+<a href="#pricing" class="cta">INITIATE INQUIRY</a>
+</div>
+</div>
+
+<div class="services">
+<div class="svc-card"><div class="svc-icon">🔍</div><div class="svc-name">CORPORATE INTEL</div><div class="svc-desc">Competitor analysis, market intelligence, due diligence</div></div>
+<div class="svc-card"><div class="svc-icon">📡</div><div class="svc-name">SURVEILLANCE</div><div class="svc-desc">Digital footprint mapping, social media intelligence</div></div>
+<div class="svc-card"><div class="svc-icon">📋</div><div class="svc-name">BACKGROUND CHECKS</div><div class="svc-desc">Deep-dive verification, criminal records, asset tracing</div></div>
+</div>
+
+<div class="pricing" id="pricing">
+<h2 style="font-size:28px;letter-spacing:8px;color:#ff0000;margin-bottom:50px">RETAINERS</h2>
+<div class="price-tier">
+<h3>SHADOW</h3>
+<div class="price">$500<span>/mo</div>
+<ul><li>Monthly threat report</li><li>Dark web monitoring</li><li>2 background checks</li><li>Email alerts</li></ul>
+<a href="https://www.paypal.com/paypalme/techpetcage/500" class="buy">RETAIN</a>
+</div>
+<div class="price-tier">
+<h3>SENTINEL</h3>
+<div class="price">$2,000<span>/mo</div>
+<ul><li>Everything in Shadow</li><li>Real-time monitoring</li><li>10 background checks</li><li>Quarterly briefing</li><li>Priority response</li></ul>
+<a href="https://www.paypal.com/paypalme/techpetcage/2000" class="buy">RETAIN</a>
+</div>
+<div class="price-tier">
+<h3>OVERWATCH</h3>
+<div class="price">$5,000<span>/mo</div>
+<ul><li>Everything in Sentinel</li><li>Dedicated investigator</li><li>Unlimited checks</li><li>24/7 hotline</li><li>Custom intelligence</li></ul>
+<a href="https://www.paypal.com/paypalme/techpetcage/5000" class="buy">RETAIN</a>
+</div>
+</div>
+
+<div class="footer">
+<p>© 2026 Vigilax — A Francisco Holdings Inc. Company</p>
+<p style="margin-top:10px;font-size:9px">Licensed where applicable. All investigations comply with local law.</p>
+</div>
+
+<script>
+function unlock(){
+  const code=document.getElementById('p1').value+document.getElementById('p2').value+document.getElementById('p3').value+document.getElementById('p4').value;
+  if(code==='1170'){document.getElementById('lock').style.display='none';}
+  else{alert('ACCESS DENIED');}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechPackCage | Smarter Packaging. Smarter Planet.</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#02040a;color:#e0e0e0;font-family:'Segoe UI',sans-serif;overflow-x:hidden}
+.hero{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(180deg,#02040a,#0a1628,#02040a);position:relative}
+.circuit{position:absolute;inset:0;opacity:0.1;background-image:radial-gradient(circle at 2px 2px,rgba(0,200,255,0.5) 1px,transparent 0);background-size:40px 40px}
+.hero-content{position:relative;z-index:1}
+.logo{font-size:52px;font-weight:300;letter-spacing:12px;color:#00c8ff;text-shadow:0 0 30px rgba(0,200,255,0.3);margin-bottom:20px}
+.tagline{font-size:16px;letter-spacing:6px;color:#446;margin-bottom:40px}
+.mission{font-size:14px;color:#668;max-width:550px;margin:0 auto 50px;line-height:1.8}
+.cta{display:inline-block;background:#00c8ff;color:#000;padding:16px 45px;font-size:13px;font-weight:700;letter-spacing:3px;text-decoration:none;border-radius:2px;transition:0.3s}
+.cta:hover{box-shadow:0 0 30px rgba(0,200,255,0.4)}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:1000px;margin:80px auto;padding:0 20px}
+.feat-card{background:rgba(0,200,255,0.03);border:1px solid rgba(0,200,255,0.1);padding:40px;text-align:center;transition:0.3s}
+.feat-card:hover{border-color:#00c8ff;background:rgba(0,200,255,0.05)}
+.feat-icon{font-size:36px;margin-bottom:15px}
+.feat-name{font-size:13px;letter-spacing:3px;color:#00c8ff;margin-bottom:10px}
+.feat-desc{font-size:11px;color:#557}
+.pricing{background:#030810;padding:80px 20px;text-align:center}
+.price-tier{display:inline-block;background:rgba(0,200,255,0.03);border:1px solid rgba(0,200,255,0.15);padding:40px 50px;margin:15px;min-width:280px}
+.price-tier h3{color:#00c8ff;font-size:20px;letter-spacing:4px;margin-bottom:10px}
+.price-tier .price{font-size:42px;font-weight:100;color:#fff;margin-bottom:20px}
+.price-tier .price span{font-size:14px;color:#456}
+.price-tier ul{list-style:none;color:#668;font-size:12px;line-height:2.2;text-align:left}
+.price-tier .buy{display:inline-block;margin-top:25px;background:#00c8ff;color:#000;padding:12px 35px;text-decoration:none;font-weight:700;letter-spacing:2px;font-size:11px}
+.footer{text-align:center;padding:40px;color:#1a2a3a;font-size:10px;letter-spacing:2px;border-top:1px solid #0a1628}
+.lock{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.lock h2{color:#00c8ff;letter-spacing:10px;font-size:14px;margin-bottom:30px}
+.lock input{width:60px;height:80px;background:rgba(0,200,255,0.05);border:2px solid #00c8ff;color:#00c8ff;font-size:36px;text-align:center;margin:0 10px}
+.lock-btn{background:#00c8ff;color:#000;border:none;padding:15px 50px;font-size:12px;font-weight:900;cursor:pointer;letter-spacing:3px;margin-top:30px}
+@media(max-width:768px){.features{grid-template-columns:1fr}.price-tier{min-width:auto;width:90%}}
+</style>
+</head>
+<body>
+
+<div class="lock" id="lock">
+<h2>ENTER ACCESS CODE</h2>
+<div style="display:flex"><input type="password" maxlength="1" id="p1" onkeyup="if(this.value.length===1)p2.focus()"><input type="password" maxlength="1" id="p2" onkeyup="if(this.value.length===1)p3.focus()"><input type="password" maxlength="1" id="p3" onkeyup="if(this.value.length===1)p4.focus()"><input type="password" maxlength="1" id="p4"></div>
+<button class="lock-btn" onclick="unlock()">ACCESS TECHPACKCAGE</button>
+</div>
+
+<div class="hero">
+<div class="circuit"></div>
+<div class="hero-content">
+<div class="logo">TECHPACKCAGE</div>
+<div class="tagline">Smarter Packaging. Smarter Planet.</div>
+<p class="mission">TechPackCage — The future of logistics. AI-powered smart packaging, real-time supply chain tracking, and sustainable materials that reduce waste while maximizing protection. We don't just ship products. We ship intelligence.</p>
+<a href="#pricing" class="cta">EXPLORE SOLUTIONS</a>
+</div>
+</div>
+
+<div class="features">
+<div class="feat-card"><div class="feat-icon">📦</div><div class="feat-name">SMART PACKAGING</div><div class="feat-desc">IoT-enabled boxes with temperature, shock, and location sensors</div></div>
+<div class="feat-card"><div class="feat-icon">🤖</div><div class="feat-name">SUPPLY CHAIN AI</div><div class="feat-desc">Predictive routing, demand forecasting, and anomaly detection</div></div>
+<div class="feat-card"><div class="feat-icon">♻️</div><div class="feat-name">SUSTAINABLE</div><div class="feat-desc">Biodegradable materials with carbon footprint tracking</div></div>
+</div>
+
+<div class="pricing" id="pricing">
+<h2 style="font-size:28px;letter-spacing:8px;color:#00c8ff;margin-bottom:50px">ENTERPRISE PLANS</h2>
+<div class="price-tier">
+<h3>STARTUP</h3>
+<div class="price">$399<span>/mo</div>
+<ul><li>500 smart labels/mo</li><li>Basic tracking dashboard</li><li>Email support</li><li>Standard analytics</li></ul>
+<a href="https://www.paypal.com/paypalme/techpetcage/399" class="buy">SUBSCRIBE</a>
+</div>
+<div class="price-tier">
+<h3>SCALE</h3>
+<div class="price">$999<span>/mo</div>
+<ul><li>5,000 smart labels/mo</li><li>AI routing optimization</li><li>Priority support</li><li>Advanced analytics</li><li>API access</li></ul>
+<a href="https://www.paypal.com/paypalme/techpetcage/999" class="buy">SUBSCRIBE</a>
+</div>
+<div class="price-tier">
+<h3>ENTERPRISE</h3>
+<div class="price">$1,999<span>/mo</div>
+<ul><li>Unlimited labels</li><li>Custom AI models</li><li>Dedicated account manager</li><li>White-label dashboard</li><li>SLA guarantee</li></ul>
+<a href="https://www.paypal.com/paypalme/techpetcage/1999" class="buy">SUBSCRIBE</a>
+</div>
+</div>
+
+<div class="footer">
+<p>© 2026 TechPackCage — A Francisco Holdings Inc. Company</p>
+<p style="margin-top:10px;font-size:9px">All solutions subject to implementation review.</p>
+</div>
+
+<script>
+function unlock(){
+  const code=document.getElementById('p1').value+document.getElementById('p2').value+document.getElementById('p3').value+document.getElementById('p4').value;
+  if(code==='1170'){document.getElementById('lock').style.display='none';}
+  else{alert('ACCESS DENIED');}
+}
+</script>
+</body>
+</html>
