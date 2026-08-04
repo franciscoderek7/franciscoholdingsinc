@@ -1,156 +1,223 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FHI Command Center</title>
+<title>Francisco Holdings Inc. | Phoenix Core Business Intelligence</title>
+<meta name="description" content="Premium business automation, AI implementation, and gap analysis for enterprises. Phoenix Core finds problems before they cost you millions.">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#000;color:#0f0;font-family:monospace;height:100vh;overflow:hidden}
-#setup{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999}
-#setup h1{font-size:20px;margin-bottom:10px}
-#setup p{color:#0f0aa;font-size:12px;margin-bottom:20px;text-align:center;max-width:300px}
-#setup input{background:#111;border:2px solid #0f0;color:#0f0;padding:15px;font-size:18px;text-align:center;width:280px;letter-spacing:4px;margin:5px}
-#setup button{background:#0f0;color:#000;border:none;padding:12px 40px;font-size:16px;font-weight:bold;margin-top:15px;cursor:pointer}
-#lock{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;display:none;flex-direction:column;align-items:center;justify-content:center;z-index:999}
-#lock h1{font-size:24px;letter-spacing:4px;margin-bottom:10px}
-#lock input{background:#111;border:2px solid #0f0;color:#0f0;padding:15px;font-size:20px;text-align:center;width:280px;letter-spacing:4px}
-#lock button{background:#0f0;color:#000;border:none;padding:12px 40px;font-size:16px;font-weight:bold;margin-top:20px;cursor:pointer}
-#err{color:#f00;margin-top:15px;font-size:12px}
-#dash{display:none;grid-template-columns:1fr 1fr 1fr;grid-template-rows:50px 1fr 1fr;height:100vh}
-.header{grid-column:1/4;background:#111;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #0f0}
-.header span{font-size:11px}
-.panel{background:#0a0a0a;border:1px solid #0f022;padding:12px;overflow-y:auto;font-size:11px;line-height:1.6}
-.panel h3{font-size:10px;color:#0f0;margin-bottom:8px;text-transform:uppercase;letter-spacing:2px;border-bottom:1px solid #0f033;padding-bottom:5px}
-.row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #0f022}
-.red{color:#f00}.yellow{color:#ff0}.green{color:#0f0}.purple{color:#f0f}
-.chatbox{height:calc(100% - 70px);overflow-y:auto;margin-bottom:8px}
-.chatmsg{padding:6px;margin:4px 0;border-radius:4px;font-size:10px}
-.aibg{background:#0f022;border-left:3px solid #0f0}
-.userbg{background:#220;border-left:3px solid #ff0;margin-left:15px}
-input[type=text]{width:calc(100% - 55px);background:#111;border:1px solid #0f0;color:#0f0;padding:6px;font-family:monospace;font-size:11px}
-button.send{background:#0f0;color:#000;border:none;padding:6px 12px;font-weight:bold;cursor:pointer;font-size:11px}
-.btn{background:#0f022;border:1px solid #0f0;color:#0f0;padding:4px 10px;font-family:monospace;font-size:10px;cursor:pointer;margin:2px}
-.btn:hover{background:#0f044}
+body{background:#050505;color:#e0e0e0;font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+a{color:#0f0;text-decoration:none}
+.header{background:rgba(0,0,0,0.95);border-bottom:1px solid #0f0;position:fixed;width:100%;top:0;z-index:1000}
+.nav{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:15px 20px}
+.logo{font-size:22px;font-weight:bold;color:#0f0;letter-spacing:2px}
+.nav-links{display:flex;gap:30px}
+.nav-links a{color:#aaa;font-size:14px;text-transform:uppercase;letter-spacing:1px;transition:0.3s}
+.nav-links a:hover{color:#0f0}
+.mobile-menu{display:none;cursor:pointer;font-size:24px;color:#0f0}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:radial-gradient(ellipse at center,#0a1a0a 0%,#000 70%);padding:120px 20px 60px}
+.hero h1{font-size:52px;color:#0f0;margin-bottom:20px;text-shadow:0 0 20px rgba(0,255,0,0.3)}
+.hero p{font-size:20px;color:#aaa;max-width:700px;margin:0 auto 40px}
+.btn{background:#0f0;color:#000;padding:16px 45px;font-size:16px;font-weight:bold;border:none;cursor:pointer;display:inline-block;margin:10px;text-transform:uppercase;letter-spacing:1px;transition:0.3s}
+.btn:hover{box-shadow:0 0 30px rgba(0,255,0,0.4);transform:translateY(-2px)}
+.btn.ghost{background:transparent;border:2px solid #0f0;color:#0f0}
+.section{padding:100px 20px;max-width:1200px;margin:0 auto}
+.section-title{font-size:36px;color:#0f0;margin-bottom:15px;text-align:center}
+.section-sub{text-align:center;color:#888;margin-bottom:60px;font-size:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
+.card{background:#0a0a0a;border:1px solid #1a1a1a;padding:40px;transition:0.3s}
+.card:hover{border-color:#0f0;transform:translateY(-5px)}
+.card h3{color:#0f0;margin-bottom:15px;font-size:22px}
+.card p{color:#888}
+.price-box{text-align:center;padding:60px 20px;background:#0a0a0a;border:2px solid #0f0;max-width:800px;margin:0 auto}
+.price{font-size:64px;color:#0f0;font-weight:bold}
+.price span{font-size:20px;color:#888}
+.features-list{max-width:600px;margin:30px auto;text-align:left}
+.features-list li{color:#aaa;padding:10px 0;border-bottom:1px solid #1a1a1a;list-style:none}
+.features-list li::before{content:"✓ ";color:#0f0;font-weight:bold}
+.contact-form{max-width:600px;margin:0 auto}
+.input{width:100%;padding:15px;margin:10px 0;background:#0a0a0a;border:1px solid #333;color:#fff;font-size:16px}
+.input:focus{outline:none;border-color:#0f0}
+.footer{text-align:center;padding:40px 20px;border-top:1px solid #1a1a1a;color:#555;font-size:13px}
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:60px;left:0;width:100%;background:#000;flex-direction:column;padding:20px;text-align:center}
+  .nav-links.active{display:flex}
+  .mobile-menu{display:block}
+  .hero h1{font-size:32px}
+}
 </style>
 </head>
 <body>
 
-<div id="setup">
-  <h1>🛡️ FIRST TIME SETUP</h1>
-  <p>Welcome, Emperor.<br>Create your secure lock code.<br>Type it 3 times to confirm.</p>
-  <input type="password" id="p1" placeholder="Enter code" maxlength="20">
-  <input type="password" id="p2" placeholder="Confirm code" maxlength="20">
-  <input type="password" id="p3" placeholder="Confirm again" maxlength="20">
-  <button onclick="setPin()">LOCK THE EMPIRE</button>
-  <p id="serr" style="color:#f00;margin-top:10px"></p>
-</div>
-
-<div id="lock">
-  <h1>🛡️ OMNIAGUARD SECURE</h1>
-  <p style="color:#0f0aa;margin-bottom:20px">Francisco Holdings Inc. — Authorized Only</p>
-  <input type="password" id="pin" placeholder="ENTER CODE" maxlength="20" onkeydown="if(event.key==='Enter')unlock()">
-  <br><button onclick="unlock()">UNLOCK</button>
-  <p id="err"></p>
-</div>
-
-<div id="dash">
-  <div class="header">
-    <div><span style="font-size:14px;font-weight:bold">🟢 FHI COMMAND CENTER</span> <span style="margin-left:15px;color:#ff0">⚠️ AUG 31 COURT</span></div>
-    <div><span>45+ COMPANIES</span> <span style="margin-left:12px">12,847 AGENTS</span> <span style="margin-left:12px;color:#f00">REVENUE: $0</span> <button onclick="lock()" style="background:#f00;color:#fff;border:none;padding:4px 12px;cursor:pointer;margin-left:12px;font-family:monospace">LOCK</button></div>
+<header class="header">
+  <div class="nav">
+    <div class="logo">⚡ FRANCISCO HOLDINGS INC.</div>
+    <div class="mobile-menu" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</div>
+    <nav class="nav-links">
+      <a href="#phoenix">Phoenix Core</a>
+      <a href="#services">Services</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
+</header>
 
-  <div class="panel">
-    <h3>⚖️ LITIGATION — AUG 31 PRIORITY</h3>
-    <div class="row"><span>CV-26-00000064-0000</span><span class="red">$3.3M</span></div>
-    <div style="color:#0f0aa;font-size:10px;margin:4px 0">vs Denby et al | Lindsay | Aug 31, 2026<br>Gwen: DEFAULT | 2413319 Ontario Inc. ADDED</div>
-    <div class="row"><span>CV-26-00000063-0000</span><span class="yellow">$35M</span></div>
-    <div style="color:#0f0aa;font-size:10px;margin:4px 0">Constitutional vs AG Canada</div>
-    <div class="row"><span>v. CIBC/Kudos/Telus</span><span class="purple">$331K+</span></div>
-    <div style="color:#0f0aa;font-size:10px;margin:4px 0">Slopianka #5420 | Kudos fraud $490</div>
-    <div style="margin-top:8px">
-      <button class="btn" onclick="cmd('Draft motion Aug 31')">Draft Motion</button>
-      <button class="btn" onclick="cmd('Speaking notes Aug 31')">Speaking Notes</button>
-      <button class="btn" onclick="cmd('Demand CIBC')">Demand CIBC</button>
-    </div>
+<section class="hero">
+  <div>
+    <h1>PHOENIX CORE</h1>
+    <p>We don't guess. We find the gaps, expose the problems, and build the systems that automate your revenue before your competitors know what happened. Premium business intelligence for enterprises that refuse to lose.</p>
+    <a href="#contact" class="btn">INITIATE AUDIT</a>
+    <a href="#services" class="btn ghost">EXPLORE SERVICES</a>
   </div>
+</section>
 
-  <div class="panel">
-    <h3>🧬 PRIMEDOX AI — DEREK'S CLONE</h3>
-    <div class="chatbox" id="chat">
-      <div class="chatmsg aibg"><b>PRIMEDOX:</b> Emperor, I'm online. 28 days to Aug 31. I handle: motions, demands, Gmail, deploy, revenue, security. Ask me anything. If I need you, I'll say so.</div>
+<section class="section" id="phoenix">
+  <h2 class="section-title">How Phoenix Core Works</h2>
+  <p class="section-sub">Four phases. Zero fluff. Maximum ROI.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>01. DISCOVER</h3>
+      <p>Our systems analyze 100+ data points across your digital footprint — website performance, automation gaps, competitor positioning, and revenue leaks. We find what you can't see.</p>
     </div>
-    <div>
-      <input type="text" id="msg" placeholder="Command PrimeDox..." onkeydown="if(event.key==='Enter')send()">
-      <button class="send" onclick="send()">SEND</button>
+    <div class="card">
+      <h3>02. DIAGNOSE</h3>
+      <p>Every broken process, every missed lead, every manual task costing you labor hours. We map your operational pain points with surgical precision.</p>
+    </div>
+    <div class="card">
+      <h3>03. DESIGN</h3>
+      <p>Custom AI automation architecture. Not templates. Not plugins. Built-for-you systems that integrate with your existing stack and scale without hiring.</p>
+    </div>
+    <div class="card">
+      <h3>04. DEPLOY</h3>
+      <p>Implementation, testing, and handoff. Your team gets dashboards. Your customers get faster service. Your bottom line gets the difference.</p>
     </div>
   </div>
+</section>
 
-  <div class="panel">
-    <h3>🏢 EMPIRE HEALTH</h3>
-    <div class="row"><span>franciscoholdingsinc.com</span><span class="green">LIVE</span></div>
-    <div class="row"><span>zprimedoxaihq.com</span><span class="green">LIVE</span></div>
-    <div class="row"><span>omniaguard.com</span><span class="green">LIVE</span></div>
-    <div class="row"><span>ccldr.net</span><span class="green">LIVE</span></div>
-    <div class="row"><span>vaultvelocityauto.com</span><span class="yellow">BUILD</span></div>
-    <div class="row"><span>vigilax.com</span><span class="red">DNS</span></div>
-    <div class="row"><span>cleanswarm.com</span><span class="red">DNS</span></div>
-    <div class="row"><span>kiaros.com</span><span class="red">DNS</span></div>
-    <div style="margin-top:8px">
-      <button class="btn" onclick="cmd('Deploy all')">DEPLOY</button>
-      <button class="btn" onclick="cmd('Add floor')">+ FLOOR</button>
+<section class="section" id="services" style="background:#080808">
+  <h2 class="section-title">Enterprise Services</h2>
+  <p class="section-sub">Built for companies doing $1M+ who want to do $10M+ without adding headcount.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>🎯 Gap Analysis</h3>
+      <p>Comprehensive audit of your business operations, digital infrastructure, and competitive landscape. Delivered as an actionable roadmap with prioritized fixes.</p>
+    </div>
+    <div class="card">
+      <h3>🤖 AI Automation</h3>
+      <p>Custom agent swarms, document pipelines, customer service bots, and lead qualification systems. We build it, you own it.</p>
+    </div>
+    <div class="card">
+      <h3>🌐 Digital Transformation</h3>
+      <p>Legacy system modernization, cloud migration strategy, and API integrations that actually talk to each other. No more data silos.</p>
+    </div>
+    <div class="card">
+      <h3>📊 Revenue Intelligence</h3>
+      <p>Real-time dashboards tracking every dollar, every conversion, every churn risk. Predictive analytics that tell you what to do next quarter.</p>
+    </div>
+    <div class="card">
+      <h3>🔒 Security Architecture</h3>
+      <p>Enterprise-grade cybersecurity planning, compliance frameworks (SOC2, GDPR, PIPEDA), and threat assessment. Via OmniAGuard partnership.</p>
+    </div>
+    <div class="card">
+      <h3>⚡ Performance Optimization</h3>
+      <p>Website speed, conversion rate optimization, SEO technical audits, and infrastructure scaling. Speed is revenue.</p>
     </div>
   </div>
+</section>
 
-  <div class="panel">
-    <h3>💰 REVENUE — $0 (BLOCKED)</h3>
-    <div class="row"><span>PrimeDox AI</span><span>$0/mo</span></div>
-    <div class="row"><span>OmniAGuard</span><span>$0/mo</span></div>
-    <div class="row"><span>CCLDR Courses</span><span>$0</span></div>
-    <div class="row"><span>Vault Velocity</span><span>$0</span></div>
-    <div style="margin-top:8px;color:#ff0;font-size:10px">🚨 PayPal.me/techpetcage is charging YOU not customers. This blocks ALL revenue.</div>
-    <div style="margin-top:8px">
-      <button class="btn" onclick="cmd('Fix PayPal')" style="border-color:#f00;color:#f00">🚨 FIX PAYPAL</button>
-      <button class="btn" onclick="cmd('Get first sale')">💰 FIRST SALE</button>
+<section class="section" id="solutions">
+  <h2 class="section-title">Industry Solutions</h2>
+  <p class="section-sub">We don't serve everyone. We dominate these verticals.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>🏢 Real Estate</h3>
+      <p>Automated listing pipelines, CRM integration, document generation for closings, and lead nurturing that converts lookers into buyers.</p>
+    </div>
+    <div class="card">
+      <h3>⚖️ Legal Services</h3>
+      <p>Case management automation, court deadline tracking, document drafting AI, and client intake systems that filter tire-kickers.</p>
+    </div>
+    <div class="card">
+      <h3>🏥 Healthcare</h3>
+      <p>HIPAA-compliant automation, appointment scheduling, patient follow-up sequences, and billing integration that reduces admin overhead by 70%.</p>
+    </div>
+    <div class="card">
+      <h3>💰 Financial Services</h3>
+      <p>Compliance automation, risk assessment algorithms, client reporting dashboards, and secure document exchange platforms.</p>
     </div>
   </div>
+</section>
 
-  <div class="panel">
-    <h3>🛡️ OMNIAGUARD</h3>
-    <div class="row"><span>Threat Level</span><span class="green">MINIMAL</span></div>
-    <div class="row"><span>Agents Online</span><span class="green">12,847</span></div>
-    <div class="row"><span>Last Breach</span><span class="green">NONE</span></div>
-    <div class="row"><span>SSL Status</span><span class="green">VALID</span></div>
-    <div style="margin-top:8px">
-      <button class="btn" onclick="cmd('Security scan')">SCAN</button>
-      <button class="btn" onclick="cmd('Agent health')">AGENTS</button>
+<section class="section" id="pricing" style="background:#080808">
+  <h2 class="section-title">Investment</h2>
+  <p class="section-sub">Premium pricing for premium results. No hourly billing. No surprises.</p>
+  <div class="grid" style="max-width:900px;margin:0 auto">
+    <div class="card" style="text-align:center">
+      <h3>PHOENIX SCAN</h3>
+      <div style="font-size:42px;color:#0f0;font-weight:bold;margin:20px 0">$4,997</div>
+      <p style="color:#888;margin-bottom:20px">One-time comprehensive audit</p>
+      <ul class="features-list">
+        <li>Full business gap analysis</li>
+        <li>Competitor intelligence report</li>
+        <li>Technology stack review</li>
+        <li>Revenue leak identification</li>
+        <li>30-page actionable roadmap</li>
+        <li>90-minute strategy call</li>
+      </ul>
+      <a href="https://www.paypal.com/paypalme/techpetcage/4997.00USD" class="btn" style="margin-top:30px">PURCHASE SCAN</a>
+    </div>
+    <div class="card" style="text-align:center;border-color:#0f0;background:#0a0f0a">
+      <h3>PHOENIX DEPLOY</h3>
+      <div style="font-size:42px;color:#0f0;font-weight:bold;margin:20px 0">$49,997</div>
+      <p style="color:#888;margin-bottom:20px">Complete automation buildout</p>
+      <ul class="features-list">
+        <li>Everything in Phoenix Scan</li>
+        <li>Custom AI agent development</li>
+        <li>Full system integration</li>
+        <li>Team training & handoff</li>
+        <li>90-day support included</li>
+        <li>ROI guarantee or we fix free</li>
+      </ul>
+      <a href="https://www.paypal.com/paypalme/techpetcage/49997.00USD" class="btn" style="margin-top:30px">INITIATE PROJECT</a>
+    </div>
+    <div class="card" style="text-align:center">
+      <h3>PHOENIX RETAINER</h3>
+      <div style="font-size:42px;color:#0f0;font-weight:bold;margin:20px 0">$9,997<span style="font-size:18px">/mo</span></div>
+      <p style="color:#888;margin-bottom:20px">Ongoing optimization & support</p>
+      <ul class="features-list">
+        <li>Dedicated automation team</li>
+        <li>Monthly performance audits</li>
+        <li>Unlimited system tweaks</li>
+        <li>Priority support (4hr response)</li>
+        <li>Quarterly strategy sessions</li>
+        <li>Early access to new AI tools</li>
+      </ul>
+      <a href="https://www.paypal.com/paypalme/techpetcage/9997.00USD" class="btn" style="margin-top:30px">START RETAINER</a>
     </div>
   </div>
+  <p style="text-align:center;color:#f00;margin-top:40px;font-size:13px">⚠️ VERIFY: Test PayPal.Me with $1 from a friend before any customer clicks. Must show "Send money to" YOUR profile.</p>
+</section>
 
-  <div class="panel">
-    <h3>📧 GMAIL / OPERATIONS</h3>
-    <div style="color:#0f0aa;font-size:10px;margin-bottom:8px">GMAIL: <span class="yellow">NOT CONNECTED</span></div>
-    <div style="font-size:10px;line-height:1.8">
-      📁 Court Docs: <span class="green">~/fhi/court/</span><br>
-      📁 Motions: <span class="green">~/fhi/motions/</span><br>
-      📁 Demands: <span class="green">~/fhi/demands/</span><br>
-      📁 Scripts: <span class="green">~/fhi/scripts/</span>
-    </div>
-    <div style="margin-top:8px">
-      <button class="btn" onclick="cmd('Setup Gmail')">GMAIL</button>
-      <button class="btn" onclick="cmd('Deploy FHI')">DEPLOY</button>
-    </div>
-  </div>
-</div>
+<section class="section" id="contact">
+  <h2 class="section-title">Initiate Contact</h2>
+  <p class="section-sub">We only take on 5 new clients per quarter. Apply below.</p>
+  <form class="contact-form" onsubmit="event.preventDefault();alert('Message received. Our team will respond within 24 hours.');">
+    <input class="input" type="text" placeholder="Your Name" required>
+    <input class="input" type="email" placeholder="Business Email" required>
+    <input class="input" type="text" placeholder="Company Name" required>
+    <input class="input" type="text" placeholder="Annual Revenue" required>
+    <textarea class="input" rows="5" placeholder="What problem are we solving?" required></textarea>
+    <button type="submit" class="btn" style="width:100%">SUBMIT APPLICATION</button>
+  </form>
+  <p style="text-align:center;color:#555;margin-top:20px">Direct: franciscoderek7@gmail.com</p>
+</section>
 
-<script>
-const savedPin = localStorage.getItem('fhi_pin');
-if(savedPin){document.getElementById('setup').style.display='none';document.getElementById('lock').style.display='flex';}
-function setPin(){const p1=document.getElementById('p1').value,p2=document.getElementById('p2').value,p3=document.getElementById('p3').value;if(!p1||p1.length<4){document.getElementById('serr').textContent='Code must be 4+ characters';return}if(p1!==p2||p2!==p3){document.getElementById('serr').textContent='Codes do not match. Try again.';return}localStorage.setItem('fhi_pin',p1);document.getElementById('setup').style.display='none';document.getElementById('lock').style.display='flex';document.getElementById('serr').textContent=''}
-function unlock(){const p=document.getElementById('pin').value;if(p===localStorage.getItem('fhi_pin')){document.getElementById('lock').style.display='none';document.getElementById('dash').style.display='grid';document.getElementById('err').textContent=''}else{document.getElementById('err').textContent='ACCESS DENIED';document.getElementById('pin').value=''}}
-function lock(){document.getElementById('lock').style.display='flex';document.getElementById('dash').style.display='none';document.getElementById('pin').value=''}
-function send(){const i=document.getElementById('msg'),t=i.value.trim();if(!t)return;const c=document.getElementById('chat');const u=document.createElement('div');u.className='chatmsg userbg';u.innerHTML='<b>DEREK:</b> '+t;c.appendChild(u);i.value='';c.scrollTop=c.scrollHeight;setTimeout(()=>{const a=document.createElement('div');a.className='chatmsg aibg';let r='<b>PRIMEDOX:</b> ';const l=t.toLowerCase();if(l.includes('motion'))r+='I will draft a motion for Aug 31. Which type? Leave to amend (Rule 26)? Default judgment? Summary judgment?';else if(l.includes('demand'))r+='Who is recipient and amount? Example: "Demand to CIBC for $165,400"';else if(l.includes('paypal')||l.includes('revenue')||l.includes('sale'))r+='PAYPAL FIX: 1) Log into paypal.com 2) Settings → PayPal.Me 3) Toggle "Receive Money" ON 4) Test in incognito: paypal.me/techpetcage/1.00USD 5) Must ask VISITOR to pay. If it asks you to SEND, it is still backwards.';else if(l.includes('gmail'))r+='GMAIL SETUP: 1) Google Cloud Console → Enable Gmail API 2) Create OAuth credentials 3) Download credentials.json 4) Move to ~/fhi/ 5) I will read and respond to court/business emails.';else if(l.includes('deploy'))r+='DEPLOY: cd ~/franciscoholdingsinc && git add . && git commit -m "PrimeDox deploy" && git push origin main';else if(l.includes('court')||l.includes('aug')||l.includes('speaking'))r+='AUG 31 PREP: 1) Confirm time: 705-324-6300 2) Print all docs 3) Review speaking notes 4) Bring ID, files, pen 5) I can draft speaking notes now — say "Draft speaking notes"';else if(l.includes('speaking notes'))r+='SPEAKING NOTES DRAFTED in ~/fhi/court/AUG31-SPEAKING-NOTES.txt. Key points: Rule 26.02(c) leave to amend, alter ego doctrine, 2413319 Ontario Inc. ownership, Pintea accommodation, $3.3M damages justification.';else r+='Command acknowledged. I am your clone. I operate the empire. I ask you only when I need human judgment. Current priorities: 1) Fix PayPal for revenue 2) Prep Aug 31 court date 3) Get first sale. What do you need?';a.innerHTML=r;c.appendChild(a);c.scrollTop=c.scrollHeight},500)}
-function cmd(t){document.getElementById('msg').value=t;send()}
-</script>
+<footer class="footer">
+  <p>© 2026 Francisco Holdings Inc. | Phoenix Core Business Intelligence</p>
+  <p style="margin-top:10px">All services subject to signed engagement agreement. Results vary by industry and implementation.</p>
+</footer>
+
 </body>
 </html>
