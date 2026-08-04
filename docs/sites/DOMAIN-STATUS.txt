@@ -1,0 +1,28 @@
+═══════════════════════════════════════════════════
+  EMPIRE DOMAIN STATUS — AUGUST 3, 2026
+═══════════════════════════════════════════════════
+
+LIVE (Need content + PayPal):
+  1. franciscoholdingsinc.com    → FHI Skyscraper + Dashboard
+  2. zprimedoxaihq.com           → PrimeDox AI Landing + $49/mo
+  3. primedoxai.com              → Redirect to zprimedoxaihq.com
+  4. omniaguard.com              → Cybersecurity services + pricing
+  5. ccldr.net                   → Doc Weedlaw education + courses
+  6. vaultvelocityauto.com       → Luxury brokerage (coming soon)
+  7. ccldr.ca                    → Mirror/redirect to ccldr.net
+
+DNS ONLY (Need sites built):
+  8. vigilax.com                 → Security monitoring (merge with OmniAGuard)
+  9. cleanswarm.com              → Cleaning/optimization service
+  10. kiaros.com                 → Next-gen platform placeholder
+  11. techpetcage.com            → Tech products store
+  12. techpackcage.com           → Device protection store
+
+IMMEDIATE ACTIONS:
+□ Point primedoxai.com → zprimedoxaihq.com (Porkbun redirect)
+□ Point ccldr.ca → ccldr.net (Porkbun redirect)
+□ Build omniaguard.com landing page with 3 pricing tiers
+□ Build ccldr.net course sales page with $497 masterclass
+□ Add PayPal to ALL live sites TODAY
+
+═══════════════════════════════════════════════════
