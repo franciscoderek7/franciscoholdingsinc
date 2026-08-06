@@ -1,134 +1,123 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Francisco Holdings Inc. — 460 Floors. The Future Is Vertical.</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
-body{background:linear-gradient(180deg,#020617 0%,#0f172a 40%,#1e1b4b 100%);color:#e2e8f0;line-height:1.6}
-.container{max-width:900px;margin:0 auto;padding:20px}
-.hero{text-align:center;padding:40px 20px;background:linear-gradient(135deg,rgba(251,191,36,0.12),rgba(16,185,129,0.08),rgba(59,130,246,0.08));border:1px solid rgba(251,191,36,0.3);border-radius:20px;margin-bottom:30px}
-.hero h1{font-size:32px;background:linear-gradient(90deg,#fbbf24,#10b981,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
-.hero p{color:#94a3b8;font-size:16px;margin-bottom:16px}
-.btn{display:inline-block;background:linear-gradient(135deg,#fbbf24,#d97706);color:#0f172a;padding:12px 28px;border-radius:10px;text-decoration:none;font-weight:700;font-size:14px;margin:6px}
-.btn-alt{background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:#fff}
-.btn-pro{background:linear-gradient(135deg,#10b981,#047857);color:#fff}
-.section{background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;margin-bottom:20px}
-.section h2{color:#fbbf24;font-size:20px;margin-bottom:14px}
-.section p{color:#cbd5e1;font-size:14px;margin-bottom:10px}
-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px}
-th,td{padding:10px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.08)}
-th{color:#fbbf24;font-weight:600}
-td{color:#cbd5e1}
-.disclaimer{text-align:center;padding:20px;color:#64748b;font-size:11px;border-top:1px solid rgba(255,255,255,0.08);margin-top:30px}
-</style></head><body><div class="container">
-
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;background:#050505;color:#e0e0e0;font-family:'Segoe UI',system-ui,sans-serif;overflow-x:hidden}
+#canvas-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+header{position:relative;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid rgba(212,175,55,0.15);background:rgba(5,5,5,0.7);backdrop-filter:blur(10px)}
+.logo-block{line-height:1.2}
+.logo-block .fh{font-size:22px;font-weight:800;letter-spacing:4px;color:#d4af37;text-shadow:0 0 20px rgba(212,175,55,0.4)}
+.logo-block .sub{font-size:9px;letter-spacing:3px;color:#888;text-transform:uppercase;margin-top:2px}
+nav{display:flex;gap:28px;align-items:center}
+nav a{color:#b0b0b0;text-decoration:none;font-size:11px;letter-spacing:2px;text-transform:uppercase;transition:color 0.3s}
+nav a:hover{color:#d4af37}
+.lock-btn{border:1px solid #d4af37;color:#d4af37;padding:6px 16px;font-size:10px;letter-spacing:2px;text-transform:uppercase;background:transparent;cursor:pointer;transition:all 0.3s}
+.lock-btn:hover{background:#d4af37;color:#000}
+.select-builder{display:block;width:100%;text-align:center;padding:14px;background:#00ff88;color:#000;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;position:relative;z-index:10;transition:all 0.3s}
+.select-builder:hover{background:#00cc6a}
+.hero{position:relative;z-index:5;min-height:78vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px 20px}
+.tower-visual{position:relative;width:320px;height:420px;margin:0 auto 30px}
+.tower-beam{position:absolute;left:50%;top:0;transform:translateX(-50%);width:4px;height:100%;background:linear-gradient(180deg,#d4af37 0%,rgba(212,175,55,0.1) 100%);filter:blur(1px)}
+.tower-cap{position:absolute;left:50%;top:-20px;transform:translateX(-50%);width:0;height:0;border-left:30px solid transparent;border-right:30px solid transparent;border-bottom:60px solid rgba(212,175,55,0.25);filter:blur(2px)}
+.sovereign-label{font-size:11px;letter-spacing:6px;text-transform:uppercase;color:#888;margin-bottom:10px}
+.price{font-size:72px;font-weight:800;color:#fff;text-shadow:0 0 40px rgba(212,175,55,0.3);line-height:1}
+.price span{font-size:18px;color:#888;font-weight:400;vertical-align:middle;margin-left:4px}
+.features{list-style:none;margin:30px 0;text-align:left;max-width:320px}
+.features li{padding:8px 0;font-size:13px;color:#b0b0b0;display:flex;align-items:center;gap:10px}
+.features li::before{content:"→";color:#d4af37;font-weight:700}
+.select-tier{display:inline-block;padding:14px 50px;background:#d4af37;color:#000;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;transition:all 0.3s;margin-top:10px}
+.select-tier:hover{background:#f0c850;box-shadow:0 0 30px rgba(212,175,55,0.3)}
+.floor-nav{position:relative;z-index:10;display:flex;justify-content:center;gap:12px;padding:20px;flex-wrap:wrap}
+.floor-nav a{display:block;padding:10px 16px;background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);color:#d4af37;text-decoration:none;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;transition:all 0.3s}
+.floor-nav a:hover{background:rgba(212,175,55,0.2)}
+.security-bar{position:relative;z-index:10;background:rgba(0,255,136,0.05);border-top:1px solid rgba(0,255,136,0.15);border-bottom:1px solid rgba(0,255,136,0.15);padding:12px 20px;text-align:center;font-size:9px;letter-spacing:2px;color:#00ff88;text-transform:uppercase}
+.monetize-strip{position:relative;z-index:10;display:flex;justify-content:center;gap:15px;padding:18px;flex-wrap:wrap;background:rgba(212,175,55,0.03)}
+.monetize-strip a{padding:10px 22px;background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);color:#d4af37;text-decoration:none;font-size:10px;letter-spacing:2px;text-transform:uppercase;transition:all 0.3s}
+.monetize-strip a:hover{background:#d4af37;color:#000}
+footer{position:relative;z-index:10;border-top:1px solid rgba(212,175,55,0.1);padding:30px 20px;text-align:center;background:rgba(5,5,5,0.8)}
+.footer-copy{font-size:10px;letter-spacing:2px;color:#555;text-transform:uppercase;margin-bottom:8px}
+.footer-tagline{font-size:11px;letter-spacing:4px;color:#d4af37;text-transform:uppercase;margin-bottom:20px}
+.disclaimer{font-size:10px;color:#c44;line-height:1.6;max-width:700px;margin:0 auto 15px}
+.command-chain{font-size:10px;color:#c44;letter-spacing:1px}
+@media(max-width:600px){.price{font-size:48px}nav{gap:14px}nav a{font-size:9px;letter-spacing:1px}.tower-visual{width:260px;height:340px}}
+</style>
+</head>
+<body>
+<canvas id="canvas-bg"></canvas>
+<header>
+  <div class="logo-block">
+    <div class="fh">FH INC.</div>
+    <div class="sub">460-FLOOR GLOBAL<br>EMPIRE</div>
+  </div>
+  <nav>
+    <a href="#floors">FLOORS</a>
+    <a href="#agents">AGENTS</a>
+    <a href="#invest">INVEST</a>
+    <a href="https://zprimedoxaihq.com">PRIMEDOX</a>
+    <button class="lock-btn" onclick="var c=prompt('ENTER LOCK CODE:');var a=localStorage.getItem('fhi_auth')||0;a=parseInt(a)+1;localStorage.setItem('fhi_auth',a);if(c==='Cisco1170$'&&a>=3){localStorage.setItem('fhi_unlocked','true');alert('DASHBOARD ACCESS GRANTED — EMPEROR DEREK');}else if(c==='Cisco1170$'){alert('CODE ACCEPTED — TYPE '+(3-a)+' MORE TIME(S)');}else{alert('ACCESS DENIED — OMNIAGUARD ALERT');localStorage.setItem('fhi_auth','0');}">LOCK</button>
+  </nav>
+</header>
+<button class="select-builder" onclick="window.open('https://paypal.me/techpetcage','_blank')">SELECT BUILDER — $999/mo</button>
 <div class="hero">
-<div style="font-size:11px;color:#fbbf24;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px">Francisco Holdings Inc. — Empire HQ</div>
-<h1>🏗️ The 460-Floor Thesis</h1>
-<p>How Francisco Holdings Built the World's First Vertical Business Architecture — And Why China's 3D Chip Revolution Proves the Future Is Upward</p>
-<div style="margin-top:16px">
-<a href="#article" class="btn">READ THE FULL THESIS</a>
-<a href="#leasing" class="btn btn-alt">LEASE A FLOOR</a>
-<a href="#consulting" class="btn btn-pro">HIRE DEREK</a>
+  <div class="tower-visual"><div class="tower-cap"></div><div class="tower-beam"></div></div>
+  <div class="sovereign-label">SOVEREIGN TIER</div>
+  <div class="price">$999<span>/mo</span></div>
+  <ul class="features">
+    <li>Unlimited AI agents (Gemma 31B swarm)</li>
+    <li>White-label empire license</li>
+    <li>Dedicated PrimeDox clone</li>
+    <li>Direct Derek access</li>
+    <li>Revenue share eligible</li>
+    <li>Node-RED workflow automation</li>
+    <li>Hermes protocol integration</li>
+  </ul>
+  <button class="select-tier" onclick="window.open('https://paypal.me/techpetcage','_blank')">SELECT SOVEREIGN</button>
 </div>
+<div class="security-bar">
+  🔒 OMNIAGUARD ACTIVE | PRIMEDOX AI MONITORING | HUMAN-IN-THE-LOOP: DEREK | PROMPT INJECTION SHIELD: ON | RANSOMWARE BLOCK: ON | JAILBREAK DETECT: ON
 </div>
-
-<div class="section" id="article">
-<h2>📰 The Article</h2>
-<p>On <strong>July 13, 2026</strong>, Chinese semiconductor startup <strong>Dongfang Suanxin</strong> unveiled the <strong>DF1000</strong> — the world's first software-defined 3D AI chip. Built on a 14nm process, it achieves 520 TOPS of AI performance not by shrinking transistors, but by stacking them <strong>vertically</strong>. Memory sits atop logic. Data flows upward instead of sideways.</p>
-<p>Two months earlier, <strong>Huawei</strong> released the <strong>Tau (τ) Scaling Law</strong>, replacing Moore's Law with a new principle: optimize for signal propagation time through vertically stacked layers. Its <strong>LogicFolding</strong> architecture distributes individual logic gates across stacked wafer tiers, achieving a 55% density gain on the same process node.</p>
-<p><strong>I built Francisco Holdings on this exact principle — and my 460-floor skyscraper was live before the chip industry made it global news.</strong></p>
+<div class="floor-nav">
+  <a href="https://omniaguard.com">F2: OMNIAGUARD</a>
+  <a href="https://zprimedoxaihq.com">F3: PRIMEDOX AI</a>
+  <a href="floors/floor7-weedlaw.html">F7: WEEDLAW</a>
+  <a href="floors/floor8-ccldr-ca.html">F8: CCLDR.CA</a>
+  <a href="https://canadiancannabisconsulting.com">F9: CCC</a>
+  <a href="https://vaultvelocityauto.com">F10: VAULT VELOCITY</a>
+  <a href="https://techpetcage.com">F11: TECHPETCAGE</a>
 </div>
-
-<div class="section">
-<h2>🏗️ The Vertical Thesis</h2>
-<p>When I founded Francisco Holdings Inc., I didn't set out to build a holding company. I set out to build a <strong>skyscraper</strong> — a 460-floor vertical organism where each floor houses a specialized company, each AI agent operates as a dedicated layer, and PrimeDox AI serves as the "near-memory" concierge that routes information between floors without ever letting it leave the stack.</p>
-<p><strong>The Skyscraper Principle:</strong> <em>When horizontal expansion hits a wall, build upward.</em></p>
-<table>
-<tr><th>China's 3D Chip</th><th>FHI's Business Architecture</th></tr>
-<tr><td>Vertical Integration (memory + logic)</td><td>45+ companies stacked in single structure</td></tr>
-<tr><td>Near-Memory Computing</td><td>PrimeDox AI zero-latency vertical routing</td></tr>
-<tr><td>Logic Folding</td><td>Cross-floor integrated company design</td></tr>
-<tr><td>Tau (τ) Scaling</td><td>Decision velocity optimization</td></tr>
-<tr><td>TSV Interconnects</td><td>Agent swarm communication protocol</td></tr>
-</table>
+<div class="monetize-strip">
+  <a href="https://paypal.me/techpetcage">💰 PAYPAL</a>
+  <a href="https://ccldr.net">⚖️ CCLDR LEGAL</a>
+  <a href="https://canadiancannabisconsulting.com">🌿 CCC SHOP</a>
+  <a href="https://zprimedoxaihq.com">🤖 AI DOCS</a>
 </div>
-
-<div class="section" id="leasing">
-<h2>🏢 Floor Leasing — Rent Vertical Real Estate</h2>
-<table>
-<tr><th>Tier</th><th>Monthly</th><th>What You Get</th></tr>
-<tr><td>🥉 Bronze</td><td>$299</td><td>Floor number, PrimeDox listing, shared swarm</td></tr>
-<tr><td>🥈 Silver</td><td>$999</td><td>Dedicated agent, priority routing, 10% revenue share</td></tr>
-<tr><td>🥇 Gold</td><td>$2,999</td><td>Full swarm, 25% revenue share, weekly consulting</td></tr>
-<tr><td>💎 Platinum</td><td>$9,999</td><td>Named floor, custom AI, 40% revenue share, board observer</td></tr>
-<tr><td>👑 Diamond</td><td>$49,999</td><td>Logic Folding integration, $500K co-investment, naming rights</td></tr>
-</table>
-<p style="color:#10b981;margin-top:10px"><strong>At capacity: $504,810/month = $6.06M/year from floor leasing alone.</strong></p>
-<div style="margin-top:12px"><a href="#" class="btn">APPLY FOR BRONZE</a><a href="#" class="btn btn-alt">APPLY FOR GOLD</a><a href="#" class="btn btn-pro">APPLY FOR DIAMOND</a></div>
-</div>
-
-<div class="section" id="consulting">
-<h2>💼 Consulting Tiers — Vertical Architecture Practice</h2>
-<table>
-<tr><th>Tier</th><th>Price</th><th>What You Get</th></tr>
-<tr><td>📊 Tau Audit</td><td>$1,497</td><td>Decision velocity analysis + sprawl ID report</td></tr>
-<tr><td>📐 Logic Folding Blueprint</td><td>$4,997</td><td>Custom vertical design + 2hr workshop with Derek</td></tr>
-<tr><td>🏗️ Skyscraper Integration</td><td>$14,997</td><td>Dedicated Gold floor + 5 agents + weekly calls</td></tr>
-<tr><td>⚡ Tau Transformation</td><td>$49,997</td><td>Full org restructuring + $100K revenue guarantee</td></tr>
-<tr><td>👑 Empire Partnership</td><td>$149,997</td><td>Equity partnership + board seat + co-investment</td></tr>
-</table>
-<div style="margin-top:12px"><a href="#" class="btn">BOOK TAU AUDIT</a><a href="#" class="btn btn-alt">BOOK BLUEPRINT</a><a href="#" class="btn btn-pro">BOOK TRANSFORMATION</a></div>
-</div>
-
-<div class="section">
-<h2>🎓 Education — Educate Then Monetize</h2>
-<table>
-<tr><th>Product</th><th>Price</th><th>Purpose</th></tr>
-<tr><td>Skyscraper Mini-Course</td><td><strong>FREE</strong></td><td>Lead magnet — "Why Horizontal Business Is Dying"</td></tr>
-<tr><td>Skyscraper Masterclass</td><td>$497</td><td>8 modules, 12 hours, flagship course</td></tr>
-<tr><td>Certified Practitioner</td><td>$1,997</td><td>Live cohort, credential, FHI directory</td></tr>
-<tr><td>Agency License</td><td>$9,997/yr</td><td>White-label for agencies, 70/30 split</td></tr>
-<tr><td>Enterprise Transformation</td><td>$25K–$250K</td><td>Custom corporate restructuring</td></tr>
-</table>
-</div>
-
-<div class="section">
-<h2>🤖 PrimeDox AI — ChipMind Module</h2>
-<p>PrimeDox AI's dedicated intelligence agent tracking the 3D chip revolution. Real-time monitoring of Dongfang Suanxin, Huawei, TSMC, Intel, AMD. Weekly "Vertical Architecture Intelligence Reports."</p>
-<table>
-<tr><th>Plan</th><th>Price</th><th>Access</th></tr>
-<tr><td>Free</td><td>$0</td><td>3 queries/day</td></tr>
-<tr><td>Pro</td><td>$199/mo</td><td>Unlimited + weekly reports</td></tr>
-<tr><td>Enterprise</td><td>$999/mo</td><td>Custom training + API + dedicated agent</td></tr>
-</table>
-<div style="margin-top:12px"><a href="https://zprimedoxaihq.com" class="btn">VISIT PRIMEDOX AI HQ</a></div>
-</div>
-
-<div class="section">
-<h2>📈 Revenue Projections</h2>
-<table>
-<tr><th>Revenue Stream</th><th>Year 1</th><th>Year 3</th></tr>
-<tr><td>Floor Leasing</td><td>$600K</td><td>$2.4M</td></tr>
-<tr><td>Consulting</td><td>$300K</td><td>$900K</td></tr>
-<tr><td>Education</td><td>$180K</td><td>$600K</td></tr>
-<tr><td>PrimeDox AI</td><td>$120K</td><td>$480K</td></tr>
-<tr><td>Speaking</td><td>$100K</td><td>$300K</td></tr>
-<tr><td>Book / IP</td><td>$30K</td><td>$120K</td></tr>
-<tr><td>Francis Gold Holding</td><td>$60K</td><td>$600K</td></tr>
-<tr><td><strong>TOTAL</strong></td><td><strong style="color:#fbbf24">$1,390,000</strong></td><td><strong style="color:#10b981">$5,400,000</strong></td></tr>
-</table>
-</div>
-
-<div style="text-align:center;padding:20px">
-<a href="https://zprimedoxaihq.com" class="btn">🤖 PrimeDox AI</a>
-<a href="https://omniaguard.com" class="btn btn-alt">🛡️ OmniGuard</a>
-<a href="https://vaultvelocityauto.com" class="btn btn-pro">🏎️ Vault Velocity</a>
-</div>
-
-<div class="disclaimer">
-<p><strong>Francisco Holdings Inc.</strong> — 460 Floors. Zero Latency. Maximum Revenue.</p>
-<p style="margin-top:8px">Derek Francisco is a legal educator and constitutional advocate with 20+ years of self-represented litigation experience. He is NOT a lawyer. This content is for educational and informational purposes only. No legal representation. No lawyer-client relationship. The Most Dangerous Legal Education Platform in the World.</p>
-<p style="margin-top:6px">© 2026 Francisco Holdings Inc. | franciscoderek7@gmail.com | The Future Is Vertical.</p>
-</div>
-
-</div></body></html>
+<footer>
+  <div class="footer-copy">© 2026 FRANCISCO HOLDINGS INC. | 460-FLOOR GLOBAL EMPIRE</div>
+  <div class="footer-tagline">FOLD LOGIC. MINIMIZE τ. DOMINATE.</div>
+  <div class="disclaimer">DISCLAIMER: Derek Francisco is a legal educator and constitutional advocate with 20+ years of self-represented litigation experience. He provides knowledge, education, and personal experience ONLY. He is NOT a lawyer.</div>
+  <div class="command-chain">COMMAND CHAIN: Timmy → Claude → Kimi → Derek | LOCK CODE: Cisco1170$ | PAYPAL: paypal.me/techpetcage | OMNIAGUARD: SECURE</div>
+</footer>
+<script>
+const canvas=document.getElementById('canvas-bg');
+const ctx=canvas.getContext('2d');
+let w,h,particles=[];
+function resize(){w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight}
+window.addEventListener('resize',resize);resize();
+class Particle{constructor(){this.reset();this.y=Math.random()*h;}reset(){this.x=Math.random()*w;this.y=h+10;this.size=Math.random()*3+1;this.speed=Math.random()*0.8+0.2;this.opacity=Math.random()*0.6+0.2;this.gold=Math.random()>0.5;}update(){this.y-=this.speed;if(this.y<-10)this.reset();}draw(){ctx.fillStyle=this.gold?`rgba(212,175,55,${this.opacity})`:`rgba(0,255,136,${this.opacity})`;ctx.fillRect(this.x,this.y,this.size,this.size);}}
+for(let i=0;i<180;i++)particles.push(new Particle());
+function animate(){ctx.fillStyle='rgba(5,5,5,0.15)';ctx.fillRect(0,0,w,h);particles.forEach(p=>{p.update();p.draw()});requestAnimationFrame(animate);}
+animate();
+(function(){
+  const unlocked=localStorage.getItem('fhi_unlocked');
+  if(unlocked==='true'){console.log('%c✅ OMNIAGUARD: EMPEROR AUTHENTICATED — DASHBOARD ACCESS','color:#00ff88;font-size:18px;font-weight:bold;');console.log('%cGemma 31B swarm online. Node-RED active. Hermes engaged.','color:#d4af37;');}
+  else{console.log('%c🔒 OMNIAGUARD: LOCKED — ENTER Cisco1170$ 3x FOR DASHBOARD','color:#ff0000;font-size:18px;font-weight:bold;');}
+  const originalFetch=window.fetch;
+  window.fetch=function(...args){const url=args[0];if(typeof url==='string'&&(url.includes('prompt')||url.includes('jailbreak')||url.includes('ignore')||url.includes('bypass'))){console.warn('OMNIAGUARD: BLOCKED:',url);return Promise.reject(new Error('OMNIAGUARD: BLOCKED'));}return originalFetch.apply(this,args);};
+})();
+</script>
+</body>
+</html>
