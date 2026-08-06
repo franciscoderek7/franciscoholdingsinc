@@ -4,120 +4,397 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Francisco Holdings Inc. — 460 Floors. The Future Is Vertical.</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{width:100%;height:100%;background:#050505;color:#e0e0e0;font-family:'Segoe UI',system-ui,sans-serif;overflow-x:hidden}
-#canvas-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
-header{position:relative;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid rgba(212,175,55,0.15);background:rgba(5,5,5,0.7);backdrop-filter:blur(10px)}
-.logo-block{line-height:1.2}
-.logo-block .fh{font-size:22px;font-weight:800;letter-spacing:4px;color:#d4af37;text-shadow:0 0 20px rgba(212,175,55,0.4)}
-.logo-block .sub{font-size:9px;letter-spacing:3px;color:#888;text-transform:uppercase;margin-top:2px}
-nav{display:flex;gap:28px;align-items:center}
-nav a{color:#b0b0b0;text-decoration:none;font-size:11px;letter-spacing:2px;text-transform:uppercase;transition:color 0.3s}
-nav a:hover{color:#d4af37}
-.lock-btn{border:1px solid #d4af37;color:#d4af37;padding:6px 16px;font-size:10px;letter-spacing:2px;text-transform:uppercase;background:transparent;cursor:pointer;transition:all 0.3s}
+html,body{width:100%;height:100%;overflow:hidden;background:#000;font-family:'Segoe UI',system-ui,sans-serif}
+#canvas-container{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1}
+#ui-layer{position:fixed;top:0;left:0;width:100%;height:100%;z-index:10;pointer-events:none}
+#ui-layer>*{pointer-events:auto}
+header{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:15px 25px;background:rgba(0,0,0,0.6);backdrop-filter:blur(15px);border-bottom:1px solid rgba(212,175,55,0.2)}
+.logo-block{line-height:1.1}
+.logo-block .fh{font-size:20px;font-weight:800;letter-spacing:4px;color:#d4af37;text-shadow:0 0 30px rgba(212,175,55,0.6)}
+.logo-block .sub{font-size:8px;letter-spacing:3px;color:#666;text-transform:uppercase}
+.nav-links{display:flex;gap:20px}
+.nav-links a{color:#aaa;text-decoration:none;font-size:10px;letter-spacing:2px;text-transform:uppercase;transition:all 0.3s}
+.nav-links a:hover{color:#d4af37;text-shadow:0 0 10px rgba(212,175,55,0.5)}
+.lock-btn{border:1px solid #d4af37;color:#d4af37;padding:5px 14px;font-size:9px;letter-spacing:2px;background:transparent;cursor:pointer;transition:all 0.3s}
 .lock-btn:hover{background:#d4af37;color:#000}
-.select-builder{display:block;width:100%;text-align:center;padding:14px;background:#00ff88;color:#000;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;position:relative;z-index:10;transition:all 0.3s}
-.select-builder:hover{background:#00cc6a}
-.hero{position:relative;z-index:5;min-height:78vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px 20px}
-.tower-visual{position:relative;width:320px;height:420px;margin:0 auto 30px}
-.tower-beam{position:absolute;left:50%;top:0;transform:translateX(-50%);width:4px;height:100%;background:linear-gradient(180deg,#d4af37 0%,rgba(212,175,55,0.1) 100%);filter:blur(1px)}
-.tower-cap{position:absolute;left:50%;top:-20px;transform:translateX(-50%);width:0;height:0;border-left:30px solid transparent;border-right:30px solid transparent;border-bottom:60px solid rgba(212,175,55,0.25);filter:blur(2px)}
-.sovereign-label{font-size:11px;letter-spacing:6px;text-transform:uppercase;color:#888;margin-bottom:10px}
-.price{font-size:72px;font-weight:800;color:#fff;text-shadow:0 0 40px rgba(212,175,55,0.3);line-height:1}
-.price span{font-size:18px;color:#888;font-weight:400;vertical-align:middle;margin-left:4px}
-.features{list-style:none;margin:30px 0;text-align:left;max-width:320px}
-.features li{padding:8px 0;font-size:13px;color:#b0b0b0;display:flex;align-items:center;gap:10px}
-.features li::before{content:"→";color:#d4af37;font-weight:700}
-.select-tier{display:inline-block;padding:14px 50px;background:#d4af37;color:#000;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;transition:all 0.3s;margin-top:10px}
-.select-tier:hover{background:#f0c850;box-shadow:0 0 30px rgba(212,175,55,0.3)}
-.floor-nav{position:relative;z-index:10;display:flex;justify-content:center;gap:12px;padding:20px;flex-wrap:wrap}
-.floor-nav a{display:block;padding:10px 16px;background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);color:#d4af37;text-decoration:none;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;transition:all 0.3s}
-.floor-nav a:hover{background:rgba(212,175,55,0.2)}
-.security-bar{position:relative;z-index:10;background:rgba(0,255,136,0.05);border-top:1px solid rgba(0,255,136,0.15);border-bottom:1px solid rgba(0,255,136,0.15);padding:12px 20px;text-align:center;font-size:9px;letter-spacing:2px;color:#00ff88;text-transform:uppercase}
-.monetize-strip{position:relative;z-index:10;display:flex;justify-content:center;gap:15px;padding:18px;flex-wrap:wrap;background:rgba(212,175,55,0.03)}
-.monetize-strip a{padding:10px 22px;background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);color:#d4af37;text-decoration:none;font-size:10px;letter-spacing:2px;text-transform:uppercase;transition:all 0.3s}
-.monetize-strip a:hover{background:#d4af37;color:#000}
-footer{position:relative;z-index:10;border-top:1px solid rgba(212,175,55,0.1);padding:30px 20px;text-align:center;background:rgba(5,5,5,0.8)}
-.footer-copy{font-size:10px;letter-spacing:2px;color:#555;text-transform:uppercase;margin-bottom:8px}
-.footer-tagline{font-size:11px;letter-spacing:4px;color:#d4af37;text-transform:uppercase;margin-bottom:20px}
-.disclaimer{font-size:10px;color:#c44;line-height:1.6;max-width:700px;margin:0 auto 15px}
-.command-chain{font-size:10px;color:#c44;letter-spacing:1px}
-@media(max-width:600px){.price{font-size:48px}nav{gap:14px}nav a{font-size:9px;letter-spacing:1px}.tower-visual{width:260px;height:340px}}
+#floor-panel{position:absolute;right:20px;top:80px;width:220px;background:rgba(5,5,5,0.85);border:1px solid rgba(212,175,55,0.2);padding:15px;backdrop-filter:blur(10px);max-height:70vh;overflow-y:auto}
+#floor-panel h3{color:#d4af37;font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;border-bottom:1px solid rgba(212,175,55,0.2);padding-bottom:8px}
+.floor-item{padding:8px 10px;margin:4px 0;background:rgba(212,175,55,0.05);border:1px solid rgba(212,175,55,0.1);color:#aaa;font-size:10px;letter-spacing:1px;cursor:pointer;transition:all 0.3s;display:flex;justify-content:space-between;align-items:center}
+.floor-item:hover{background:rgba(212,175,55,0.2);border-color:#d4af37;color:#fff;transform:translateX(-5px)}
+.floor-item .num{color:#d4af37;font-weight:700}
+.floor-item.active{background:rgba(0,255,136,0.1);border-color:#00ff88;color:#00ff88}
+#agent-counter{position:absolute;left:20px;bottom:80px;background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.3);padding:12px 18px;color:#00ff88;font-size:10px;letter-spacing:2px;text-transform:uppercase}
+#agent-counter .count{font-size:24px;font-weight:800;display:block;margin-top:4px;text-shadow:0 0 20px rgba(0,255,136,0.5)}
+#status-bar{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.8);border-top:1px solid rgba(212,175,55,0.15);padding:10px 25px;display:flex;justify-content:space-between;align-items:center;font-size:9px;letter-spacing:2px;color:#666;text-transform:uppercase}
+#status-bar span{color:#00ff88}
+#status-bar .warning{color:#ff4444}
+#lock-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s}
+#lock-overlay.hidden{opacity:0;pointer-events:none}
+#lock-overlay h1{color:#d4af37;font-size:48px;letter-spacing:8px;margin-bottom:10px;text-shadow:0 0 40px rgba(212,175,55,0.4)}
+#lock-overlay p{color:#666;font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:30px}
+#lock-input{background:transparent;border:2px solid #d4af37;color:#d4af37;padding:15px 30px;font-size:16px;letter-spacing:4px;text-align:center;width:280px;outline:none}
+#lock-input::placeholder{color:#444}
+#lock-btn{background:#d4af37;color:#000;padding:12px 40px;font-size:11px;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;margin-top:15px;font-weight:700}
+#lock-msg{color:#ff4444;font-size:11px;margin-top:15px;min-height:20px}
+#gemma-badge{position:absolute;left:20px;top:80px;background:rgba(138,43,226,0.1);border:1px solid rgba(138,43,226,0.3);padding:10px 15px;color:#a855f7;font-size:9px;letter-spacing:2px;text-transform:uppercase}
+#gemma-badge .label{color:#666;font-size:8px}
+#hermes-badge{position:absolute;left:20px;top:140px;background:rgba(0,150,255,0.1);border:1px solid rgba(0,150,255,0.3);padding:10px 15px;color:#0096ff;font-size:9px;letter-spacing:2px;text-transform:uppercase}
+#hermes-badge .label{color:#666;font-size:8px}
+#monetize-bar{position:absolute;right:20px;bottom:80px;display:flex;flex-direction:column;gap:8px}
+#monetize-bar a{padding:10px 20px;background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);color:#d4af37;text-decoration:none;font-size:9px;letter-spacing:2px;text-transform:uppercase;text-align:center;transition:all 0.3s}
+#monetize-bar a:hover{background:#d4af37;color:#000}
+#avatar-hud{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.9);border:2px solid #00ff88;padding:30px;display:none;flex-direction:column;align-items:center;max-width:400px;text-align:center}
+#avatar-hud h3{color:#00ff88;font-size:14px;letter-spacing:3px;margin-bottom:15px}
+#avatar-hud p{color:#aaa;font-size:12px;line-height:1.7;margin-bottom:20px}
+#avatar-hud button{padding:10px 30px;background:#00ff88;color:#000;border:none;cursor:pointer;font-size:11px;letter-spacing:2px;text-transform:uppercase}
+.avatar-indicator{position:absolute;width:40px;height:40px;border:2px solid #00ff88;border-radius:50%;background:rgba(0,255,136,0.1);display:flex;align-items:center;justify-content:center;color:#00ff88;font-size:16px;animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,255,136,0.4)}70%{box-shadow:0 0 0 15px rgba(0,255,136,0)}100%{box-shadow:0 0 0 0 rgba(0,255,136,0)}}
+#loading{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:2000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 1s}
+#loading.hidden{opacity:0;pointer-events:none}
+#loading h1{color:#d4af37;font-size:32px;letter-spacing:6px;margin-bottom:20px}
+#loading .bar{width:300px;height:2px;background:#111;margin-top:20px}
+#loading .bar-fill{height:100%;background:#d4af37;width:0%;transition:width 2s}
 </style>
 </head>
 <body>
-<canvas id="canvas-bg"></canvas>
-<header>
-  <div class="logo-block">
-    <div class="fh">FH INC.</div>
-    <div class="sub">460-FLOOR GLOBAL<br>EMPIRE</div>
+<div id="loading"><h1>FRANCISCO HOLDINGS INC.</h1><p style="color:#666;font-size:10px;letter-spacing:4px">INITIALIZING 460-FLOOR EMPIRE...</p><div class="bar"><div class="bar-fill" id="load-bar"></div></div></div>
+
+<div id="lock-overlay">
+  <h1>🔒 LOCKED</h1>
+  <p>ENTER ACCESS CODE TO DEPLOY DASHBOARD</p>
+  <input type="password" id="lock-input" placeholder="ENTER CODE" maxlength="20">
+  <button id="lock-btn" onclick="checkLock()">AUTHENTICATE</button>
+  <div id="lock-msg"></div>
+</div>
+
+<div id="canvas-container"></div>
+
+<div id="ui-layer">
+  <header>
+    <div class="logo-block">
+      <div class="fh">FH INC.</div>
+      <div class="sub">460-FLOOR GLOBAL EMPIRE</div>
+    </div>
+    <nav class="nav-links">
+      <a href="#" onclick="resetCamera()">TOWER</a>
+      <a href="#" onclick="elevatorTo(1)">LOBBY</a>
+      <a href="#" onclick="elevatorTo(460)">APEX</a>
+      <a href="https://zprimedoxaihq.com">PRIMEDOX</a>
+      <button class="lock-btn" onclick="lockTower()">LOCK</button>
+    </nav>
+  </header>
+
+  <div id="gemma-badge">
+    <div class="label">AGENT SWARM</div>
+    <div>🧠 GEMMA 31B ACTIVE</div>
   </div>
-  <nav>
-    <a href="#floors">FLOORS</a>
-    <a href="#agents">AGENTS</a>
-    <a href="#invest">INVEST</a>
-    <a href="https://zprimedoxaihq.com">PRIMEDOX</a>
-    <button class="lock-btn" onclick="var c=prompt('ENTER LOCK CODE:');var a=localStorage.getItem('fhi_auth')||0;a=parseInt(a)+1;localStorage.setItem('fhi_auth',a);if(c==='Cisco1170$'&&a>=3){localStorage.setItem('fhi_unlocked','true');alert('DASHBOARD ACCESS GRANTED — EMPEROR DEREK');}else if(c==='Cisco1170$'){alert('CODE ACCEPTED — TYPE '+(3-a)+' MORE TIME(S)');}else{alert('ACCESS DENIED — OMNIAGUARD ALERT');localStorage.setItem('fhi_auth','0');}">LOCK</button>
-  </nav>
-</header>
-<button class="select-builder" onclick="window.open('https://paypal.me/techpetcage','_blank')">SELECT BUILDER — $999/mo</button>
-<div class="hero">
-  <div class="tower-visual"><div class="tower-cap"></div><div class="tower-beam"></div></div>
-  <div class="sovereign-label">SOVEREIGN TIER</div>
-  <div class="price">$999<span>/mo</span></div>
-  <ul class="features">
-    <li>Unlimited AI agents (Gemma 31B swarm)</li>
-    <li>White-label empire license</li>
-    <li>Dedicated PrimeDox clone</li>
-    <li>Direct Derek access</li>
-    <li>Revenue share eligible</li>
-    <li>Node-RED workflow automation</li>
-    <li>Hermes protocol integration</li>
-  </ul>
-  <button class="select-tier" onclick="window.open('https://paypal.me/techpetcage','_blank')">SELECT SOVEREIGN</button>
+
+  <div id="hermes-badge">
+    <div class="label">PROTOCOL</div>
+    <div>⚡ HERMES ONLINE</div>
+  </div>
+
+  <div id="agent-counter">
+    <div>ACTIVE AI AGENTS</div>
+    <div class="count" id="agent-count">12,847</div>
+  </div>
+
+  <div id="floor-panel">
+    <h3>📊 FLOOR SELECTOR</h3>
+    <div class="floor-item active" onclick="elevatorTo(1)"><span class="num">F1</span> FRANCISCO HOLDINGS HQ</div>
+    <div class="floor-item" onclick="elevatorTo(2)"><span class="num">F2</span> OMNIAGUARD</div>
+    <div class="floor-item" onclick="elevatorTo(3)"><span class="num">F3</span> PRIMEDOX AI</div>
+    <div class="floor-item" onclick="elevatorTo(4)"><span class="num">F4</span> VAULT VELOCITY</div>
+    <div class="floor-item" onclick="elevatorTo(5)"><span class="num">F5</span> TECHPETCAGE</div>
+    <div class="floor-item" onclick="elevatorTo(7)"><span class="num">F7</span> WEEDLAW EDUCATION</div>
+    <div class="floor-item" onclick="elevatorTo(8)"><span class="num">F8</span> CCLDR.CA</div>
+    <div class="floor-item" onclick="window.open('https://canadiancannabisconsulting.com','_blank')"><span class="num">F9</span> CANNABIS CONSULTING ⬈</div>
+    <div class="floor-item" onclick="elevatorTo(10)"><span class="num">F10</span> CLEANSWARM</div>
+    <div class="floor-item" onclick="elevatorTo(100)"><span class="num">F100</span> RESEARCH LABS</div>
+    <div class="floor-item" onclick="elevatorTo(200)"><span class="num">F200</span> QUANTUM FLOOR</div>
+    <div class="floor-item" onclick="elevatorTo(300)"><span class="num">F300</span> ORBITAL DECK</div>
+    <div class="floor-item" onclick="elevatorTo(460)"><span class="num">F460</span> PHOENIX APEX</div>
+  </div>
+
+  <div id="monetize-bar">
+    <a href="https://paypal.me/techpetcage" target="_blank">💰 SOVEREIGN $999</a>
+    <a href="https://canadiancannabisconsulting.com" target="_blank">🌿 CCC SHOP</a>
+    <a href="https://ccldr.net" target="_blank">⚖️ CCLDR LEGAL</a>
+  </div>
+
+  <div id="status-bar">
+    <div><span>●</span> NODE-RED AUTOMATION ACTIVE | <span>●</span> AGENT SWARM ONLINE | <span class="warning">●</span> OMNIAGUARD SECURE</div>
+    <div>COMMAND CHAIN: TIMMY → CLAUDE → KIMI → DEREK</div>
+  </div>
 </div>
-<div class="security-bar">
-  🔒 OMNIAGUARD ACTIVE | PRIMEDOX AI MONITORING | HUMAN-IN-THE-LOOP: DEREK | PROMPT INJECTION SHIELD: ON | RANSOMWARE BLOCK: ON | JAILBREAK DETECT: ON
-</div>
-<div class="floor-nav">
-  <a href="https://omniaguard.com">F2: OMNIAGUARD</a>
-  <a href="https://zprimedoxaihq.com">F3: PRIMEDOX AI</a>
-  <a href="floors/floor7-weedlaw.html">F7: WEEDLAW</a>
-  <a href="floors/floor8-ccldr-ca.html">F8: CCLDR.CA</a>
-  <a href="https://canadiancannabisconsulting.com">F9: CCC</a>
-  <a href="https://vaultvelocityauto.com">F10: VAULT VELOCITY</a>
-  <a href="https://techpetcage.com">F11: TECHPETCAGE</a>
-</div>
-<div class="monetize-strip">
-  <a href="https://paypal.me/techpetcage">💰 PAYPAL</a>
-  <a href="https://ccldr.net">⚖️ CCLDR LEGAL</a>
-  <a href="https://canadiancannabisconsulting.com">🌿 CCC SHOP</a>
-  <a href="https://zprimedoxaihq.com">🤖 AI DOCS</a>
-</div>
-<footer>
-  <div class="footer-copy">© 2026 FRANCISCO HOLDINGS INC. | 460-FLOOR GLOBAL EMPIRE</div>
-  <div class="footer-tagline">FOLD LOGIC. MINIMIZE τ. DOMINATE.</div>
-  <div class="disclaimer">DISCLAIMER: Derek Francisco is a legal educator and constitutional advocate with 20+ years of self-represented litigation experience. He provides knowledge, education, and personal experience ONLY. He is NOT a lawyer.</div>
-  <div class="command-chain">COMMAND CHAIN: Timmy → Claude → Kimi → Derek | LOCK CODE: Cisco1170$ | PAYPAL: paypal.me/techpetcage | OMNIAGUARD: SECURE</div>
-</footer>
+
 <script>
-const canvas=document.getElementById('canvas-bg');
-const ctx=canvas.getContext('2d');
-let w,h,particles=[];
-function resize(){w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight}
-window.addEventListener('resize',resize);resize();
-class Particle{constructor(){this.reset();this.y=Math.random()*h;}reset(){this.x=Math.random()*w;this.y=h+10;this.size=Math.random()*3+1;this.speed=Math.random()*0.8+0.2;this.opacity=Math.random()*0.6+0.2;this.gold=Math.random()>0.5;}update(){this.y-=this.speed;if(this.y<-10)this.reset();}draw(){ctx.fillStyle=this.gold?`rgba(212,175,55,${this.opacity})`:`rgba(0,255,136,${this.opacity})`;ctx.fillRect(this.x,this.y,this.size,this.size);}}
-for(let i=0;i<180;i++)particles.push(new Particle());
-function animate(){ctx.fillStyle='rgba(5,5,5,0.15)';ctx.fillRect(0,0,w,h);particles.forEach(p=>{p.update();p.draw()});requestAnimationFrame(animate);}
-animate();
-(function(){
-  const unlocked=localStorage.getItem('fhi_unlocked');
-  if(unlocked==='true'){console.log('%c✅ OMNIAGUARD: EMPEROR AUTHENTICATED — DASHBOARD ACCESS','color:#00ff88;font-size:18px;font-weight:bold;');console.log('%cGemma 31B swarm online. Node-RED active. Hermes engaged.','color:#d4af37;');}
-  else{console.log('%c🔒 OMNIAGUARD: LOCKED — ENTER Cisco1170$ 3x FOR DASHBOARD','color:#ff0000;font-size:18px;font-weight:bold;');}
-  const originalFetch=window.fetch;
-  window.fetch=function(...args){const url=args[0];if(typeof url==='string'&&(url.includes('prompt')||url.includes('jailbreak')||url.includes('ignore')||url.includes('bypass'))){console.warn('OMNIAGUARD: BLOCKED:',url);return Promise.reject(new Error('OMNIAGUARD: BLOCKED'));}return originalFetch.apply(this,args);};
-})();
+// ==================== THREE.JS 3D EMPIRE TOWER ====================
+let scene, camera, renderer, tower, agentSwarm, elevator, currentFloor=1;
+let floors=[], avatarSprites=[], isLocked=true, authCount=0;
+
+function init(){
+  const container=document.getElementById('canvas-container');
+  scene=new THREE.Scene();
+  scene.fog=new THREE.FogExp2(0x000000,0.002);
+
+  camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,0.1,2000);
+  camera.position.set(80,20,80);
+
+  renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+  renderer.setSize(window.innerWidth,window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  container.appendChild(renderer.domElement);
+
+  // Lighting
+  const ambientLight=new THREE.AmbientLight(0x404040,2);
+  scene.add(ambientLight);
+  const pointLight=new THREE.PointLight(0xd4af37,2,500);
+  pointLight.position.set(50,200,50);
+  scene.add(pointLight);
+  const greenLight=new THREE.PointLight(0x00ff88,1,300);
+  greenLight.position.set(-50,100,-50);
+  scene.add(greenLight);
+
+  // Stars
+  const starGeo=new THREE.BufferGeometry();
+  const starCount=3000;
+  const starPos=new Float32Array(starCount*3);
+  for(let i=0;i<starCount*3;i++)starPos[i]=(Math.random()-0.5)*2000;
+  starGeo.setAttribute('position',new THREE.BufferAttribute(starPos,3));
+  const starMat=new THREE.PointsMaterial({color:0xffffff,size:1.5,transparent:true,opacity:0.8});
+  scene.add(new THREE.Points(starGeo,starMat));
+
+  // Tower — 460 floors as stacked cylinders
+  tower=new THREE.Group();
+  const floorHeight=0.8;
+  const baseRadius=12;
+  for(let i=0;i<460;i++){
+    const radius=baseRadius*(1-i/920);
+    const geometry=new THREE.CylinderGeometry(radius,radius+0.05,floorHeight,8);
+    const isSpecial=[1,2,3,4,5,7,8,9,10,100,200,300,460].includes(i+1);
+    const color=isSpecial?0xd4af37:(i%10===0?0x333333:0x1a1a1a);
+    const emissive=isSpecial?0x332200:0x000000;
+    const material=new THREE.MeshStandardMaterial({
+      color:color,emissive:emissive,emissiveIntensity:0.3,
+      metalness:0.8,roughness:0.2,transparent:true,opacity:0.9
+    });
+    const floor=new THREE.Mesh(geometry,material);
+    floor.position.y=i*floorHeight;
+    floor.userData={floorNum:i+1,isSpecial:isSpecial};
+    tower.add(floor);
+    floors.push(floor);
+
+    // Floor number labels for special floors
+    if(isSpecial){
+      const canvas=document.createElement('canvas');
+      canvas.width=128;canvas.height=64;
+      const ctx=canvas.getContext('2d');
+      ctx.fillStyle='#000';ctx.fillRect(0,0,128,64);
+      ctx.fillStyle='#d4af37';ctx.font='bold 24px Arial';
+      ctx.textAlign='center';ctx.fillText('F'+(i+1),64,40);
+      const tex=new THREE.CanvasTexture(canvas);
+      const labelGeo=new THREE.PlaneGeometry(3,1.5);
+      const labelMat=new THREE.MeshBasicMaterial({map:tex,transparent:true,side:THREE.DoubleSide});
+      const label=new THREE.Mesh(labelGeo,labelMat);
+      label.position.set(radius+1.5,i*floorHeight,0);
+      label.rotation.y=Math.PI/2;
+      tower.add(label);
+    }
+  }
+  scene.add(tower);
+
+  // Elevator shaft
+  const shaftGeo=new THREE.CylinderGeometry(2,2,460*floorHeight,16);
+  const shaftMat=new THREE.MeshBasicMaterial({color:0x00ff88,transparent:true,opacity:0.1,wireframe:true});
+  const shaft=new THREE.Mesh(shaftGeo,shaftMat);
+  shaft.position.y=(460*floorHeight)/2-0.4;
+  scene.add(shaft);
+
+  // Elevator capsule
+  const elevGeo=new THREE.BoxGeometry(3,4,3);
+  const elevMat=new THREE.MeshStandardMaterial({color:0x00ff88,emissive:0x00ff88,emissiveIntensity:0.5,metalness:0.9,roughness:0.1});
+  elevator=new THREE.Mesh(elevGeo,elevMat);
+  elevator.position.y=0;
+  scene.add(elevator);
+
+  // Elevator light beam
+  const beamGeo=new THREE.CylinderGeometry(0.5,4,100,8,1,true);
+  const beamMat=new THREE.MeshBasicMaterial({color:0x00ff88,transparent:true,opacity:0.05,side:THREE.DoubleSide});
+  const beam=new THREE.Mesh(beamGeo,beamMat);
+  beam.position.y=50;
+  elevator.add(beam);
+
+  // Agent Swarm (Gemma 31B visualization)
+  const swarmGeo=new THREE.BufferGeometry();
+  const swarmCount=12847;
+  const swarmPos=new Float32Array(swarmCount*3);
+  const swarmVel=[];
+  for(let i=0;i<swarmCount;i++){
+    const angle=Math.random()*Math.PI*2;
+    const radius=15+Math.random()*30;
+    const y=Math.random()*370;
+    swarmPos[i*3]=Math.cos(angle)*radius;
+    swarmPos[i*3+1]=y;
+    swarmPos[i*3+2]=Math.sin(angle)*radius;
+    swarmVel.push({
+      x:(Math.random()-0.5)*0.1,
+      y:(Math.random()-0.5)*0.05,
+      z:(Math.random()-0.5)*0.1
+    });
+  }
+  swarmGeo.setAttribute('position',new THREE.BufferAttribute(swarmPos,3));
+  const swarmMat=new THREE.PointsMaterial({
+    color:0x00ff88,size:0.4,transparent:true,opacity:0.8,
+    blending:THREE.AdditiveBlending
+  });
+  agentSwarm=new THREE.Points(swarmGeo,swarmMat);
+  agentSwarm.userData={velocities:swarmVel};
+  scene.add(agentSwarm);
+
+  // Avatars (floating holograms at key floors)
+  const avatarFloors=[1,2,3,9,100,200,300,460];
+  avatarFloors.forEach(f=>{
+    const y=(f-1)*0.8;
+    // Hologram base
+    const ringGeo=new THREE.RingGeometry(1.5,2,32);
+    const ringMat=new THREE.MeshBasicMaterial({color:0x00ff88,transparent:true,opacity:0.3,side:THREE.DoubleSide});
+    const ring=new THREE.Mesh(ringGeo,ringMat);
+    ring.position.set(0,y,0);
+    ring.rotation.x=-Math.PI/2;
+    tower.add(ring);
+    // Avatar figure (simplified)
+    const headGeo=new THREE.SphereGeometry(0.8,16,16);
+    const headMat=new THREE.MeshBasicMaterial({color:0x00ff88,wireframe:true,transparent:true,opacity:0.6});
+    const head=new THREE.Mesh(headGeo,headMat);
+    head.position.set(0,y+3,0);
+    tower.add(head);
+    avatarSprites.push({mesh:head,baseY:y+3,ring:ring,floor:f});
+  });
+
+  // Ground grid
+  const gridHelper=new THREE.GridHelper(200,50,0x333333,0x111111);
+  scene.add(gridHelper);
+
+  animate();
+  window.addEventListener('resize',onResize);
+
+  // Loading complete
+  setTimeout(()=>{
+    document.getElementById('load-bar').style.width='100%';
+    setTimeout(()=>{document.getElementById('loading').classList.add('hidden');},500);
+  },500);
+}
+
+function animate(){
+  requestAnimationFrame(animate);
+  const time=Date.now()*0.001;
+
+  // Rotate tower slowly
+  tower.rotation.y+=0.0005;
+
+  // Animate agent swarm
+  const positions=agentSwarm.geometry.attributes.position.array;
+  const vels=agentSwarm.userData.velocities;
+  for(let i=0;i<vels.length;i++){
+    positions[i*3]+=vels[i].x+Math.sin(time+i)*0.02;
+    positions[i*3+1]+=vels[i].y+Math.cos(time*0.5+i)*0.01;
+    positions[i*3+2]+=vels[i].z+Math.sin(time*0.3+i)*0.02;
+
+    // Keep within bounds
+    const dist=Math.sqrt(positions[i*3]**2+positions[i*3+2]**2);
+    if(dist>50||positions[i*3+1]>380||positions[i*3+1]<0){
+      positions[i*3]=(Math.random()-0.5)*40;
+      positions[i*3+1]=Math.random()*300;
+      positions[i*3+2]=(Math.random()-0.5)*40;
+    }
+  }
+  agentSwarm.geometry.attributes.position.needsUpdate=true;
+
+  // Animate avatars
+  avatarSprites.forEach(avatar=>{
+    avatar.mesh.position.y=avatar.baseY+Math.sin(time*2+avatar.floor)*0.5;
+    avatar.mesh.rotation.y+=0.02;
+    avatar.ring.rotation.z+=0.01;
+  });
+
+  // Camera orbit if not locked
+  if(!isLocked){
+    const r=60+Math.sin(time*0.2)*10;
+    camera.position.x=Math.sin(time*0.1)*r;
+    camera.position.z=Math.cos(time*0.1)*r;
+    camera.lookAt(0,currentFloor*0.8,0);
+  }
+
+  renderer.render(scene,camera);
+}
+
+function onResize(){
+  camera.aspect=window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth,window.innerHeight);
+}
+
+function elevatorTo(floor){
+  if(isLocked){document.getElementById('lock-msg').textContent='TOWER LOCKED — ENTER CODE FIRST';return;}
+  currentFloor=floor;
+  const targetY=(floor-1)*0.8;
+  gsap.to(elevator.position,{y:targetY,duration:2,ease:'power2.inOut'});
+  gsap.to(camera.position,{y:targetY+20,duration:2,ease:'power2.inOut',onUpdate:()=>camera.lookAt(0,targetY,0)});
+
+  document.querySelectorAll('.floor-item').forEach(el=>el.classList.remove('active'));
+  const items=document.querySelectorAll('.floor-item');
+  if(items[floor-1])items[floor-1].classList.add('active');
+}
+
+function resetCamera(){
+  if(isLocked)return;
+  gsap.to(camera.position,{x:80,y:20,z:80,duration:1.5});
+  currentFloor=1;
+}
+
+function checkLock(){
+  const input=document.getElementById('lock-input').value;
+  if(input==='Cisco1170$'){
+    authCount++;
+    if(authCount>=3){
+      isLocked=false;
+      document.getElementById('lock-overlay').classList.add('hidden');
+      console.log('%c✅ OMNIAGUARD: EMPEROR DEREK AUTHENTICATED','color:#00ff88;font-size:20px;font-weight:bold;');
+      console.log('%cGemma 31B Swarm: 12,847 agents online','color:#a855f7;');
+      console.log('%cHermes Protocol: Engaged','color:#0096ff;');
+      console.log('%cNode-RED: Automation workflows active','color:#00ff88;');
+      elevatorTo(1);
+    }else{
+      document.getElementById('lock-msg').textContent='CODE ACCEPTED — ENTER '+(3-authCount)+' MORE TIME(S)';
+      document.getElementById('lock-input').value='';
+    }
+  }else{
+    authCount=0;
+    document.getElementById('lock-msg').textContent='ACCESS DENIED — OMNIAGUARD ALERT TRIGGERED';
+    document.getElementById('lock-input').value='';
+  }
+}
+
+function lockTower(){
+  isLocked=true;authCount=0;
+  document.getElementById('lock-overlay').classList.remove('hidden');
+  document.getElementById('lock-input').value='';
+  document.getElementById('lock-msg').textContent='';
+}
+
+// Mouse interaction
+let mouseX=0,mouseY=0;
+document.addEventListener('mousemove',(e)=>{
+  mouseX=(e.clientX/window.innerWidth)*2-1;
+  mouseY=-(e.clientY/window.innerHeight)*2+1;
+});
+
+init();
 </script>
 </body>
 </html>
