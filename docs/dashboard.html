@@ -11,7 +11,7 @@
         #canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0}
         .ui-overlay{position:fixed;z-index:10;color:#e5e4e2;padding:1.5rem;width:100%;height:100%;pointer-events:none;display:flex;flex-direction:column;justify-content:space-between}
         .header{display:flex;justify-content:space-between;align-items:center;pointer-events:auto;flex-wrap:wrap;gap:0.5rem}
-        .logo{font-size:1.5rem;font-weight:900;letter-spacing:6px;background:linear-gradient(135deg,#D4AF37,#50C878);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .logo{font-size:1.8rem;font-weight:900;letter-spacing:6px;background:linear-gradient(135deg,#D4AF37,#50C878);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
         .badge{font-size:0.6rem;color:#8892b0;border:1px solid rgba(212,175,55,0.2);padding:0.3rem 1rem;border-radius:20px;background:rgba(0,0,0,0.4);backdrop-filter:blur(10px)}
         .panels{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;max-width:1200px;width:100%;pointer-events:auto;margin:0 auto}
         .panel{background:rgba(0,0,0,0.3);backdrop-filter:blur(20px);border:1px solid rgba(212,175,55,0.06);border-radius:12px;padding:1rem;transition:0.3s;text-align:center}
@@ -45,15 +45,15 @@
     </div>
     <div class="panels">
         <div class="panel"><div class="label">👑 Emperor</div><div class="value">Derek</div><div class="sub">Phoenix Dominion</div></div>
-        <div class="panel"><div class="label">📊 Revenue (MRR)</div><div class="value">$0</div><div class="sub">Target: $50K</div></div>
+        <div class="panel"><div class="label">📊 Revenue (MRR)</div><div class="value gold">$20,937</div><div class="sub">Target: $209,370</div></div>
         <div class="panel"><div class="label">⚖️ Litigation</div><div class="value red">3</div><div class="sub">Next: Aug 31</div></div>
         <div class="panel"><div class="label">🛡️ Security</div><div class="value green">Level 1</div><div class="sub">0 threats</div></div>
         <div class="panel"><div class="label">🤖 Agent Swarm</div><div class="value blue">14</div><div class="sub">All active</div></div>
-        <div class="panel"><div class="label">🌐 Domains</div><div class="value gold">16</div><div class="sub">All live</div></div>
+        <div class="panel"><div class="label">🌐 Domains</div><div class="value gold">26</div><div class="sub">All live</div></div>
         <div class="panel"><div class="label">🏢 Empire Tower</div><div class="value gold">460</div><div class="sub">Floors</div></div>
         <div class="panel"><div class="label">💰 Revenue Streams</div><div class="value green">6</div><div class="sub">Active</div></div>
         <div class="panel"><div class="label">🧠 PrimeDox</div><div class="value blue">31</div><div class="sub">Documents loaded</div></div>
-        <div class="panel"><div class="label">🔬 Vigilax</div><div class="value green">16</div><div class="sub">Domains monitored</div></div>
+        <div class="panel"><div class="label">🔬 Vigilax</div><div class="value green">26</div><div class="sub">Domains monitored</div></div>
         <div class="panel"><div class="label">🏛️ SoulStack</div><div class="value gold">Active</div><div class="sub">Orchestrator</div></div>
         <div class="panel"><div class="label">📈 Revenue Target</div><div class="value gold">$1T</div><div class="sub">Empire</div></div>
     </div>
@@ -62,7 +62,7 @@
             <div class="msg"><span class="sender soul">🏛️ SoulStack</span> Welcome, Emperor. 3D holographic interface active.</div>
             <div class="msg"><span class="sender primedox">🧠 PrimeDox</span> 31 documents loaded. Legal research ready.</div>
             <div class="msg"><span class="sender omni">🛡️ OmniAGuard</span> Threat level: GREEN. 14 agents active.</div>
-            <div class="msg"><span class="sender vigilax">🔬 Vigilax</span> All domains monitored. 0/16 down.</div>
+            <div class="msg"><span class="sender vigilax">🔬 Vigilax</span> All domains monitored. 0/26 down.</div>
         </div>
         <div class="avatar-badge">
             <div class="av">🧠</div>
@@ -101,7 +101,22 @@ const wireframeMat=new THREE.MeshBasicMaterial({color:0x50C878,wireframe:true,tr
 const wireframe=new THREE.Mesh(towerGeo.clone(),wireframeMat);
 wireframe.position.y=0.5;
 towerGroup.add(wireframe);
-for(let i=0;i<20;i++){const floor=new THREE.Mesh(new THREE.BoxGeometry(0.9,0.05,0.9),new THREE.MeshPhysicalMaterial({color:i%2===0?0xd4af37:0x50C878,emissive:i%2===0?0xd4af37:0x50C878,emissiveIntensity:0.2,transparent:true,opacity:0.4}));floor.position.y=i*0.15;towerGroup.add(floor)}
+// 460 floors — rendered as stacked cubes with glow
+for(let i=0;i<100;i++){ // 100 floors visible (1-100)
+    const floor=new THREE.Mesh(
+        new THREE.BoxGeometry(0.9,0.03,0.9),
+        new THREE.MeshPhysicalMaterial({
+            color:i%2===0?0xd4af37:0x50C878,
+            emissive:i%2===0?0xd4af37:0x50C878,
+            emissiveIntensity:0.2,
+            transparent:true,
+            opacity:0.4
+        })
+    );
+    floor.position.y=i*0.03 + 0.1;
+    towerGroup.add(floor);
+}
+// Glow rings
 const ringGeo=new THREE.TorusGeometry(1.2,0.02,16,60);
 const ringMat=new THREE.MeshPhysicalMaterial({color:0xd4af37,emissive:0xd4af37,emissiveIntensity:0.3,transparent:true,opacity:0.3});
 const ring=new THREE.Mesh(ringGeo,ringMat);
@@ -129,7 +144,7 @@ scene.add(sphere);
 let mouseX=0,mouseY=0;
 document.addEventListener('mousemove',(e)=>{mouseX=(e.clientX/window.innerWidth)*2-1;mouseY=-(e.clientY/window.innerHeight)*2+1});
 window.addEventListener('resize',()=>{const w=window.innerWidth,h=window.innerHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h)});
-function animate(){requestAnimationFrame(animate);towerGroup.rotation.y+=0.003;particles.rotation.y+=0.0005;particles.rotation.x+=0.0002;sphere.rotation.x+=0.01;sphere.rotation.y+=0.02;towerGroup.rotation.x+=(mouseY*0.1-towerGroup.rotation.x)*0.01;towerGroup.rotation.z+=(-mouseX*0.1-towerGroup.rotation.z)*0.01;renderer.render(scene,camera)}
+function animate(){requestAnimationFrame(animate);towerGroup.rotation.y+=0.005;particles.rotation.y+=0.0005;particles.rotation.x+=0.0002;sphere.rotation.x+=0.01;sphere.rotation.y+=0.02;towerGroup.rotation.x+=(mouseY*0.1-towerGroup.rotation.x)*0.01;towerGroup.rotation.z+=(-mouseX*0.1-towerGroup.rotation.z)*0.01;renderer.render(scene,camera)}
 animate();
 </script>
 </body>
