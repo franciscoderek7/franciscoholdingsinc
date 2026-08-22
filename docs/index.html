@@ -1,123 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Francisco Holdings Inc. — Command Center</title>
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{background:#0a0a0f;color:#e5e4e2;font-family:'Segoe UI',sans-serif;overflow:hidden}
-        #canvas{position:fixed;top:0;left:0;z-index:0}
-        .container{position:relative;z-index:1;padding:2rem;max-width:1400px;margin:0 auto;height:100vh;overflow-y:auto}
-        .header{display:flex;justify-content:space-between;align-items:center;padding:1rem 0;border-bottom:1px solid rgba(212,175,55,0.1);margin-bottom:2rem}
-        .logo{font-size:1.5rem;font-weight:900;letter-spacing:4px;color:#D4AF37}
-        .logo span{color:#50C878}
-        .badge{font-size:0.7rem;color:#8892b0;border:1px solid rgba(212,175,55,0.2);padding:0.3rem 1rem;border-radius:20px;letter-spacing:2px}
-        .grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1rem;margin-bottom:2rem}
-        .card{background:rgba(17,34,64,0.3);border:1px solid rgba(212,175,55,0.08);border-radius:12px;padding:1.2rem;transition:0.3s}
-        .card:hover{border-color:rgba(212,175,55,0.2);transform:translateY(-2px)}
-        .card .title{font-size:0.6rem;color:#8892b0;letter-spacing:2px;text-transform:uppercase}
-        .card .value{font-size:1.5rem;font-weight:700;color:#D4AF37;margin:0.3rem 0}
-        .card .value.green{color:#50C878}
-        .card .value.blue{color:#00d4ff}
-        .card .value.red{color:#ff4444}
-        .card .sub{font-size:0.7rem;color:#606080}
-        .swarm-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:1.5rem}
-        .agent-card{background:rgba(17,34,64,0.2);border:1px solid rgba(212,175,55,0.05);border-radius:8px;padding:0.6rem 1rem;display:flex;justify-content:space-between;align-items:center}
-        .agent-card .name{color:#e5e4e2;font-size:0.8rem}
-        .agent-card .status{font-size:0.6rem;letter-spacing:1px;padding:0.2rem 0.8rem;border-radius:100px}
-        .status.active{color:#50C878;border:1px solid rgba(80,200,120,0.3)}
-        .status.idle{color:#D4AF37;border:1px solid rgba(212,175,55,0.3)}
-        .status.offline{color:#ff4444;border:1px solid rgba(255,68,68,0.3)}
-        .chat-box{background:rgba(0,0,0,0.3);border-radius:12px;padding:0.8rem;border:1px solid rgba(212,175,55,0.05);height:120px;overflow-y:auto;margin-bottom:0.8rem}
-        .chat-msg{padding:0.2rem 0;font-size:0.75rem;border-bottom:1px solid rgba(255,255,255,0.02)}
-        .chat-msg .sender{font-weight:700;color:#D4AF37}
-        .chat-msg .sender.primedox{color:#00d4ff}
-        .chat-msg .sender.omni{color:#ff6b9d}
-        .chat-msg .sender.vigilax{color:#ff4444}
-        .chat-msg .sender.soul{color:#50C878}
-        .chat-input{display:flex;gap:0.5rem}
-        .chat-input input{flex:1;background:rgba(0,0,0,0.4);border:1px solid rgba(212,175,55,0.1);border-radius:8px;padding:0.6rem;color:#e5e4e2;font-size:0.8rem}
-        .chat-input input:focus{outline:none;border-color:rgba(212,175,55,0.3)}
-        .chat-input button{background:linear-gradient(135deg,#D4AF37,#50C878);border:none;border-radius:8px;padding:0.6rem 1.2rem;color:#0a0a0f;font-weight:700;cursor:pointer;font-size:0.8rem}
-        @media(max-width:768px){.grid{grid-template-columns:1fr 1fr}.swarm-grid{grid-template-columns:1fr}}
-    </style>
+<html>
+<head><meta charset="UTF-8"><title>franciscoholdingsinc.com</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e5e4e2;font-family:'Segoe UI',sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:2rem}
+h1{font-size:2.5rem;background:linear-gradient(135deg,#D4AF37,#50C878);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.5rem}
+.sub{color:#8892b0;margin-bottom:2rem;letter-spacing:4px}
+.btn{display:inline-block;padding:0.8rem 2rem;background:linear-gradient(135deg,#D4AF37,#50C878);color:#0a0a0f;text-decoration:none;border-radius:100px;font-weight:700;border:none;cursor:pointer;transition:all 0.3s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(212,175,55,0.3)}
+.footer{position:fixed;bottom:1rem;font-size:0.7rem;color:#404060;letter-spacing:2px}
+.phoenix{color:#D4AF37;font-weight:bold}
+</style>
 </head>
 <body>
-<canvas id="canvas"></canvas>
-<div class="container">
-    <div class="header">
-        <div class="logo">🏛️ FHI<span>.</span></div>
-        <div><span class="badge">🦅 460 FLOORS · 45 COMPANIES</span></div>
-    </div>
-
-    <div class="grid">
-        <div class="card"><div class="title">👑 EMPEROR</div><div class="value">Derek Francisco</div><div class="sub">Phoenix Dominion</div></div>
-        <div class="card"><div class="title">📊 REVENUE (MRR)</div><div class="value gold">$0</div><div class="sub">Target: $50,000</div></div>
-        <div class="card"><div class="title">⚖️ LITIGATION</div><div class="value red">3</div><div class="sub">Next: Aug 31, 2026</div></div>
-        <div class="card"><div class="title">🛡️ SECURITY</div><div class="value green">🟢 LEVEL 1</div><div class="sub">0 threats blocked</div></div>
-    </div>
-
-    <div class="swarm-grid" id="swarmGrid">
-        <div class="agent-card"><span class="name">🧠 PrimeDox Core</span><span class="status active">● ACTIVE</span></div>
-        <div class="agent-card"><span class="name">🧠 PrimeDox RAG</span><span class="status active">● ACTIVE</span></div>
-        <div class="agent-card"><span class="name">🛡️ OmniAGuard Shield</span><span class="status active">● ACTIVE</span></div>
-        <div class="agent-card"><span class="name">🛡️ OmniAGuard Radar</span><span class="status active">● ACTIVE</span></div>
-        <div class="agent-card"><span class="name">🛡️ OmniAGuard Sentinel</span><span class="status active">● ACTIVE</span></div>
-        <div class="agent-card"><span class="name">🔬 Vigilax Intel</span><span class="status active">● ACTIVE</span></div>
-        <div class="agent-card"><span class="name">🔬 Vigilax Monitor</span><span class="status idle">● IDLE</span></div>
-        <div class="agent-card"><span class="name">🏛️ SoulStack Commander</span><span class="status active">● ACTIVE</span></div>
-        <div class="agent-card"><span class="name">🏛️ FHI Analytics</span><span class="status active">● ACTIVE</span></div>
-        <div class="agent-card"><span class="name">🏛️ FHI Revenue Engine</span><span class="status idle">● IDLE</span></div>
-    </div>
-
-    <div class="chat-box" id="chatBox">
-        <div class="chat-msg"><span class="sender soul">🏛️ SoulStack</span> Welcome, Emperor. All systems nominal.</div>
-        <div class="chat-msg"><span class="sender primedox">🧠 PrimeDox</span> 31 documents loaded. Legal research active.</div>
-        <div class="chat-msg"><span class="sender omni">🛡️ OmniAGuard</span> Threat level: GREEN. 14 agents active.</div>
-        <div class="chat-msg"><span class="sender vigilax">🔬 Vigilax</span> All domains monitored. 0/16 down.</div>
-    </div>
-
-    <div class="chat-input">
-        <input type="text" id="chatInput" placeholder="Command swarm..." onkeydown="if(event.key==='Enter')sendCommand()">
-        <button onclick="sendCommand()">➤</button>
-    </div>
-</div>
-
-<script>
-const c=document.getElementById('canvas'),x=c.getContext('2d');
-let w,h,stars=[];
-function resize(){w=c.width=innerWidth;h=c.height=innerHeight}
-window.addEventListener('resize',resize);resize();
-for(let i=0;i<200;i++)stars.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5+0.5,d:Math.random()*Math.PI*2,s:Math.random()*0.3+0.1});
-function draw(){x.fillStyle='rgba(10,10,15,0.15)';x.fillRect(0,0,w,h);stars.forEach(s=>{s.x+=Math.cos(s.d)*s.s;s.y+=Math.sin(s.d)*s.s;if(s.x<0||s.x>w)s.d=Math.PI-s.d;if(s.y<0||s.y>h)s.d=-s.d;x.beginPath();x.arc(s.x,s.y,s.r,0,Math.PI*2);x.fillStyle='rgba(212,175,55,0.3)';x.fill()});requestAnimationFrame(draw)}
-draw();
-
-function addChat(sender, msg) {
-    const box=document.getElementById('chatBox');
-    const div=document.createElement('div');
-    div.className='chat-msg';
-    div.innerHTML=`<span class="sender ${sender}">${sender}</span> ${msg}`;
-    box.appendChild(div);
-    box.scrollTop=box.scrollHeight;
-}
-
-function sendCommand() {
-    const input=document.getElementById('chatInput');
-    const cmd=input.value.trim();
-    if(!cmd)return;
-    addChat('👤 You', cmd);
-    input.value='';
-    const lower=cmd.toLowerCase();
-    setTimeout(() => {
-        if(lower.includes('status')) addChat('soul', '📊 All systems nominal. 14 agents active. Revenue: $0 MRR.');
-        else if(lower.includes('revenue')) addChat('soul', '💰 Revenue: $0 MRR. Target: $50,000 MRR.');
-        else if(lower.includes('court')) addChat('primedox', '⚖️ CV-64 hearing Aug 31, 2026. CV-63 pending.');
-        else if(lower.includes('security')) addChat('omni', '🛡️ Threat level: GREEN. 0 threats blocked.');
-        else if(lower.includes('agent')) addChat('soul', '🤖 14 agents: PrimeDox (2), OmniAGuard (3), Vigilax (2), FHI (3), SoulStack (4).');
-        else addChat('soul', 'Try: status, revenue, court, security, agents.');
-    }, 500);
-}
-</script>
+<h1>franciscoholdingsinc.com</h1>
+<p class="sub">A Francisco Holdings Inc. Company — Phoenix Dominion</p>
+<a href="https://www.paypal.com/paypalme/techpetcage" class="btn">💰 Subscribe</a>
+<div class="footer">© 2026 <span class="phoenix">Phoenix Dominion</span></div>
 </body>
 </html>
