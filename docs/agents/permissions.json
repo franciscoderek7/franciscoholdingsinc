@@ -1,0 +1,32 @@
+{
+  "agents": {
+    "soulstack": {
+      "permissions": ["orchestrate", "monitor", "report"],
+      "restricted": ["financial", "delete", "system"]
+    },
+    "primedox": {
+      "permissions": ["analyze", "generate", "research"],
+      "restricted": ["financial", "execute", "system"]
+    },
+    "omniaguard": {
+      "permissions": ["monitor", "detect", "alert"],
+      "restricted": ["financial", "delete", "system"]
+    },
+    "vigilax": {
+      "permissions": ["monitor", "intelligence", "report"],
+      "restricted": ["financial", "execute", "system"]
+    },
+    "revenue": {
+      "permissions": ["calculate", "report"],
+      "restricted": ["financial_action", "withdraw", "transfer"]
+    }
+  },
+  "financial_actions": {
+    "allowed_users": ["derek_francisco"],
+    "requires": ["multi_sig", "human_approval"]
+  },
+  "system_actions": {
+    "allowed_users": ["derek_francisco"],
+    "requires": ["human_approval"]
+  }
+}
