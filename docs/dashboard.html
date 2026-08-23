@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Holographic Voice Dashboard — Phoenix Dominion</title>
+    <title>3D Holographic Dashboard — Phoenix Dominion</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
@@ -11,11 +11,11 @@
         #canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0}
         .ui-overlay{position:fixed;z-index:10;padding:1rem;width:100%;height:100%;pointer-events:none;display:flex;flex-direction:column;justify-content:space-between}
         .header{display:flex;justify-content:space-between;align-items:center;pointer-events:auto;padding:0.5rem 1rem;flex-wrap:wrap;gap:0.5rem}
-        .logo{font-size:1.5rem;font-weight:900;letter-spacing:4px;background:linear-gradient(135deg,#D4AF37,#50C878);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .logo{font-size:1.8rem;font-weight:900;letter-spacing:6px;background:linear-gradient(135deg,#D4AF37,#50C878,#00d4ff,#ff6b9d);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
         .badge{font-size:0.6rem;color:#8892b0;border:1px solid rgba(212,175,55,0.2);padding:0.2rem 0.8rem;border-radius:20px;background:rgba(0,0,0,0.4)}
         .main{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0.5rem;flex:1;pointer-events:auto;padding:0.5rem;overflow-y:auto}
         .panel{background:rgba(17,34,64,0.3);border:1px solid rgba(212,175,55,0.06);border-radius:12px;padding:0.8rem;transition:0.3s;backdrop-filter:blur(10px)}
-        .panel:hover{border-color:rgba(212,175,55,0.2)}
+        .panel:hover{border-color:rgba(212,175,55,0.2);transform:translateY(-2px)}
         .panel .label{font-size:0.5rem;color:#8892b0;letter-spacing:2px;text-transform:uppercase}
         .panel .value{font-size:1.2rem;font-weight:700;color:#D4AF37}
         .panel .value.green{color:#50C878}
@@ -23,17 +23,21 @@
         .panel .value.blue{color:#00d4ff}
         .panel .sub{font-size:0.6rem;color:#606080}
         .bottom{display:flex;justify-content:space-between;align-items:center;pointer-events:auto;padding:0.5rem;flex-wrap:wrap;gap:0.5rem}
-        .chat-box{background:rgba(0,0,0,0.4);border:1px solid rgba(212,175,55,0.06);border-radius:12px;padding:0.5rem;max-width:500px;width:100%;max-height:120px;overflow-y:auto}
+        .chat-box{background:rgba(0,0,0,0.4);border:1px solid rgba(212,175,55,0.06);border-radius:12px;padding:0.5rem;max-width:500px;width:100%;max-height:100px;overflow-y:auto}
         .chat-box .msg{font-size:0.7rem;color:#8892b0;padding:0.1rem 0}
         .chat-box .msg .sender{font-weight:700;color:#D4AF37}
         .chat-box .msg .sender.primedox{color:#00d4ff}
         .chat-box .msg .sender.omni{color:#ff6b9d}
         .chat-box .msg .sender.soul{color:#50C878}
         .chat-box .msg .sender.vigilax{color:#ff4444}
-        .avatar-badge{display:flex;gap:0.5rem}
-        .avatar-badge .av{width:40px;height:40px;border-radius:50%;border:2px solid rgba(212,175,55,0.15);background:rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;transition:0.3s}
-        .avatar-badge .av:hover{border-color:#D4AF37;transform:scale(1.05)}
-        .voice-btn{background:linear-gradient(135deg,#D4AF37,#50C878);border:none;border-radius:50%;width:45px;height:45px;font-size:1.2rem;cursor:pointer;transition:0.3s;color:#0a0a0f;pointer-events:auto}
+        .avatar-container{display:flex;gap:0.5rem;pointer-events:auto}
+        .avatar{width:50px;height:50px;border-radius:50%;border:2px solid rgba(212,175,55,0.15);background:rgba(0,0,0,0.3);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;font-size:1.5rem;cursor:pointer;transition:0.3s;animation:float 3s ease-in-out infinite}
+        .avatar:hover{border-color:#D4AF37;transform:scale(1.1)}
+        .avatar:nth-child(2){animation-delay:0.5s}
+        .avatar:nth-child(3){animation-delay:1s}
+        .avatar:nth-child(4){animation-delay:1.5s}
+        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        .voice-btn{background:linear-gradient(135deg,#D4AF37,#50C878);border:none;border-radius:50%;width:50px;height:50px;font-size:1.5rem;cursor:pointer;transition:0.3s;color:#0a0a0f;pointer-events:auto}
         .voice-btn:hover{transform:scale(1.1)}
         @media(max-width:768px){.main{grid-template-columns:1fr 1fr}.header{flex-direction:column;align-items:flex-start}}
     </style>
@@ -43,11 +47,11 @@
 <div class="ui-overlay">
     <div class="header">
         <div class="logo">🏛️ FHI<span style="color:#50C878;">.</span></div>
-        <div><span class="badge">🦅 460 FLOORS · 45 COMPANIES</span></div>
+        <div><span class="badge">🦅 460 FLOORS · 45 COMPANIES · $1T EMPIRE</span></div>
     </div>
     <div class="main">
         <div class="panel"><div class="label">👑 Emperor</div><div class="value">Derek</div><div class="sub">Human in the Loop</div></div>
-        <div class="panel"><div class="label">📊 Revenue (MRR)</div><div class="value gold">$357,894</div><div class="sub">Target: $500,000</div></div>
+        <div class="panel"><div class="label">📊 Revenue (MRR)</div><div class="value gold">$357,894</div><div class="sub">Target: $1,000,000</div></div>
         <div class="panel"><div class="label">🛡️ Security</div><div class="value green">🔒 SECURE</div><div class="sub">0 threats</div></div>
         <div class="panel"><div class="label">🧠 PrimeDox</div><div class="value blue">VOICE READY</div><div class="sub">Click mic to speak</div></div>
         <div class="panel"><div class="label">🏛️ SoulStack</div><div class="value gold">ORCHESTRATOR</div><div class="sub">Empire command</div></div>
@@ -57,7 +61,7 @@
     </div>
     <div class="bottom">
         <div class="chat-box" id="chatBox">
-            <div class="msg"><span class="sender soul">🏛️ SoulStack</span> Welcome, Emperor. Voice dashboard active.</div>
+            <div class="msg"><span class="sender soul">🏛️ SoulStack</span> Welcome, Emperor. 3D holographic dashboard active.</div>
             <div class="msg"><span class="sender primedox">🧠 PrimeDox</span> I'm online. Speak or type to me.</div>
             <div class="msg"><span class="sender omni">🛡️ OmniAGuard</span> 24/7 protection active. 0 threats.</div>
             <div class="msg"><span class="sender vigilax">🔬 Vigilax</span> All domains monitored. 26/26 secure.</div>
@@ -66,7 +70,7 @@
             <button class="voice-btn" onclick="toggleVoice()" id="voiceBtn">🎤</button>
             <input type="text" id="chatInput" placeholder="Type or speak..." style="background:rgba(0,0,0,0.4);border:1px solid rgba(212,175,55,0.1);border-radius:8px;padding:0.4rem 0.8rem;color:#e5e4e2;width:150px;font-size:0.7rem;" onkeydown="if(event.key==='Enter')sendCommand()">
         </div>
-        <div class="avatar-badge">
+        <div class="avatar-container">
             <div class="av" title="PrimeDox" onclick="talkTo('primedox')">🧠</div>
             <div class="av" title="Vigilax" onclick="talkTo('vigilax')">🔬</div>
             <div class="av" title="SoulStack" onclick="talkTo('soulstack')">🏛️</div>
@@ -101,22 +105,22 @@ function animate(){requestAnimationFrame(animate);towerGroup.rotation.y+=0.005;t
 animate();
 
 // ─── VOICE & CHAT ───
-let voiceActive = false;
-const synth = window.speechSynthesis;
+let voiceActive=false;
+const synth=window.speechSynthesis;
 
-function addChat(sender, msg, type='soul') {
+function addChat(sender,msg,type='soul'){
     const box=document.getElementById('chatBox');
     const div=document.createElement('div');
     div.className='msg';
-    const colors = {primedox:'#00d4ff', omni:'#ff6b9d', vigilax:'#ff4444', soul:'#50C878', you:'#D4AF37'};
+    const colors={primedox:'#00d4ff',omni:'#ff6b9d',vigilax:'#ff4444',soul:'#50C878',you:'#D4AF37'};
     div.innerHTML=`<span class="sender" style="color:${colors[type]||'#D4AF37'};">${sender}</span> ${msg}`;
     box.appendChild(div);
     box.scrollTop=box.scrollHeight;
-    if(type !== 'you') speakResponse(msg, type);
+    if(type!=='you') speakResponse(msg,type);
 }
 
-function speakResponse(text, type='soul') {
-    if(!synth) return;
+function speakResponse(text,type='soul'){
+    if(!synth)return;
     const utterance=new SpeechSynthesisUtterance(text);
     utterance.rate=0.9;
     utterance.pitch=1.0;
@@ -126,16 +130,16 @@ function speakResponse(text, type='soul') {
     synth.speak(utterance);
 }
 
-function toggleVoice() {
-    voiceActive = !voiceActive;
-    document.getElementById('voiceBtn').textContent = voiceActive ? '🔴' : '🎤';
-    if(voiceActive) {
-        addChat('🎤', 'Listening... Speak now.', 'you');
-        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+function toggleVoice(){
+    voiceActive=!voiceActive;
+    document.getElementById('voiceBtn').textContent=voiceActive?'🔴':'🎤';
+    if(voiceActive){
+        addChat('🎤','Listening... Speak now.','you');
+        const recognition=new (window.SpeechRecognition||window.webkitSpeechRecognition)();
         recognition.lang='en-US';
         recognition.onresult=(e)=>{
             const cmd=e.results[0][0].transcript;
-            addChat('🎤 You', cmd, 'you');
+            addChat('🎤 You',cmd,'you');
             processCommand(cmd);
             voiceActive=false;
             document.getElementById('voiceBtn').textContent='🎤';
@@ -146,45 +150,39 @@ function toggleVoice() {
     }
 }
 
-function processCommand(cmd) {
+function processCommand(cmd){
     const lower=cmd.toLowerCase();
-    if(lower.includes('status')) addChat('🏛️ SoulStack', 'All systems nominal. 14 agents active. Revenue: $357,894 MRR.', 'soul');
-    else if(lower.includes('revenue')) addChat('🧠 PrimeDox', 'Revenue: $357,894 MRR. Target: $500,000 in 30 days.', 'primedox');
-    else if(lower.includes('court')||lower.includes('litigation')) addChat('🧠 PrimeDox', 'CV-64 hearing Aug 31, 2026. CV-63 pending. CIBC deadline Aug 30.', 'primedox');
-    else if(lower.includes('security')) addChat('🛡️ OmniAGuard', 'Threat level: GREEN. 0 threats blocked. All agents secure.', 'omni');
-    else if(lower.includes('agent')) addChat('🏛️ SoulStack', '14 agents: PrimeDox, SoulStack, Vigilax, OmniAGuard, and 10 more.', 'soul');
-    else if(lower.includes('vigilax')) addChat('🔬 Vigilax', 'All domains monitored. 26/26 secure. 0 threats detected.', 'vigilax');
-    else if(lower.includes('primedox')) addChat('🧠 PrimeDox', 'I\'m online, Emperor. How can I assist?', 'primedox');
-    else if(lower.includes('soulstack')) addChat('🏛️ SoulStack', 'Empire orchestrator active. All swarms running.', 'soul');
-    else addChat('🧠 PrimeDox', `I understand you said "${cmd}". How can I help?`, 'primedox');
+    if(lower.includes('status')) addChat('🏛️ SoulStack','All systems nominal. 14 agents active. Revenue: $357,894 MRR.','soul');
+    else if(lower.includes('revenue')) addChat('🧠 PrimeDox','Revenue: $357,894 MRR. Target: $1,000,000.','primedox');
+    else if(lower.includes('court')||lower.includes('litigation')) addChat('🧠 PrimeDox','CV-64 hearing Aug 31, 2026. CV-63 pending. CIBC deadline Aug 30.','primedox');
+    else if(lower.includes('security')) addChat('🛡️ OmniAGuard','Threat level: GREEN. 0 threats blocked. All agents secure.','omni');
+    else if(lower.includes('agent')) addChat('🏛️ SoulStack','14 agents: PrimeDox, SoulStack, Vigilax, OmniAGuard, and 10 more.','soul');
+    else if(lower.includes('vigilax')) addChat('🔬 Vigilax','All domains monitored. 26/26 secure. 0 threats detected.','vigilax');
+    else if(lower.includes('primedox')) addChat('🧠 PrimeDox',"I'm online, Emperor. How can I assist?",'primedox');
+    else if(lower.includes('soulstack')) addChat('🏛️ SoulStack','Empire orchestrator active. All swarms running.','soul');
+    else addChat('🧠 PrimeDox',`I understand you said "${cmd}". How can I help?`,'primedox');
 }
 
-function talkTo(agent) {
-    const names = {primedox:'PrimeDox', vigilax:'Vigilax', soulstack:'SoulStack', omniaguard:'OmniAGuard'};
-    addChat(`👤 You`, `Talking to ${names[agent]}...`, 'you');
+function talkTo(agent){
+    const names={primedox:'PrimeDox',vigilax:'Vigilax',soulstack:'SoulStack',omniaguard:'OmniAGuard'};
+    addChat('👤 You',`Talking to ${names[agent]}...`,'you');
     setTimeout(()=>{
-        const responses = {
-            primedox: `I'm online, Emperor. How can I assist?`,
-            vigilax: `All domains secure. 0 threats. Monitoring 24/7.`,
-            soulstack: `Empire orchestrator active. All swarms running.`,
-            omniaguard: `Security status: GREEN. 0 threats. 14 agents active.`
-        };
-        addChat(`🧠 ${names[agent]}`, responses[agent], agent);
-    }, 500);
+        const responses={primedox:"I'm online, Emperor. How can I assist?",vigilax:'All domains secure. 0 threats. Monitoring 24/7.',soulstack:'Empire orchestrator active. All swarms running.',omniaguard:'Security status: GREEN. 0 threats. 14 agents active.'};
+        addChat(`🧠 ${names[agent]}`,responses[agent],agent);
+    },500);
 }
 
-function sendCommand() {
+function sendCommand(){
     const input=document.getElementById('chatInput');
     const cmd=input.value.trim();
     if(!cmd)return;
-    addChat('👤 You', cmd, 'you');
+    addChat('👤 You',cmd,'you');
     input.value='';
     processCommand(cmd);
 }
 
-document.addEventListener('keydown', (e)=>{if(e.key==='Enter' && document.activeElement?.id==='chatInput') sendCommand();});
+document.addEventListener('keydown',(e)=>{if(e.key==='Enter' && document.activeElement?.id==='chatInput') sendCommand();});
 console.log('🔮 3D Holographic Voice Dashboard Active');
-console.log('🗣️ Click 🎤 to speak to PrimeDox, Vigilax, or SoulStack');
 </script>
 </body>
 </html>
