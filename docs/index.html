@@ -3,192 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>3D Holographic Dashboard — Phoenix Dominion</title>
+    <title>Francisco Holdings Inc. — 3D Rotating Skyscraper</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
-        body{background:#0a0a0f;overflow:hidden;margin:0;padding:0;height:100vh}
+        body{background:#0a0a0f;overflow:hidden;margin:0;padding:0}
         #container{width:100vw;height:100vh;display:block;background:#0a0a0f}
-        #info{position:absolute;bottom:30px;left:0;width:100%;text-align:center;color:#404040;font-family:'Segoe UI',sans-serif;font-size:14px;letter-spacing:6px;z-index:10;pointer-events:none}
+        #info{position:absolute;bottom:20px;left:0;width:100%;text-align:center;color:#404040;font-family:'Segoe UI',sans-serif;font-size:12px;letter-spacing:4px;z-index:10;pointer-events:none}
         #info span{color:#D4AF37}
-        .ui-overlay{position:absolute;top:20px;left:20px;z-index:20;pointer-events:none}
-        .ui-overlay .logo{color:#e5e4e2;font-size:18px;letter-spacing:8px;font-weight:300}
-        .ui-overlay .logo span{color:#D4AF37;font-weight:600}
-        .ui-overlay .badge{color:#404040;font-size:10px;letter-spacing:4px;margin-top:4px}
     </style>
 </head>
 <body>
-    <div class="ui-overlay">
-        <div class="logo">🏛️ <span>FHI</span>.</div>
-        <div class="badge">3D HOLOGRAPHIC DASHBOARD · 460 FLOORS</div>
-    </div>
     <div id="container"></div>
-    <div id="info">🧠 <span>PrimeDox</span> AI · VOICE ACTIVE</div>
+    <div id="info">🏛️ <span>FHI</span>. — 100 FLOORS · ROTATING</div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        (function() {
-            const container = document.getElementById('container');
-            const scene = new THREE.Scene();
-            scene.background = new THREE.Color(0x0a0a0f);
+        // ─── 3D ROTATING SKYSCRAPER ───
+        const container = document.getElementById('container');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x0a0a0f);
 
-            const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.set(4, 3, 8);
-            camera.lookAt(0, 0, 0);
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(4, 3, 8);
+        camera.lookAt(0, 0, 0);
 
-            const renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            container.appendChild(renderer.domElement);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.shadowMap.enabled = true;
+        container.appendChild(renderer.domElement);
 
-            // ─── LIGHTS ───
-            const ambient = new THREE.AmbientLight(0x222244, 0.6);
-            scene.add(ambient);
+        // ─── LIGHTS ───
+        const ambient = new THREE.AmbientLight(0x222244, 0.6);
+        scene.add(ambient);
 
-            const dirLight = new THREE.DirectionalLight(0xd4af37, 1.2);
-            dirLight.position.set(5, 10, 5);
-            scene.add(dirLight);
+        const dirLight = new THREE.DirectionalLight(0xd4af37, 1.2);
+        dirLight.position.set(5, 10, 5);
+        scene.add(dirLight);
 
-            const dirLight2 = new THREE.DirectionalLight(0x88ccff, 0.5);
-            dirLight2.position.set(-5, 5, -5);
-            scene.add(dirLight2);
+        const dirLight2 = new THREE.DirectionalLight(0x88ccff, 0.5);
+        dirLight2.position.set(-5, 5, -5);
+        scene.add(dirLight2);
 
-            const pointLight = new THREE.PointLight(0xd4af37, 0.3, 20);
-            pointLight.position.set(0, 5, 0);
-            scene.add(pointLight);
+        const backLight = new THREE.DirectionalLight(0x50C878, 0.3);
+        backLight.position.set(0, -5, 5);
+        scene.add(backLight);
 
-            // ─── TOWER ───
-            const towerGroup = new THREE.Group();
+        const pointLight = new THREE.PointLight(0xd4af37, 0.3, 20);
+        pointLight.position.set(0, 5, 0);
+        scene.add(pointLight);
 
-            // Glass shell
-            const glassMat = new THREE.MeshPhysicalMaterial({
-                color: 0x88ccff,
+        // ─── SKYSCRAPER GROUP ───
+        const towerGroup = new THREE.Group();
+
+        // Main glass tower
+        const glassMat = new THREE.MeshPhysicalMaterial({
+            color: 0x88ccff,
+            metalness: 0.3,
+            roughness: 0.02,
+            transparent: true,
+            opacity: 0.08,
+            envMapIntensity: 1.0,
+            clearcoat: 0.9,
+            clearcoatRoughness: 0.02,
+            side: THREE.DoubleSide
+        });
+        const towerGeo = new THREE.BoxGeometry(0.9, 5.5, 0.9);
+        const tower = new THREE.Mesh(towerGeo, glassMat);
+        tower.position.y = 2.75;
+        towerGroup.add(tower);
+
+        // Mirrored core
+        const mirrorMat = new THREE.MeshPhysicalMaterial({
+            color: 0xd4af37,
+            metalness: 0.95,
+            roughness: 0.01,
+            envMapIntensity: 1.5,
+            side: THREE.DoubleSide
+        });
+        const mirror = new THREE.Mesh(new THREE.BoxGeometry(0.5, 5.3, 0.5), mirrorMat);
+        mirror.position.y = 2.75;
+        towerGroup.add(mirror);
+
+        // 100 Floors
+        for (let i = 0; i < 100; i++) {
+            const floorMat = new THREE.MeshPhysicalMaterial({
+                color: i % 2 === 0 ? 0x88ccff : 0xd4af37,
                 metalness: 0.3,
+                roughness: 0.05,
+                transparent: true,
+                opacity: 0.1,
+                clearcoat: 0.5,
+                clearcoatRoughness: 0.05,
+                side: THREE.DoubleSide
+            });
+            const floor = new THREE.Mesh(new THREE.BoxGeometry(0.85, 0.015, 0.85), floorMat);
+            floor.position.y = i * 0.055 + 0.025;
+            towerGroup.add(floor);
+        }
+
+        // Glass panels (exterior)
+        for (let i = 0; i < 24; i++) {
+            const panelMat = new THREE.MeshPhysicalMaterial({
+                color: 0x88ccff,
+                metalness: 0.2,
                 roughness: 0.02,
                 transparent: true,
-                opacity: 0.08,
-                envMapIntensity: 1.0,
+                opacity: 0.03,
                 clearcoat: 0.9,
                 clearcoatRoughness: 0.02,
                 side: THREE.DoubleSide
             });
-            const tower = new THREE.Mesh(new THREE.BoxGeometry(0.9, 5.5, 0.9), glassMat);
-            tower.position.y = 2.75;
-            towerGroup.add(tower);
+            const panel = new THREE.Mesh(new THREE.BoxGeometry(0.95, 0.2, 0.01), panelMat);
+            const angle = (i / 24) * Math.PI * 2;
+            panel.position.set(Math.cos(angle) * 0.46, i * 0.23 + 0.1, Math.sin(angle) * 0.46);
+            towerGroup.add(panel);
+        }
 
-            // Mirrored core
-            const mirrorMat = new THREE.MeshPhysicalMaterial({
+        // Floating mirror rings
+        for (let i = 0; i < 6; i++) {
+            const ringMat = new THREE.MeshPhysicalMaterial({
                 color: 0xd4af37,
-                metalness: 0.95,
-                roughness: 0.01,
-                envMapIntensity: 1.5,
+                metalness: 0.9,
+                roughness: 0.02,
+                transparent: true,
+                opacity: 0.06,
+                envMapIntensity: 1.0,
                 side: THREE.DoubleSide
             });
-            const mirror = new THREE.Mesh(new THREE.BoxGeometry(0.5, 5.3, 0.5), mirrorMat);
-            mirror.position.y = 2.75;
-            towerGroup.add(mirror);
+            const ring = new THREE.Mesh(new THREE.TorusGeometry(1.2 + (i * 0.08), 0.01, 16, 60), ringMat);
+            ring.rotation.x = Math.PI / 2;
+            ring.position.y = i * 0.9 + 0.3;
+            towerGroup.add(ring);
+        }
 
-            // 100 floors
-            for (let i = 0; i < 100; i++) {
-                const floorMat = new THREE.MeshPhysicalMaterial({
-                    color: i % 2 === 0 ? 0x88ccff : 0xd4af37,
-                    metalness: 0.3,
-                    roughness: 0.05,
-                    transparent: true,
-                    opacity: 0.1,
-                    clearcoat: 0.5,
-                    clearcoatRoughness: 0.05,
-                    side: THREE.DoubleSide
-                });
-                const floor = new THREE.Mesh(new THREE.BoxGeometry(0.85, 0.015, 0.85), floorMat);
-                floor.position.y = i * 0.055 + 0.025;
-                towerGroup.add(floor);
-            }
+        scene.add(towerGroup);
 
-            // Glass panels
-            for (let i = 0; i < 24; i++) {
-                const panelMat = new THREE.MeshPhysicalMaterial({
-                    color: 0x88ccff,
-                    metalness: 0.2,
-                    roughness: 0.02,
-                    transparent: true,
-                    opacity: 0.03,
-                    clearcoat: 0.9,
-                    clearcoatRoughness: 0.02,
-                    side: THREE.DoubleSide
-                });
-                const panel = new THREE.Mesh(new THREE.BoxGeometry(0.95, 0.2, 0.01), panelMat);
-                const angle = (i / 24) * Math.PI * 2;
-                panel.position.set(Math.cos(angle) * 0.46, i * 0.23 + 0.1, Math.sin(angle) * 0.46);
-                towerGroup.add(panel);
-            }
+        // ─── PARTICLES ───
+        const pGeo = new THREE.BufferGeometry();
+        const pPos = new Float32Array(400 * 3);
+        for (let i = 0; i < 400 * 3; i++) {
+            pPos[i] = (Math.random() - 0.5) * 18;
+        }
+        pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+        const pMat = new THREE.PointsMaterial({
+            color: 0xd4af37,
+            size: 0.02,
+            transparent: true,
+            opacity: 0.1,
+            blending: THREE.AdditiveBlending
+        });
+        const particles = new THREE.Points(pGeo, pMat);
+        scene.add(particles);
 
-            // Floating rings
-            for (let i = 0; i < 6; i++) {
-                const ringMat = new THREE.MeshPhysicalMaterial({
-                    color: 0xd4af37,
-                    metalness: 0.9,
-                    roughness: 0.02,
-                    transparent: true,
-                    opacity: 0.06,
-                    envMapIntensity: 1.0,
-                    side: THREE.DoubleSide
-                });
-                const ring = new THREE.Mesh(new THREE.TorusGeometry(1.2 + (i * 0.08), 0.01, 16, 60), ringMat);
-                ring.rotation.x = Math.PI / 2;
-                ring.position.y = i * 0.9 + 0.3;
-                towerGroup.add(ring);
-            }
+        // ─── MOUSE TRACKING ───
+        let mx = 0, my = 0;
+        document.addEventListener('mousemove', (e) => {
+            mx = (e.clientX / window.innerWidth) * 2 - 1;
+            my = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
+        document.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            mx = (touch.clientX / window.innerWidth) * 2 - 1;
+            my = -(touch.clientY / window.innerHeight) * 2 + 1;
+        }, { passive: true });
 
-            scene.add(towerGroup);
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
 
-            // ─── PARTICLES ───
-            const pGeo = new THREE.BufferGeometry();
-            const pPos = new Float32Array(400 * 3);
-            for (let i = 0; i < 400 * 3; i++) {
-                pPos[i] = (Math.random() - 0.5) * 18;
-            }
-            pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
-            const pMat = new THREE.PointsMaterial({
-                color: 0xd4af37,
-                size: 0.02,
-                transparent: true,
-                opacity: 0.1,
-                blending: THREE.AdditiveBlending
-            });
-            const particles = new THREE.Points(pGeo, pMat);
-            scene.add(particles);
+        // ─── ANIMATION ───
+        function animate() {
+            requestAnimationFrame(animate);
+            towerGroup.rotation.y += 0.004;
+            particles.rotation.y += 0.0003;
+            towerGroup.rotation.x += (my * 0.04 - towerGroup.rotation.x) * 0.01;
+            towerGroup.rotation.z += (-mx * 0.04 - towerGroup.rotation.z) * 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
 
-            // ─── INTERACTION ───
-            let mx = 0, my = 0;
-            document.addEventListener('mousemove', (e) => {
-                mx = (e.clientX / window.innerWidth) * 2 - 1;
-                my = -(e.clientY / window.innerHeight) * 2 + 1;
-            });
-            document.addEventListener('touchmove', (e) => {
-                const touch = e.touches[0];
-                mx = (touch.clientX / window.innerWidth) * 2 - 1;
-                my = -(touch.clientY / window.innerHeight) * 2 + 1;
-            }, { passive: true });
-
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-
-            // ─── ANIMATE ───
-            function animate() {
-                requestAnimationFrame(animate);
-                towerGroup.rotation.y += 0.004;
-                particles.rotation.y += 0.0003;
-                towerGroup.rotation.x += (my * 0.04 - towerGroup.rotation.x) * 0.01;
-                towerGroup.rotation.z += (-mx * 0.04 - towerGroup.rotation.z) * 0.01;
-                renderer.render(scene, camera);
-            }
-            animate();
-
-            console.log('🏛️ 3D Holographic Dashboard — Active');
-        })();
+        console.log('🏛️ 3D Rotating Skyscraper — 100 Floors — Active');
     </script>
 </body>
 </html>
