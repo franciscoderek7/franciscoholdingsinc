@@ -3,248 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>$1 Trillion Command Center — Francisco Holdings</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <title>Francisco Holdings Inc. — 3D Rotating Skyscraper</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@100;200;300;400;600;700&display=swap');
         *{margin:0;padding:0;box-sizing:border-box}
-        body{background:#050510;overflow:hidden;height:100vh;font-family:'Inter',sans-serif}
-        #bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0}
-        .grid-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;background:repeating-linear-gradient(0deg,rgba(212,175,55,0.02) 0px,rgba(212,175,55,0.02) 1px,transparent 1px,transparent 4px),repeating-linear-gradient(90deg,rgba(212,175,55,0.02) 0px,rgba(212,175,55,0.02) 1px,transparent 1px,transparent 4px);pointer-events:none}
-        .glow{position:fixed;top:50%;left:50%;width:80vw;height:80vh;transform:translate(-50%,-50%);z-index:0;background:radial-gradient(ellipse at center,rgba(212,175,55,0.06) 0%,rgba(0,212,255,0.02) 30%,transparent 70%);animation:pulse 8s ease-in-out infinite;pointer-events:none}
-        @keyframes pulse{0%,100%{opacity:0.6;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.05)}}
-        .ui-overlay{position:relative;z-index:10;display:flex;flex-direction:column;justify-content:space-between;height:100vh;padding:1.5rem 2rem;pointer-events:none}
-        .top-bar{display:flex;justify-content:space-between;align-items:center;pointer-events:auto;padding-bottom:0.5rem;border-bottom:1px solid rgba(212,175,55,0.05)}
-        .logo{font-size:1.6rem;font-weight:100;letter-spacing:12px;color:#e5e4e2;font-family:'Orbitron',sans-serif}
-        .logo span{color:#D4AF37;font-weight:700}
-        .logo-sub{font-size:0.5rem;color:#404060;letter-spacing:6px;text-transform:uppercase;font-weight:300}
-        .badge{display:flex;gap:1.5rem;pointer-events:auto}
-        .badge-item{font-size:0.5rem;color:#404060;letter-spacing:3px;text-transform:uppercase;border:1px solid rgba(255,255,255,0.02);padding:0.3rem 1rem;border-radius:100px}
-        .badge-item .value{color:#D4AF37;font-weight:600}
-        .main{flex:1;display:flex;align-items:center;justify-content:center;pointer-events:none;position:relative}
-        .center-content{text-align:center;pointer-events:none;z-index:5}
-        .center-content h1{font-size:6rem;font-weight:100;letter-spacing:20px;color:#e5e4e2;font-family:'Orbitron',sans-serif;text-shadow:0 0 80px rgba(212,175,55,0.05)}
-        .center-content h1 span{color:#D4AF37;font-weight:700}
-        .center-content .sub{font-size:1rem;color:#404060;letter-spacing:12px;text-transform:uppercase;font-weight:300;margin-top:0.5rem}
-        .center-content .tagline{font-size:0.7rem;color:#606060;letter-spacing:6px;margin-top:1rem;font-weight:200}
-        .bottom-bar{display:flex;justify-content:space-between;align-items:center;pointer-events:auto;padding-top:0.5rem;border-top:1px solid rgba(212,175,55,0.05);flex-wrap:wrap;gap:0.5rem}
-        .bottom-left{display:flex;gap:2rem;font-size:0.5rem;color:#404060;letter-spacing:3px}
-        .bottom-left .gold{color:#D4AF37}
-        .bottom-right{display:flex;gap:1.5rem;font-size:0.4rem;color:#404060;letter-spacing:2px}
-        .bottom-right .online{color:#50C878}
-        .btn-group{pointer-events:auto;display:flex;gap:1rem;margin-top:2rem;justify-content:center}
-        .btn{padding:0.8rem 2.5rem;border-radius:100px;font-weight:400;letter-spacing:4px;text-decoration:none;transition:0.4s;border:1px solid;font-size:0.7rem;text-transform:uppercase;cursor:pointer;background:transparent}
-        .btn-gold{border-color:rgba(212,175,55,0.2);color:#D4AF37}
-        .btn-gold:hover{background:rgba(212,175,55,0.05);border-color:rgba(212,175,55,0.4);transform:translateY(-3px);box-shadow:0 10px 40px rgba(212,175,55,0.05)}
-        .btn-glass{border-color:rgba(255,255,255,0.03);color:#606060}
-        .btn-glass:hover{background:rgba(255,255,255,0.02);border-color:rgba(255,255,255,0.05);transform:translateY(-3px)}
-        .scanline{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.03) 3px,rgba(0,0,0,0.03) 4px)}
-        .vignette{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 60%,rgba(0,0,0,0.3) 100%)}
-        @media(max-width:768px){.center-content h1{font-size:2.5rem;letter-spacing:8px}.top-bar{flex-direction:column;align-items:flex-start;gap:0.5rem}.badge{flex-wrap:wrap}.bottom-bar{flex-direction:column;align-items:flex-start}.btn-group{flex-direction:column;align-items:center}}
+        body{background:#0a0a0f;overflow:hidden;margin:0;padding:0}
+        #container{width:100vw;height:100vh;display:block;background:#0a0a0f}
+        #info{position:absolute;bottom:20px;left:0;width:100%;text-align:center;color:#404040;font-family:'Segoe UI',sans-serif;font-size:12px;letter-spacing:4px;z-index:10;pointer-events:none}
+        #info span{color:#D4AF37}
     </style>
 </head>
 <body>
-<div id="bg"></div>
-<div class="grid-overlay"></div>
-<div class="glow"></div>
-<div class="scanline"></div>
-<div class="vignette"></div>
-<div class="ui-overlay">
-    <div class="top-bar">
-        <div>
-            <div class="logo">🏛️ <span>FHI</span>.</div>
-            <div class="logo-sub">— PHOENIX DOMINION —</div>
-        </div>
-        <div class="badge">
-            <div class="badge-item">Floors <span class="value">421</span></div>
-            <div class="badge-item">Companies <span class="value">45+</span></div>
-            <div class="badge-item">Agents <span class="value">12,841</span></div>
-            <div class="badge-item">Revenue <span class="value">$0</span></div>
-        </div>
-    </div>
-    <div class="main">
-        <div class="center-content">
-            <h1>EMP<span>IRE</span></h1>
-            <div class="sub">— COMMAND CENTER —</div>
-            <div class="tagline">THE WORLD'S MOST ADVANCED AI EMPIRE</div>
-            <div class="btn-group">
-                <a href="/dashboard.html" class="btn btn-gold">Enter Command Center</a>
-                <a href="#explore" class="btn btn-glass">Explore the Tower</a>
-            </div>
-        </div>
-    </div>
-    <div class="bottom-bar">
-        <div class="bottom-left">
-            <span>🔐 <span class="gold">Cisco1170$</span></span>
-            <span>⚡ <span class="gold">460 FLOORS</span></span>
-            <span>🛡️ <span class="gold">OMNIAGUARD</span></span>
-        </div>
-        <div class="bottom-right">
-            <span>PRIMEDOX AI <span class="online">● ONLINE</span></span>
-            <span>SOULSTACK <span class="online">● ACTIVE</span></span>
-            <span>VIGILAX <span class="online">● MONITORING</span></span>
-        </div>
-    </div>
-</div>
-<script>
-// ─── 3D HOLOGRAPHIC TOWER ───
-const scene=new THREE.Scene();scene.background=new THREE.Color(0x050510);
-const camera=new THREE.PerspectiveCamera(45,window.innerWidth/window.innerHeight,0.1,1000);
-camera.position.set(0,2,12);
-const renderer=new THREE.WebGLRenderer({antialias:true});
-renderer.setSize(window.innerWidth,window.innerHeight);
-renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-renderer.toneMapping=THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure=1.0;
-document.getElementById('bg').appendChild(renderer.domElement);
+    <div id="container"></div>
+    <div id="info">🏛️ <span>FHI</span>. — 100 FLOORS · ROTATING</div>
 
-// ─── LIGHTS ───
-const ambient=new THREE.AmbientLight(0x222244,0.4);scene.add(ambient);
-const dirLight=new THREE.DirectionalLight(0xd4af37,0.8);dirLight.position.set(5,10,5);scene.add(dirLight);
-const dirLight2=new THREE.DirectionalLight(0x88ccff,0.4);dirLight2.position.set(-5,5,-5);scene.add(dirLight2);
-const dirLight3=new THREE.DirectionalLight(0x50C878,0.3);dirLight3.position.set(0,-5,5);scene.add(dirLight3);
-const pointLight=new THREE.PointLight(0xd4af37,0.5,25);pointLight.position.set(0,4,0);scene.add(pointLight);
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // ─── 3D ROTATING SKYSCRAPER ───
+        const container = document.getElementById('container');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x0a0a0f);
 
-// ─── TOWER ───
-const towerGroup=new THREE.Group();
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(4, 3, 8);
+        camera.lookAt(0, 0, 0);
 
-// Glass shell
-const glassMat=new THREE.MeshPhysicalMaterial({
-    color:0x88ccff,metalness:0.2,roughness:0.02,transparent:true,opacity:0.04,
-    envMapIntensity:1.2,clearcoat:0.9,clearcoatRoughness:0.02,reflectivity:0.8,side:THREE.DoubleSide
-});
-const tower=new THREE.Mesh(new THREE.BoxGeometry(0.9,6.0,0.9),glassMat);
-tower.position.y=3.0;
-towerGroup.add(tower);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.shadowMap.enabled = true;
+        container.appendChild(renderer.domElement);
 
-// Mirrored core
-const mirrorMat=new THREE.MeshPhysicalMaterial({
-    color:0xd4af37,metalness:0.95,roughness:0.01,envMapIntensity:1.8,reflectivity:1.0,side:THREE.DoubleSide
-});
-const mirror=new THREE.Mesh(new THREE.BoxGeometry(0.5,5.8,0.5),mirrorMat);
-mirror.position.y=3.0;
-towerGroup.add(mirror);
+        // ─── LIGHTS ───
+        const ambient = new THREE.AmbientLight(0x222244, 0.6);
+        scene.add(ambient);
 
-// 100 floors (visible)
-for(let i=0;i<100;i++){
-    const floorMat=new THREE.MeshPhysicalMaterial({
-        color:i%2===0?0x88ccff:0xd4af37,
-        metalness:0.3,roughness:0.05,transparent:true,opacity:0.05+i*0.0005,
-        clearcoat:0.4,clearcoatRoughness:0.05,reflectivity:0.4,side:THREE.DoubleSide
-    });
-    const floor=new THREE.Mesh(new THREE.BoxGeometry(0.85,0.015,0.85),floorMat);
-    floor.position.y=i*0.06+0.03;
-    towerGroup.add(floor);
-}
+        const dirLight = new THREE.DirectionalLight(0xd4af37, 1.2);
+        dirLight.position.set(5, 10, 5);
+        scene.add(dirLight);
 
-// Glass panels
-for(let i=0;i<30;i++){
-    const panelMat=new THREE.MeshPhysicalMaterial({
-        color:0x88ccff,metalness:0.1,roughness:0.02,transparent:true,opacity:0.015,
-        clearcoat:0.9,clearcoatRoughness:0.02,reflectivity:0.7,side:THREE.DoubleSide
-    });
-    const panel=new THREE.Mesh(new THREE.BoxGeometry(0.95,0.18,0.01),panelMat);
-    const angle=(i/30)*Math.PI*2;
-    panel.position.set(Math.cos(angle)*0.46,i*0.2+0.1,Math.sin(angle)*0.46);
-    towerGroup.add(panel);
-}
+        const dirLight2 = new THREE.DirectionalLight(0x88ccff, 0.5);
+        dirLight2.position.set(-5, 5, -5);
+        scene.add(dirLight2);
 
-// Floating rings
-for(let i=0;i<8;i++){
-    const ringMat=new THREE.MeshPhysicalMaterial({
-        color:0xd4af37,metalness:0.9,roughness:0.02,transparent:true,opacity:0.04+i*0.005,
-        envMapIntensity:1.0,reflectivity:0.8,side:THREE.DoubleSide
-    });
-    const ring=new THREE.Mesh(new THREE.TorusGeometry(1.2+(i*0.08),0.008,16,60),ringMat);
-    ring.rotation.x=Math.PI/2;
-    ring.position.y=i*0.7+0.3;
-    towerGroup.add(ring);
-}
+        const backLight = new THREE.DirectionalLight(0x50C878, 0.3);
+        backLight.position.set(0, -5, 5);
+        scene.add(backLight);
 
-// Outer glow rings
-for(let i=0;i<4;i++){
-    const ringMat=new THREE.MeshPhysicalMaterial({
-        color:0x00d4ff,metalness:0.1,roughness:0.1,transparent:true,opacity:0.02,
-        emissive:0x00d4ff,emissiveIntensity:0.05,side:THREE.DoubleSide
-    });
-    const ring=new THREE.Mesh(new THREE.TorusGeometry(1.5+(i*0.2),0.005,16,60),ringMat);
-    ring.rotation.x=Math.PI/2;
-    ring.position.y=i*1.2+0.5;
-    towerGroup.add(ring);
-}
+        const pointLight = new THREE.PointLight(0xd4af37, 0.3, 20);
+        pointLight.position.set(0, 5, 0);
+        scene.add(pointLight);
 
-scene.add(towerGroup);
+        // ─── SKYSCRAPER GROUP ───
+        const towerGroup = new THREE.Group();
 
-// ─── PARTICLES ───
-const pGeo=new THREE.BufferGeometry();
-const pCount=500;
-const pPos=new Float32Array(pCount*3);
-const pColors=new Float32Array(pCount*3);
-for(let i=0;i<pCount;i++){
-    const r=Math.random()*12+2;
-    const theta=Math.random()*Math.PI*2;
-    const phi=Math.random()*Math.PI*2;
-    pPos[i*3]=Math.cos(theta)*Math.sin(phi)*r;
-    pPos[i*3+1]=Math.sin(theta)*Math.sin(phi)*r*0.5+3;
-    pPos[i*3+2]=Math.cos(phi)*r;
-    const c=Math.random();
-    pColors[i*3]=0.83+c*0.17;
-    pColors[i*3+1]=0.68+c*0.17;
-    pColors[i*3+2]=0.2+c*0.1;
-}
-pGeo.setAttribute('position',new THREE.BufferAttribute(pPos,3));
-pGeo.setAttribute('color',new THREE.BufferAttribute(pColors,3));
-const pMat=new THREE.PointsMaterial({
-    size:0.04,transparent:true,opacity:0.6,blending:THREE.AdditiveBlending,
-    vertexColors:true,sizeAttenuation:true
-});
-const particles=new THREE.Points(pGeo,pMat);
-scene.add(particles);
+        // Main glass tower
+        const glassMat = new THREE.MeshPhysicalMaterial({
+            color: 0x88ccff,
+            metalness: 0.3,
+            roughness: 0.02,
+            transparent: true,
+            opacity: 0.08,
+            envMapIntensity: 1.0,
+            clearcoat: 0.9,
+            clearcoatRoughness: 0.02,
+            side: THREE.DoubleSide
+        });
+        const towerGeo = new THREE.BoxGeometry(0.9, 5.5, 0.9);
+        const tower = new THREE.Mesh(towerGeo, glassMat);
+        tower.position.y = 2.75;
+        towerGroup.add(tower);
 
-// ─── ORBITAL RING PARTICLES ───
-const oGeo=new THREE.BufferGeometry();
-const oCount=200;
-const oPos=new Float32Array(oCount*3);
-const oColors=new Float32Array(oCount*3);
-for(let i=0;i<oCount;i++){
-    const angle=(i/oCount)*Math.PI*2;
-    const r=1.8+Math.random()*0.3;
-    oPos[i*3]=Math.cos(angle)*r;
-    oPos[i*3+1]=Math.sin(angle*0.5)*0.5+3;
-    oPos[i*3+2]=Math.sin(angle)*r;
-    oColors[i*3]=0.83;
-    oColors[i*3+1]=0.68;
-    oColors[i*3+2]=0.2;
-}
-oGeo.setAttribute('position',new THREE.BufferAttribute(oPos,3));
-oGeo.setAttribute('color',new THREE.BufferAttribute(oColors,3));
-const oMat=new THREE.PointsMaterial({
-    size:0.025,transparent:true,opacity:0.3,blending:THREE.AdditiveBlending,
-    vertexColors:true,sizeAttenuation:true
-});
-const orbitalParticles=new THREE.Points(oGeo,oMat);
-scene.add(orbitalParticles);
+        // Mirrored core
+        const mirrorMat = new THREE.MeshPhysicalMaterial({
+            color: 0xd4af37,
+            metalness: 0.95,
+            roughness: 0.01,
+            envMapIntensity: 1.5,
+            side: THREE.DoubleSide
+        });
+        const mirror = new THREE.Mesh(new THREE.BoxGeometry(0.5, 5.3, 0.5), mirrorMat);
+        mirror.position.y = 2.75;
+        towerGroup.add(mirror);
 
-// ─── INTERACTION ───
-let mx=0,my=0;
-document.addEventListener('mousemove',(e)=>{mx=(e.clientX/window.innerWidth)*2-1;my=-(e.clientY/window.innerHeight)*2+1});
-document.addEventListener('touchmove',(e)=>{const t=e.touches[0];mx=(t.clientX/window.innerWidth)*2-1;my=-(t.clientY/window.innerHeight)*2+1},{passive:true});
-window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight)});
+        // 100 Floors
+        for (let i = 0; i < 100; i++) {
+            const floorMat = new THREE.MeshPhysicalMaterial({
+                color: i % 2 === 0 ? 0x88ccff : 0xd4af37,
+                metalness: 0.3,
+                roughness: 0.05,
+                transparent: true,
+                opacity: 0.1,
+                clearcoat: 0.5,
+                clearcoatRoughness: 0.05,
+                side: THREE.DoubleSide
+            });
+            const floor = new THREE.Mesh(new THREE.BoxGeometry(0.85, 0.015, 0.85), floorMat);
+            floor.position.y = i * 0.055 + 0.025;
+            towerGroup.add(floor);
+        }
 
-// ─── ANIMATE ───
-function animate(){
-    requestAnimationFrame(animate);
-    towerGroup.rotation.y+=0.003;
-    towerGroup.rotation.x+=(my*0.02-towerGroup.rotation.x)*0.01;
-    towerGroup.rotation.z+=(-mx*0.02-towerGroup.rotation.z)*0.01;
-    particles.rotation.y+=0.0005;
-    particles.rotation.x+=0.0002;
-    orbitalParticles.rotation.y+=0.008;
-    renderer.render(scene,camera);
-}
-animate();
+        // Glass panels (exterior)
+        for (let i = 0; i < 24; i++) {
+            const panelMat = new THREE.MeshPhysicalMaterial({
+                color: 0x88ccff,
+                metalness: 0.2,
+                roughness: 0.02,
+                transparent: true,
+                opacity: 0.03,
+                clearcoat: 0.9,
+                clearcoatRoughness: 0.02,
+                side: THREE.DoubleSide
+            });
+            const panel = new THREE.Mesh(new THREE.BoxGeometry(0.95, 0.2, 0.01), panelMat);
+            const angle = (i / 24) * Math.PI * 2;
+            panel.position.set(Math.cos(angle) * 0.46, i * 0.23 + 0.1, Math.sin(angle) * 0.46);
+            towerGroup.add(panel);
+        }
 
-console.log('💎 $1 Trillion Command Center Active');
-</script>
+        // Floating mirror rings
+        for (let i = 0; i < 6; i++) {
+            const ringMat = new THREE.MeshPhysicalMaterial({
+                color: 0xd4af37,
+                metalness: 0.9,
+                roughness: 0.02,
+                transparent: true,
+                opacity: 0.06,
+                envMapIntensity: 1.0,
+                side: THREE.DoubleSide
+            });
+            const ring = new THREE.Mesh(new THREE.TorusGeometry(1.2 + (i * 0.08), 0.01, 16, 60), ringMat);
+            ring.rotation.x = Math.PI / 2;
+            ring.position.y = i * 0.9 + 0.3;
+            towerGroup.add(ring);
+        }
+
+        scene.add(towerGroup);
+
+        // ─── PARTICLES ───
+        const pGeo = new THREE.BufferGeometry();
+        const pPos = new Float32Array(400 * 3);
+        for (let i = 0; i < 400 * 3; i++) {
+            pPos[i] = (Math.random() - 0.5) * 18;
+        }
+        pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+        const pMat = new THREE.PointsMaterial({
+            color: 0xd4af37,
+            size: 0.02,
+            transparent: true,
+            opacity: 0.1,
+            blending: THREE.AdditiveBlending
+        });
+        const particles = new THREE.Points(pGeo, pMat);
+        scene.add(particles);
+
+        // ─── MOUSE TRACKING ───
+        let mx = 0, my = 0;
+        document.addEventListener('mousemove', (e) => {
+            mx = (e.clientX / window.innerWidth) * 2 - 1;
+            my = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
+        document.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            mx = (touch.clientX / window.innerWidth) * 2 - 1;
+            my = -(touch.clientY / window.innerHeight) * 2 + 1;
+        }, { passive: true });
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // ─── ANIMATION ───
+        function animate() {
+            requestAnimationFrame(animate);
+            towerGroup.rotation.y += 0.004;
+            particles.rotation.y += 0.0003;
+            towerGroup.rotation.x += (my * 0.04 - towerGroup.rotation.x) * 0.01;
+            towerGroup.rotation.z += (-mx * 0.04 - towerGroup.rotation.z) * 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        console.log('🏛️ 3D Rotating Skyscraper — 100 Floors — Active');
+    </script>
 </body>
 </html>
