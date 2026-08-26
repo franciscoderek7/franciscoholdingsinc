@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PHOENIX DOMINION — Secure Command Center</title>
+<style>
+:root{--emerald:#00ff88;--gold:#ffd700;--crimson:#ff0044;--cyan:#00ffff;--dark:#050508;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif;}
+body{background:var(--dark);color:#fff;min-height:100vh;}
+
+/* LOCK SCREEN */
+#lockScreen{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:linear-gradient(135deg,#0a0a1a 0%,#1a0a2e 50%,#0a1a0a 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;
+}
+#lockScreen h1{font-size:3rem;background:linear-gradient(90deg,var(--emerald),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px;}
+#lockScreen p{color:#888;margin-bottom:30px;}
+.pin-display{
+  display:flex;gap:15px;margin-bottom:30px;
+}
+.pin-dot{
+  width:20px;height:20px;border-radius:50%;border:2px solid var(--emerald);
+  background:transparent;transition:all 0.3s;
+}
+.pin-dot.filled{background:var(--emerald);box-shadow:0 0 15px var(--emerald);}
+.pin-keys{
+  display:grid;grid-template-columns:repeat(3,80px);gap:12px;
+}
+.pin-keys button{
+  width:80px;height:80px;border-radius:12px;border:1px solid rgba(0,255,136,0.3);
+  background:rgba(0,255,136,0.05);color:#fff;font-size:1.5rem;cursor:pointer;
+  transition:all 0.2s;
+}
+.pin-keys button:hover{background:rgba(0,255,136,0.15);transform:scale(1.05);}
+.pin-keys button:active{transform:scale(0.95);}
+#pinStatus{margin-top:20px;color:var(--crimson);font-size:0.9rem;height:20px;}
+
+/* MAIN DASHBOARD */
+#dashboard{display:none;}
+.header{text-align:center;padding:25px;background:linear-gradient(180deg,var(--dark) 0%,rgba(0,255,136,0.05) 100%);border-bottom:2px solid var(--emerald);}
+.header h1{font-size:2.5rem;background:linear-gradient(90deg,var(--emerald),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.badge{display:inline-block;padding:4px 14px;border:1px solid var(--emerald);border-radius:20px;font-size:0.75rem;color:var(--emerald);margin-top:10px;background:rgba(0,255,136,0.08);}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:20px;max-width:1600px;margin:0 auto;}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:700px){.grid{grid-template-columns:1fr;}}
+
+.panel{
+  background:rgba(10,15,30,0.9);border:1px solid rgba(0,255,136,0.15);
+  border-radius:16px;padding:22px;backdrop-filter:blur(10px);
+  transition:all 0.4s;box-shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+.panel:hover{border-color:rgba(0,255,136,0.4);transform:translateY(-4px);}
+.panel h2{font-size:1.1rem;margin-bottom:14px;display:flex;align-items:center;gap:10px;color:var(--emerald);text-transform:uppercase;letter-spacing:1px;}
+.panel-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(0,255,136,0.15),rgba(255,215,0,0.1));border:1px solid rgba(0,255,136,0.2);font-size:1.2rem;}
+.metric{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+.metric:last-child{border-bottom:none;}
+.metric span{color:#889;font-size:0.85rem;}
+.metric strong{color:#fff;font-size:0.9rem;}
+.metric .live{color:var(--emerald);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.5;}}
+.btn-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+.btn{flex:1;min-width:90px;padding:10px 12px;border-radius:8px;border:1px solid rgba(0,255,136,0.25);background:rgba(0,255,136,0.08);color:var(--emerald);font-size:0.8rem;font-weight:600;cursor:pointer;text-align:center;transition:all 0.3s;}
+.btn:hover{background:rgba(0,255,136,0.2);}
+.btn-gold{border-color:rgba(255,215,0,0.25);background:rgba(255,215,0,0.08);color:var(--gold);}
+.btn-gold:hover{background:rgba(255,215,0,0.2);}
+.btn-crimson{border-color:rgba(255,0,68,0.25);background:rgba(255,0,68,0.08);color:var(--crimson);}
+.btn-crimson:hover{background:rgba(255,0,68,0.2);}
+
+.phoenix-core .panel-icon{background:linear-gradient(135deg,rgba(255,215,0,0.2),rgba(255,0,68,0.1));border-color:rgba(255,215,0,0.3);}
+.phoenix-core h2{color:var(--gold);}
+.revenue-ring{width:100px;height:100px;border-radius:50%;margin:12px auto;background:conic-gradient(var(--emerald) 0% 0%,rgba(255,255,255,0.05) 0% 100%);display:flex;align-items:center;justify-content:center;position:relative;}
+.revenue-ring::before{content:'';position:absolute;width:75px;height:75px;border-radius:50%;background:var(--dark);}
+.revenue-ring span{position:relative;z-index:1;font-size:1.2rem;font-weight:bold;color:var(--gold);}
+
+.dream-core .panel-icon{background:linear-gradient(135deg,rgba(0,255,255,0.2),rgba(0,255,136,0.1));border-color:rgba(0,255,255,0.3);}
+.dream-core h2{color:var(--cyan);}
+
+.litigation .panel-icon{background:linear-gradient(135deg,rgba(255,0,68,0.2),rgba(255,215,0,0.1));border-color:rgba(255,0,68,0.3);}
+.litigation h2{color:var(--crimson);}
+.case-box{background:rgba(255,0,68,0.04);border:1px solid rgba(255,0,68,0.15);border-radius:10px;padding:10px;margin-top:8px;}
+.case-box h4{color:var(--crimson);font-size:0.8rem;margin-bottom:4px;}
+.case-box .metric{padding:5px 0;}
+.case-box .metric span{font-size:0.78rem;}
+.case-box .metric strong{font-size:0.82rem;}
+
+.clone-factory .panel-icon{background:linear-gradient(135deg,rgba(255,0,255,0.2),rgba(0,255,255,0.1));border-color:rgba(255,0,255,0.3);}
+.clone-factory h2{color:#ff66ff;}
+
+.marketing .panel-icon{background:linear-gradient(135deg,rgba(255,100,0,0.2),rgba(255,215,0,0.1));border-color:rgba(255,100,0,0.3);}
+.marketing h2{color:#ff8800;}
+
+.freeweb .panel-icon{background:linear-gradient(135deg,rgba(0,255,136,0.2),rgba(0,255,255,0.1));border-color:var(--emerald);}
+.freeweb h2{color:var(--emerald);}
+.counter{text-align:center;padding:12px;background:rgba(0,255,136,0.04);border-radius:10px;margin:10px 0;border:1px solid rgba(0,255,136,0.15);}
+.counter .num{font-size:2.2rem;font-weight:bold;color:var(--emerald);}
+.counter .label{font-size:0.75rem;color:#889;}
+
+.footer{text-align:center;padding:20px;color:#444;border-top:1px solid rgba(255,255,255,0.05);font-size:0.8rem;}
+.hologram{position:fixed;bottom:20px;right:20px;width:55px;height:55px;border-radius:50%;background:linear-gradient(135deg,var(--emerald),var(--gold));display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 0 25px rgba(0,255,136,0.4);cursor:pointer;z-index:100;animation:float 3s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+</style>
+</head>
+<body>
+
+<!-- LOCK SCREEN -->
+<div id="lockScreen">
+  <h1>🔒 PHOENIX DOMINION</h1>
+  <p>Enter Secure Access Code — 3 Times to Confirm</p>
+  <div class="pin-display" id="pinDisplay">
+    <div class="pin-dot" id="d1"></div>
+    <div class="pin-dot" id="d2"></div>
+    <div class="pin-dot" id="d3"></div>
+    <div class="pin-dot" id="d4"></div>
+    <div class="pin-dot" id="d5"></div>
+    <div class="pin-dot" id="d6"></div>
+    <div class="pin-dot" id="d7"></div>
+    <div class="pin-dot" id="d8"></div>
+    <div class="pin-dot" id="d9"></div>
+    <div class="pin-dot" id="d10"></div>
+  </div>
+  <div class="pin-keys">
+    <button onclick="enterDigit('1')">1</button>
+    <button onclick="enterDigit('2')">2</button>
+    <button onclick="enterDigit('3')">3</button>
+    <button onclick="enterDigit('4')">4</button>
+    <button onclick="enterDigit('5')">5</button>
+    <button onclick="enterDigit('6')">6</button>
+    <button onclick="enterDigit('7')">7</button>
+    <button onclick="enterDigit('8')">8</button>
+    <button onclick="enterDigit('9')">9</button>
+    <button onclick="clearPin()">⌫</button>
+    <button onclick="enterDigit('0')">0</button>
+    <button onclick="submitPin()">⏎</button>
+  </div>
+  <div id="pinStatus"></div>
+</div>
+
+<!-- MAIN DASHBOARD -->
+<div id="dashboard">
+<div class="header">
+  <h1>🔥 PHOENIX DOMINION v7.1</h1>
+  <p style="color:#888;font-size:0.9rem;">6-Panel Secure Command Center | Dream Core × Phoenix Core × Clone Factory</p>
+  <span class="badge">🧬 HUMAN IN THE LOOP | DEEPSEEK + KIMI K3.0 + CLAUDE + GEMMA 31B | 12,847 AGENTS</span>
+</div>
+
+<div class="grid">
+
+<!-- PANEL 1: DREAM CORE -->
+<div class="panel dream-core">
+  <h2><span class="panel-icon">🧠</span> Dream Core</h2>
+  <div class="metric"><span>Status</span><strong style="color:var(--cyan);">ONLINE</strong></div>
+  <div class="metric"><span>AI Models</span><strong>DeepSeek + Kimi K3.0 + Claude + Gemma</strong></div>
+  <div class="metric"><span>Corpus</span><strong>All Open Models</strong></div>
+  <div class="metric"><span>Function</span><strong>Empire Command AI</strong></div>
+  <div class="metric"><span>Version</span><strong>JARVIS × 100</strong></div>
+  <div class="btn-row">
+    <button class="btn" onclick="alert('Dream Core: Processing empire command...')">🎤 Voice</button>
+    <button class="btn btn-gold" onclick="alert('Dream Core: Analyzing all systems...')">⚡ Activate</button>
+  </div>
+</div>
+
+<!-- PANEL 2: PHOENIX CORE -->
+<div class="panel phoenix-core">
+  <h2><span class="panel-icon">⚡</span> Phoenix Core</h2>
+  <div class="revenue-ring"><span id="revRing">$0</span></div>
+  <div class="metric"><span>Daily</span><strong>$2,740</strong></div>
+  <div class="metric"><span>Monthly</span><strong>$100K</strong></div>
+  <div class="metric"><span>Yearly</span><strong>$1.2M</strong></div>
+  <div class="metric"><span>Streams</span><strong class="live">8 LIVE</strong></div>
+  <div class="btn-row">
+    <button class="btn btn-gold" onclick="alert('Phoenix Core: Gap Hunter scanning...')">🔍 Scan</button>
+    <button class="btn" onclick="alert('Phoenix Core: Revenue analysis...')">📊 Report</button>
+  </div>
+</div>
+
+<!-- PANEL 3: LITIGATION -->
+<div class="panel litigation">
+  <h2><span class="panel-icon">⚖️</span> Litigation Command</h2>
+  <div class="case-box">
+    <h4>CV-26-00000064-0000</h4>
+    <div class="metric"><span>Claim</span><strong>$3.3M</strong></div>
+    <div class="metric"><span>Hearing</span><strong>July 14, 2026</strong></div>
+    <div class="metric"><span>Status</span><strong style="color:#ff4444;">ACTIVE</strong></div>
+  </div>
+  <div class="case-box" style="border-color:rgba(255,215,0,0.15);margin-top:6px;">
+    <h4 style="color:var(--gold);">CV-26-00000063-0000</h4>
+    <div class="metric"><span>Claim</span><strong>$35M Constitutional</strong></div>
+    <div class="metric"><span>Status</span><strong style="color:var(--gold);">ACTIVE</strong></div>
+  </div>
+  <div class="case-box" style="border-color:rgba(255,0,68,0.15);margin-top:6px;">
+    <h4 style="color:#ff4444;">CIBC/Kudos/Telus</h4>
+    <div class="metric"><span>Demand</span><strong>$331,313.21</strong></div>
+    <div class="metric"><span>Status</span><strong style="color:#ff4444;">PENDING</strong></div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-crimson" onclick="alert('PrimeDox: Reading Gmail...')">📧 Emails</button>
+    <button class="btn" onclick="alert('PrimeDox: Court alerts active')">⏰ Alerts</button>
+  </div>
+</div>
+
+<!-- PANEL 4: CLONE FACTORY -->
+<div class="panel clone-factory">
+  <h2><span class="panel-icon">🧬</span> Clone Factory</h2>
+  <div class="metric"><span>Service</span><strong>Custom AI Clones</strong></div>
+  <div class="metric"><span>Target</span><strong>Startups & Small Biz</strong></div>
+  <div class="metric"><span>Turnaround</span><strong>&lt; 24 Hours</strong></div>
+  <div class="metric"><span>Revenue</span><strong>$499 - $4,997</strong></div>
+  <p style="font-size:0.8rem;color:#889;margin:8px 0;">Build custom AI clones for any business. Voice, chat, document, automation.</p>
+  <div class="btn-row">
+    <button class="btn" onclick="alert('Clone Factory: Configuring new clone...')">🧬 New Clone</button>
+    <button class="btn btn-gold" onclick="alert('Clone Factory: Viewing templates...')">📋 Templates</button>
+  </div>
+</div>
+
+<!-- PANEL 5: FREE AI WEBSITE -->
+<div class="panel freeweb">
+  <h2><span class="panel-icon">🎁</span> Free AI Website</h2>
+  <div class="counter">
+    <div class="num" id="freeCounter">100</div>
+    <div class="label">FREE SITES REMAINING</div>
+  </div>
+  <div class="metric"><span>Value</span><strong>$4,997 each</strong></div>
+  <div class="metric"><span>Build Time</span><strong>&lt; 5 Min</strong></div>
+  <div class="metric"><span>Hook</span><strong>Business Automation Sub</strong></div>
+  <p style="font-size:0.8rem;color:#889;margin:8px 0;">Free site → Subscription upsell. No-brainer for any company.</p>
+  <div class="btn-row">
+    <button class="btn btn-gold" onclick="alert('PrimeDox: Building free AI website...')">🎁 Build Free</button>
+    <button class="btn" onclick="alert('PrimeDox: Automation tiers...')">💎 Tiers</button>
+  </div>
+</div>
+
+<!-- PANEL 6: MARKETING SWARM -->
+<div class="panel marketing">
+  <h2><span class="panel-icon">📡</span> Marketing Swarm</h2>
+  <div class="metric"><span>YouTube</span><strong>0 / 10 Channels</strong></div>
+  <div class="metric"><span>Videos</span><strong>0 Generated</strong></div>
+  <div class="metric"><span>Phone</span><strong>0 Campaigns</strong></div>
+  <div class="metric"><span>Ads</span><strong class="live">0 LIVE</strong></div>
+  <div class="btn-row">
+    <button class="btn" onclick="alert('Marketing Swarm: Generating video...')">🎬 Video</button>
+    <button class="btn btn-gold" onclick="alert('Marketing Swarm: Launching ads...')">🚀 Ads</button>
+    <button class="btn btn-crimson" onclick="alert('Marketing Swarm: Auto-dialer...')">📞 Calls</button>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <p>Francisco Holdings Inc. | Phoenix Dominion | Dream Core × PrimeDox AI × OmniAGuard</p>
+  <p>Not Legal Advice — Legal Education Only | franciscoderek7@gmail.com</p>
+  <p style="margin-top:6px;color:#333;font-size:0.7rem;">Built skyward before the Chinese chip revolution. 460 floors. First in the world.</p>
+</div>
+
+<div class="hologram" onclick="alert('👑 Emperor Derek Francisco — Dream Core Online')" title="Holographic Avatar">👑</div>
+</div>
+
+<script>
+const CORRECT_PIN = "Cisco1170$";
+let pinEntry = "";
+let attemptCount = 0;
+let requiredAttempts = 3;
+
+function enterDigit(d) {
+  if (pinEntry.length < 10) {
+    pinEntry += d;
+    updateDots();
+  }
+}
+
+function clearPin() {
+  pinEntry = "";
+  updateDots();
+  document.getElementById('pinStatus').textContent = "";
+}
+
+function updateDots() {
+  for (let i = 0; i < 10; i++) {
+    document.getElementById('d' + (i+1)).className = 'pin-dot' + (i < pinEntry.length ? ' filled' : '');
+  }
+}
+
+function submitPin() {
+  const status = document.getElementById('pinStatus');
+  if (pinEntry === CORRECT_PIN) {
+    attemptCount++;
+    if (attemptCount >= requiredAttempts) {
+      status.style.color = "var(--emerald)";
+      status.textContent = "✅ ACCESS GRANTED — WELCOME EMPEROR";
+      setTimeout(() => {
+        document.getElementById('lockScreen').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
+      }, 800);
+    } else {
+      status.style.color = "var(--gold)";
+      status.textContent = `✓ Correct — Enter ${requiredAttempts - attemptCount} more time(s)`;
+      pinEntry = "";
+      updateDots();
+    }
+  } else {
+    status.style.color = "var(--crimson)";
+    status.textContent = "❌ INVALID CODE — TRY AGAIN";
+    pinEntry = "";
+    updateDots();
+    setTimeout(() => { status.textContent = ""; }, 2000);
+  }
+}
+
+// Auto-refresh
+setInterval(() => location.reload(), 120000);
+console.log('%c PHOENIX DOMINION v7.1 ','background:#00ff88;color:#000;font-size:20px;font-weight:bold;');
+console.log('%c Dream Core | Phoenix Core | Clone Factory | DeepSeek + Kimi K3.0 + Claude ','color:#00ffff;font-size:13px;');
+</script>
+</body>
+</html>

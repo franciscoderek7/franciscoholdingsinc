@@ -1,0 +1,13 @@
+curl            READY
+dom             READY
+fileinfo        READY
+gd              READY
+json            READY
+mbstring        READY
+openssl         READY
+pdo             READY
+session         READY
+simplexml       READY
+tokenizer       READY
+xml             READY
+zip             READY

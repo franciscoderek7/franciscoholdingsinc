@@ -1,0 +1,160 @@
+=== PAYPAL.ME REFERENCES ===
+beno-x/index.html:117:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer" style="margin-top:24px;display:inline-flex">ACTIVATE</a>
+beno-x/index.html:127:          <a href="https://paypal.me/[REDACTED]" class="btn-primary" target="_blank" rel="noopener noreferrer" style="margin-top:24px;display:inline-flex">POWER UP</a>
+beno-x/index.html:137:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer" style="margin-top:24px;display:inline-flex">DOMINATE</a>
+canconsult/index.html:145:        <a href="https://paypal.me/[REDACTED]" class="btn-primary" target="_blank" rel="noopener noreferrer">BOOK NOW</a>
+canconsult/index.html:152:        <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">BOOK NOW</a>
+canconsult/index.html:159:        <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">BOOK NOW</a>
+canconsult/index.html:166:        <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">BOOK NOW</a>
+canconsult/index.html:176:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">BOOK SESSION</a>
+canconsult/index.html:186:          <a href="https://paypal.me/[REDACTED]" class="btn-primary" target="_blank" rel="noopener noreferrer">CONSULT</a>
+canconsult/index.html:196:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">ENTERPRISE</a>
+canlegaldef/index.html:145:        <a href="https://paypal.me/[REDACTED]" class="btn-primary" target="_blank" rel="noopener noreferrer">GENERATE</a>
+canlegaldef/index.html:152:        <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">GENERATE</a>
+canlegaldef/index.html:159:        <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">GENERATE</a>
+canlegaldef/index.html:166:        <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">GENERATE</a>
+canlegaldef/index.html:176:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">GENERATE</a>
+canlegaldef/index.html:186:          <a href="https://paypal.me/[REDACTED]" class="btn-primary" target="_blank" rel="noopener noreferrer">SUBSCRIBE</a>
+canlegaldef/index.html:196:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">SCALE</a>
+ccldr/index.html:145:        <a href="https://paypal.me/[REDACTED]" class="btn-primary" target="_blank" rel="noopener noreferrer">GENERATE</a>
+ccldr/index.html:152:        <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">GENERATE</a>
+ccldr/index.html:159:        <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">GENERATE</a>
+ccldr/index.html:166:        <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">GENERATE</a>
+ccldr/index.html:176:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">GENERATE</a>
+ccldr/index.html:186:          <a href="https://paypal.me/[REDACTED]" class="btn-primary" target="_blank" rel="noopener noreferrer">SUBSCRIBE</a>
+ccldr/index.html:196:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">SCALE</a>
+cleanswarm/index.html:117:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer" style="margin-top:24px;display:inline-flex">CLEAN HOME</a>
+cleanswarm/index.html:127:          <a href="https://paypal.me/[REDACTED]" class="btn-primary" target="_blank" rel="noopener noreferrer" style="margin-top:24px;display:inline-flex">CLEAN BUSINESS</a>
+cleanswarm/index.html:137:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer" style="margin-top:24px;display:inline-flex">CLEAN EVERYTHING</a>
+kiaros/index.html:148:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">LAUNCH</a>
+kiaros/index.html:158:          <a href="https://paypal.me/[REDACTED]" class="btn-primary" target="_blank" rel="noopener noreferrer">SCALE</a>
+kiaros/index.html:168:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">CONQUER</a>
+omniaguard/index.html:145:        <a href="https://paypal.me/[REDACTED]" class="btn-primary" target="_blank" rel="noopener noreferrer">PROTECT iOS</a>
+omniaguard/index.html:152:        <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">PROTECT ANDROID</a>
+omniaguard/index.html:159:        <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">PROTECT LAPTOP</a>
+omniaguard/index.html:166:        <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">PROTECT TABLET</a>
+omniaguard/index.html:173:        <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">PROTECT DESKTOP</a>
+omniaguard/index.html:180:        <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">PROTECT FAMILY</a>
+omniaguard/index.html:190:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">START PROTECTION</a>
+omniaguard/index.html:200:          <a href="https://paypal.me/[REDACTED]" class="btn-primary" target="_blank" rel="noopener noreferrer">SECURE FAMILY</a>
+omniaguard/index.html:210:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">TOTAL DEFENSE</a>
+primedox-hq/index.html:137:  document.getElementById("paypal-button-container").innerHTML = "<a href=https://paypal.me/[REDACTED] target=_blank style=display:inline-block;padding:15px 30px;background:#d4af37;color:#000;text-decoration:none;border-radius:8px;font-weight:bold;font-size:18px;>Pay $49 with PayPal →</a>";
+primedox-hq/pricing.html:520:      if (payBtn) payBtn.href = 'https://paypal.me/[REDACTED]';
+primedox/index.html:165:        <a href="https://paypal.me/[REDACTED]" class="btn-primary" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+primedox/index.html:172:        <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+primedox/index.html:179:        <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+primedox/index.html:186:        <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+primedox/index.html:196:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">GENERATE</a>
+primedox/index.html:206:          <a href="https://paypal.me/[REDACTED]" class="btn-primary" target="_blank" rel="noopener noreferrer">POWER UP</a>
+primedox/index.html:216:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">SCALE</a>
+techpetcage/index.html:145:        <a href="https://paypal.me/[REDACTED]" class="btn-primary" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+techpetcage/index.html:152:        <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+techpetcage/index.html:159:        <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+techpetcage/index.html:166:        <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+techpetcage/index.html:176:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">SUBSCRIBE</a>
+techpetcage/index.html:186:          <a href="https://paypal.me/[REDACTED]" class="btn-primary" target="_blank" rel="noopener noreferrer">SUBSCRIBE</a>
+techpetcage/index.html:196:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">SUBSCRIBE</a>
+vaultvelocityauto/index.html:148:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">SOURCE NOW</a>
+vaultvelocityauto/index.html:158:          <a href="https://paypal.me/[REDACTED]" class="btn-primary" target="_blank" rel="noopener noreferrer">GO ELITE</a>
+vaultvelocityauto/index.html:168:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">RULE THE ROAD</a>
+vigilax/index.html:148:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">SECURE HOME</a>
+vigilax/index.html:158:          <a href="https://paypal.me/[REDACTED]" class="btn-primary" target="_blank" rel="noopener noreferrer">SECURE BUSINESS</a>
+vigilax/index.html:168:          <a href="https://paypal.me/[REDACTED]" class="btn-outline" target="_blank" rel="noopener noreferrer">BUILD FORTRESS</a>
+weedlaw/index.html:59:                <a href="https://paypal.me/[REDACTED]" target="_blank" class="btn btn-green">💳 Pay $99 — Enroll</a>
+weedlaw/index.html:74:                <a href="https://paypal.me/[REDACTED]" target="_blank" class="btn btn-gold">💎 Pay $199 — Enroll</a>
+weedlaw/index.html:88:                <a href="https://paypal.me/[REDACTED]" target="_blank" class="btn btn-blue">🏆 Pay $497 — Enroll</a>
+
+=== PAYPAL SDK REFERENCES ===
+primedox-hq/index.html:118:const PAYPAL_CLIENT_ID = "[REDACTED]";
+primedox-hq/index.html:123:    script.src = "https://www.paypal.com/sdk/js?client-id=" + PAYPAL_CLIENT_ID + "&currency=USD&intent=capture";
+
+=== PAYMENT URL / CHECKOUT REFERENCES ===
+canlegaldef/index.html:186:          <a href="https://paypal.me/techpetcage/149" class="btn-primary" target="_blank" rel="noopener noreferrer">SUBSCRIBE</a>
+ccldr/index.html:186:          <a href="https://paypal.me/techpetcage/149" class="btn-primary" target="_blank" rel="noopener noreferrer">SUBSCRIBE</a>
+core/EmpireAgentSwarmV1.js:7:      NEXUS:{name:"NEXUS",role:"Revenue & Payments",floor:1,status:"idle",skills:["payment_process","subscription_manage","refund_guard"]},
+core/EmpireAgentSwarmV1.js:37:    else if(intent.includes("pay")||intent.includes("subscribe")||intent.includes("buy"))target="NEXUS";
+core/EmpireEventWiringV1.js:32:    this.events.on("paypal:payment",(data)=>{
+core/EmpireEventWiringV1.js:38:      this.state.dispatch({type:"SUBSCRIPTION_ADD",payload:{tier:data.tier,amount:data.amount,subscriber:data.email,floor:data.floor||0}});
+core/EmpireEventWiringV1.js:39:      this.events.emit("hq:notify",{module:"Revenue",message:`New ${data.tier} subscriber`,badge:"NEXUS"});
+core/EmpireNervousSystem.js:64:  subscribe(agentId, channel) {
+core/EmpireNervousSystem.js:73:  unsubscribe(agentId, channel) {
+core/EmpireQueryEngineV2.js:22:      this.esm.subscribe('*', (event) => this.invalidate(event));
+core/EmpireRevenueLoopV1.js:2:  constructor(){this.tiers={starter:49,professional:99,enterprise:999};this.subscribers=[];this.transactions=[];this.revenueTotal=0;this.paypalConfig={clientId:"",businessEmail:"techpetcage@gmail.com",currency:"USD"}}
+core/EmpireRevenueLoopV1.js:7:    this.events.on("revenue:initiate",(data)=>this.handlePayment(data));
+core/EmpireRevenueLoopV1.js:14:      throw new Error("[REVENUE LOOP] FATAL: PayPal business email misconfigured. Customer payments would reverse-charge owner. HALTED.")
+core/EmpireRevenueLoopV1.js:17:  handlePayment(data){
+core/EmpireRevenueLoopV1.js:22:    this.events.emit("paypal:payment:initiated",tx);
+core/EmpireRevenueLoopV1.js:27:      this.events.emit("paypal:payment",{...tx,status:"completed"});
+core/EmpireRevenueLoopV1.js:28:      this.events.emit("hq:notify",{module:"Revenue",message:`Payment confirmed: $${amount.toFixed(2)}`,badge:"NEXUS"});
+core/EmpireRevenueLoopV1.js:36:    this.subscribers.push(sub);
+core/EmpireRevenueLoopV1.js:40:    this.events.emit("hq:notify",{module:"Revenue",message:`New ${tier} subscriber: $${amount}/mo`,badge:"NEXUS"});
+core/EmpireRevenueLoopV1.js:43:    const sub=this.subscribers.find(s=>s.email===userId&&s.status==="active");
+core/EmpireRevenueLoopV1.js:50:  getRevenueReport(){return{total:this.revenueTotal,transactions:this.transactions.length,subscribers:this.subscribers.length,tiers:this.tiers}}
+core/EventStateManagerV2.js:12:    this.subscribers = new Map();
+core/EventStateManagerV2.js:142:  subscribe(eventType, callback, options = {}) {
+core/EventStateManagerV2.js:143:    if (!this.subscribers.has(eventType)) {
+core/EventStateManagerV2.js:144:      this.subscribers.set(eventType, new Set());
+core/EventStateManagerV2.js:147:    this.subscribers.get(eventType).add(sub);
+core/EventStateManagerV2.js:148:    return () => this.subscribers.get(eventType)?.delete(sub);
+core/EventStateManagerV2.js:151:  subscribeToAll(callback) {
+core/EventStateManagerV2.js:152:    return this.subscribe('*', callback);
+core/EventStateManagerV2.js:157:    if (this.subscribers.has(eventType)) {
+core/EventStateManagerV2.js:158:      this.subscribers.get(eventType).forEach(s => targets.add(s));
+core/EventStateManagerV2.js:160:    if (this.subscribers.has('*')) {
+core/EventStateManagerV2.js:161:      this.subscribers.get('*').forEach(s => targets.add(s));
+core/EventStateManagerV2.js:172:        console.error(`EventStateManager: Subscriber error on ${eventType}`, e);
+core/EventStateManagerV2.js:221:      subscriberCount: this.subscribers.size,
+core/EventStateManagerV2.js:230:    this.subscribers.clear();
+dashboard/index.html:40:<div class="metric"><span class="label">Active Subscribers</span><span class="value up">0</span></div>
+docs/demo.html:48:<button class="btn" onclick="window.open('https://www.paypal.com/paypalme/techpetcage','_blank')">💰 Subscribe Now</button>
+docs/kiaros/index.html:16:<a href="https://www.paypal.com/paypalme/techpetcage" class="btn">💰 Subscribe</a>
+docs/sites/ccldr/index.html:28:  <p style="color:#aaa;margin:10px 0">One-time payment. Lifetime access.</p>
+docs/sites/ccldr/index.html:29:  <a href="https://www.paypal.com/paypalme/techpetcage/497.00USD" class="btn">ENROLL NOW</a>
+docs/sites/kiaros/index.html:69:<a href="https://www.paypal.com/paypalme/techpetcage/99" class="buy">SUBSCRIBE</a>
+docs/sites/kiaros/index.html:75:<a href="https://www.paypal.com/paypalme/techpetcage/499" class="buy">SUBSCRIBE</a>
+docs/sites/kiaros/index.html:81:<a href="https://www.paypal.com/paypalme/techpetcage/1999" class="buy">SUBSCRIBE</a>
+docs/sites/swarmclean/index.html:69:<a href="https://www.paypal.com/paypalme/techpetcage/99" class="buy">SUBSCRIBE</a>
+docs/sites/swarmclean/index.html:75:<a href="https://www.paypal.com/paypalme/techpetcage/499" class="buy">SUBSCRIBE</a>
+docs/sites/swarmclean/index.html:81:<a href="https://www.paypal.com/paypalme/techpetcage/999" class="buy">SUBSCRIBE</a>
+docs/sites/zprimedoxaihq/index.html:204:      <p style="color:#ff0;margin-top:10px">Limited to first 50 subscribers.</p>
+docs/sites/zprimedoxaihq/index.html:243:    else if(m.includes('free')||m.includes('website')) r="PrimeDox AI: Free AI website offer active for first 50 subscribers. Sign up for any plan and receive a custom business website built with Phoenix Core.";
+index.html:601:        <a href="https://www.paypal.com/paypalme/franciscoholdings/499" class="btn-secondary" target="_blank">Subscribe</a>
+index.html:616:        <a href="https://www.paypal.com/paypalme/franciscoholdings/2499" class="btn-primary" target="_blank">Subscribe</a>
+index.html:631:        <a href="https://www.paypal.com/paypalme/franciscoholdings/9999" class="btn-secondary" target="_blank">Subscribe</a>
+js/lead-scoring.js:1:const PhoenixScorer=(function(){const RULES={hasWebsite:15,hasCompany:10,hasIndustry:10,hasName:5,hasPhone:10,visitedPricing:20,visitedPrimeDox:15,visitedOmniGuard:10,visitedLaunch:25,startedScan:15,completedScan:30,clickedPayPal:40,timeOnSite:{threshold:120,points:10},pagesViewed:{threshold:3,points:10},returnedVisit:15};function scoreLead(leadId){const lead=PhoenixCRM.getLead(leadId);if(!lead)return null;let score=50;const signals=[];if(lead.website){score+=RULES.hasWebsite;signals.push("has_website");}if(lead.company){score+=RULES.hasCompany;signals.push("has_company");}if(lead.industry){score+=RULES.hasIndustry;signals.push("has_industry");}if(lead.name){score+=RULES.hasName;signals.push("has_name");}const behavior=getBehaviorData(lead.email);if(behavior){if(behavior.visitedPricing){score+=RULES.visitedPricing;signals.push("viewed_pricing");}if(behavior.visitedPrimeDox){score+=RULES.visitedPrimeDox;signals.push("viewed_primedox");}if(behavior.visitedLaunch){score+=RULES.visitedLaunch;signals.push("viewed_launch");}if(behavior.startedScan){score+=RULES.startedScan;signals.push("started_scan");}if(behavior.completedScan){score+=RULES.completedScan;signals.push("completed_scan");}if(behavior.clickedPayPal){score+=RULES.clickedPayPal;signals.push("clicked_payment");}if(behavior.timeOnSite>=RULES.timeOnSite.threshold){score+=RULES.timeOnSite.points;signals.push("high_engagement");}if(behavior.pagesViewed>=RULES.pagesViewed.threshold){score+=RULES.pagesViewed.points;signals.push("multi_page");}if(behavior.returnedVisit){score+=RULES.returnedVisit;signals.push("return_visitor");}}score=Math.min(Math.max(score,0),100);PhoenixCRM.updateLead(leadId,{score,scoreSignals:signals,tier:score>=80?"hot":score>=60?"warm":"cold"});return{score,signals,tier:score>=80?"hot":score>=60?"warm":"cold"};}function getBehaviorData(email){const key="phoenix_behavior_"+btoa(email);const data=localStorage.getItem(key);return data?JSON.parse(data):null;}function trackEvent(email,event,value){const key="phoenix_behavior_"+btoa(email);let data=JSON.parse(localStorage.getItem(key)||"{}");data[event]=value!==undefined?value:true;data.lastActive=new Date().toISOString();localStorage.setItem(key,JSON.stringify(data));}function trackPageView(email,page){const key="phoenix_behavior_"+btoa(email);let data=JSON.parse(localStorage.getItem(key)||"{}");data.pagesViewed=(data.pagesViewed||0)+1;data["visited"+page.charAt(0).toUpperCase()+page.slice(1)]=true;data.lastPage=page;data.timeOnSite=(data.timeOnSite||0)+30;localStorage.setItem(key,JSON.stringify(data));}function getHotLeads(){return PhoenixCRM.getAllLeads().filter(l=>l.score>=80);}function getFollowUpQueue(){const today=new Date().toISOString().split("T")[0];return PhoenixCRM.getAllLeads().filter(l=>l.nextFollowUp<=today).sort((a,b)=>b.score-a.score);}return{scoreLead,trackEvent,trackPageView,getHotLeads,getFollowUpQueue,RULES};})();window.PhoenixScorer=PhoenixScorer;
+primedox-hq/index.html:133:    document.getElementById("paypal-button-container").innerHTML = "<p style=color:red>Payment system unavailable.</p>";
+primedox-hq/index.html:142:        document.getElementById("paypal-button-container").innerHTML = "<p style=color:red>Payment system unavailable.</p>";
+primedox-hq/index.html:158:                alert("Payment successful! Transaction ID: " + details.id);
+primedox-hq/index.html:164:            document.getElementById("paypal-button-container").innerHTML = "<p style=color:red>Payment failed. Please try again.</p>";
+primedox-hq/index.html:174:    container.innerHTML = "<p style=color:orange>Loading payment system...</p>";
+primedox/index.html:165:        <a href="https://paypal.me/techpetcage/49" class="btn-primary" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+primedox/index.html:172:        <a href="https://paypal.me/techpetcage/99" class="btn-outline" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+primedox/index.html:179:        <a href="https://paypal.me/techpetcage/149" class="btn-outline" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+primedox/index.html:186:        <a href="https://paypal.me/techpetcage/299" class="btn-outline" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+sites/ccldr/index.html:28:  <p style="color:#aaa;margin:10px 0">One-time payment. Lifetime access.</p>
+sites/ccldr/index.html:29:  <a href="https://www.paypal.com/paypalme/techpetcage/497.00USD" class="btn">ENROLL NOW</a>
+sites/zprimedoxaihq/index.html:204:      <p style="color:#ff0;margin-top:10px">Limited to first 50 subscribers.</p>
+sites/zprimedoxaihq/index.html:243:    else if(m.includes('free')||m.includes('website')) r="PrimeDox AI: Free AI website offer active for first 50 subscribers. Sign up for any plan and receive a custom business website built with Phoenix Core.";
+techpetcage/index.html:145:        <a href="https://paypal.me/techpetcage/149" class="btn-primary" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+techpetcage/index.html:152:        <a href="https://paypal.me/techpetcage/89" class="btn-outline" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+techpetcage/index.html:159:        <a href="https://paypal.me/techpetcage/199" class="btn-outline" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+techpetcage/index.html:166:        <a href="https://paypal.me/techpetcage/79" class="btn-outline" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+techpetcage/index.html:176:          <a href="https://paypal.me/techpetcage/29" class="btn-outline" target="_blank" rel="noopener noreferrer">SUBSCRIBE</a>
+techpetcage/index.html:186:          <a href="https://paypal.me/techpetcage/79" class="btn-primary" target="_blank" rel="noopener noreferrer">SUBSCRIBE</a>
+techpetcage/index.html:196:          <a href="https://paypal.me/techpetcage/199" class="btn-outline" target="_blank" rel="noopener noreferrer">SUBSCRIBE</a>
+vaultvelocityauto/index.html:148:          <a href="https://paypal.me/techpetcage/999" class="btn-outline" target="_blank" rel="noopener noreferrer">SOURCE NOW</a>
+vaultvelocityauto/index.html:158:          <a href="https://paypal.me/techpetcage/9999" class="btn-primary" target="_blank" rel="noopener noreferrer">GO ELITE</a>
+vaultvelocityauto/index.html:168:          <a href="https://paypal.me/techpetcage/99999" class="btn-outline" target="_blank" rel="noopener noreferrer">RULE THE ROAD</a>
+vigilax/index.html:148:          <a href="https://paypal.me/techpetcage/199" class="btn-outline" target="_blank" rel="noopener noreferrer">SECURE HOME</a>
+vigilax/index.html:158:          <a href="https://paypal.me/techpetcage/599" class="btn-primary" target="_blank" rel="noopener noreferrer">SECURE BUSINESS</a>
+vigilax/index.html:168:          <a href="https://paypal.me/techpetcage/1999" class="btn-outline" target="_blank" rel="noopener noreferrer">BUILD FORTRESS</a>
+websocket/EmpireWebSocketManager.js:353:  // ==================== SUBSCRIBE ====================
+websocket/EmpireWebSocketManager.js:355:  // Fix #10: Unsubscribe return function
+websocket/EmpireWebSocketManager.js:356:  subscribe(type, callback) {
+weedlaw/index.html:44:        <a href="#pricing" class="btn btn-green" style="max-width:300px">🚀 Enroll Now</a>
+weedlaw/index.html:59:                <a href="https://paypal.me/techpetcage/99CAD" target="_blank" class="btn btn-green">💳 Pay $99 — Enroll</a>
+weedlaw/index.html:60:                <div class="note">🔒 Secure PayPal checkout</div>
+weedlaw/index.html:74:                <a href="https://paypal.me/techpetcage/199CAD" target="_blank" class="btn btn-gold">💎 Pay $199 — Enroll</a>
+weedlaw/index.html:75:                <div class="note">🔒 Secure PayPal checkout</div>
+weedlaw/index.html:88:                <a href="https://paypal.me/techpetcage/497CAD" target="_blank" class="btn btn-blue">🏆 Pay $497 — Enroll</a>
+weedlaw/index.html:89:                <div class="note">🔒 Secure PayPal checkout</div>

@@ -1,0 +1,50 @@
+FILE: empire-v5/auth/logs/events.json
+HEAD_STATE: NOT_PRESENT
+TRACKING: NOT_CURRENTLY_TRACKED
+HISTORY_COMMITS:
+498eb0f 2026-07-22 Empire V5 Wave 33 authentication identity layer
+SIZE_HISTORY:
+498eb0f 17
+
+FILE: empire-v5/auth/sessions/sessions.json
+HEAD_STATE: NOT_PRESENT
+TRACKING: NOT_CURRENTLY_TRACKED
+HISTORY_COMMITS:
+498eb0f 2026-07-22 Empire V5 Wave 33 authentication identity layer
+SIZE_HISTORY:
+498eb0f 169
+
+FILE: empire-v5/auth/users/identities.json
+HEAD_STATE: NOT_PRESENT
+TRACKING: NOT_CURRENTLY_TRACKED
+HISTORY_COMMITS:
+498eb0f 2026-07-22 Empire V5 Wave 33 authentication identity layer
+SIZE_HISTORY:
+498eb0f 232
+
+FILE: empire-v5/dashboard/v3/data/auth/status.json
+HEAD_STATE: NOT_PRESENT
+TRACKING: NOT_CURRENTLY_TRACKED
+HISTORY_COMMITS:
+498eb0f 2026-07-22 Empire V5 Wave 33 authentication identity layer
+SIZE_HISTORY:
+498eb0f 58
+
+FILE: empire-v5/primedox/auth/roles.json
+HEAD_STATE: NOT_PRESENT
+TRACKING: NOT_CURRENTLY_TRACKED
+HISTORY_COMMITS:
+252363b 2026-07-22 Empire v5 Wave 14 PrimeDox customer portal foundation
+SIZE_HISTORY:
+252363b 337
+
+FILE: empire-v5/.env.example
+HEAD_STATE: NOT_PRESENT
+TRACKING: NOT_CURRENTLY_TRACKED
+HISTORY_COMMITS:
+be01f79 2026-07-23 COD WALL DEPLOYED: All empire tools behind authentication
+7e59dcf 2026-07-22 Empire v5 Wave 2 payment and routing foundation
+SIZE_HISTORY:
+be01f79 1089
+7e59dcf 167
+

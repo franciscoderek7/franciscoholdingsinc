@@ -1,0 +1,23 @@
+TIMESTAMP=2026-08-26T14:47:20-04:00
+DRUPAL_ROOT=/data/data/com.termux/files/home/franciscoholdingsinc.com/drupal
+
+PHP:
+PHP 8.5.1 (cli) (built: Dec 23 2025 14:40:26) (NTS)
+Copyright (c) The PHP Group
+Zend Engine v4.5.1, Copyright (c) Zend Technologies
+
+PDO_DRIVERS:
+Array
+(
+    [0] => mysql
+    [1] => sqlite
+)
+
+DATABASE_STATUS=NOT_CONFIGURED
+DATABASE_CHANGE=NONE
+SITE_INSTALLATION=NOT_PERFORMED
+PAYMENT=NONE
+PAYPAL_API_CALL=NONE
+DEPLOYMENT=NONE
+DELETION=NONE
+GIT_COMMIT=NONE

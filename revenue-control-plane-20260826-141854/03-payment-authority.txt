@@ -1,0 +1,9 @@
+=== SERVER-SIDE PAYMENT API ===
+
+=== PAYPAL WEBHOOK / SIGNATURE VERIFICATION ===
+
+=== CLIENT-SIDE COMPLETION ===
+primedox-hq/index.html:146:    paypal.Buttons({
+primedox-hq/index.html:149:            return actions.order.create({
+primedox-hq/index.html:156:        onApprove: function(data, actions) {
+primedox-hq/index.html:157:            return actions.order.capture().then(function(details) {

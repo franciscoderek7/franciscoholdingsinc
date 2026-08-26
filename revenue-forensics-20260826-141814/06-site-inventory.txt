@@ -1,0 +1,34 @@
+=== TOP-LEVEL DIRECTORIES ===
+./beno-x/index.html
+./canconsult/index.html
+./canlegaldef/index.html
+./ccldr-pwa/index.html
+./ccldr/index.html
+./cleanswarm/index.html
+./command-center/index.html
+./dashboard/index.html
+./docs/index.html
+./floor1/index.html
+./floor2/index.html
+./index.html
+./kiaros/index.html
+./omniaguard-pwa/index.html
+./omniaguard/index.html
+./primedox-hq/index.html
+./primedox-pwa/index.html
+./primedox/index.html
+./techpetcage/index.html
+./vaultvelocityauto/index.html
+./vigilax/index.html
+./weedlaw/index.html
+
+=== KNOWN SITE DIRECTORIES ===
+FOUND: sites
+FOUND: primedox
+FOUND: primedox-hq
+FOUND: techpetcage
+FOUND: vaultvelocityauto
+FOUND: vigilax
+FOUND: weedlaw
+FOUND: omniaguard
+MISSING: zprimedoxaihq

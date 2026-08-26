@@ -1,0 +1,15 @@
+=== CLIENT-SIDE PAYPAL IMPLEMENTATIONS ===
+docs/dashboard.html:112:function toggleVoice(){voiceActive=!voiceActive;document.getElementById('voiceBtn').textContent=voiceActive?'🔴':'🎤';if(voiceActive){addChat('🎤','Listening...');const recognition=new(window.SpeechRecognition||window.webkitSpeechRecognition)();recognition.lang='en-US';recognition.onresult=(e)=>{const cmd=e.results[0][0].transcript;addChat('You',cmd);processCommand(cmd);voiceActive=false;document.getElementById('voiceBtn').textContent='🎤';};recognition.onerror=()=>{voiceActive=false;document.getElementById('voiceBtn').textContent='🎤';};recognition.start();setTimeout(()=>{if(voiceActive){recognition.stop();voiceActive=false;document.getElementById('voiceBtn').textContent='🎤';}},8000);}}
+primedox-hq/index.html:126:    script.onerror = function() { reject(new Error("Failed to load PayPal SDK")); };
+primedox-hq/index.html:146:    paypal.Buttons({
+primedox-hq/index.html:148:        createOrder: function(data, actions) {
+primedox-hq/index.html:149:            return actions.order.create({
+primedox-hq/index.html:156:        onApprove: function(data, actions) {
+primedox-hq/index.html:157:            return actions.order.capture().then(function(details) {
+primedox-hq/index.html:162:        onError: function(err) {
+websocket/EmpireWebSocketManager.js:66:    this._onError = this._onError.bind(this);
+websocket/EmpireWebSocketManager.js:84:      this.ws.onerror = this._onError;
+websocket/EmpireWebSocketManager.js:178:  _onError(error) {
+websocket/EmpireWebSocketManager.js:221:    this.sse.onerror = () => this.sse.close();
+
+=== SERVER-SIDE PAYPAL IMPLEMENTATIONS ===

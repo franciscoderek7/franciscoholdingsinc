@@ -1,0 +1,10 @@
+primedox-hq/index.html:118:const PAYPAL_CLIENT_ID = "EDE9w4Q3VMkviNPhnt1KkZarBpAzJ_woOJS7HrCzU9L9fGCR6CNtF6866ycC628bunBfOwhjZUriT3X3";
+primedox-hq/index.html:123:    script.src = "https://www.paypal.com/sdk/js?client-id=" + PAYPAL_CLIENT_ID + "&currency=USD&intent=capture";
+primedox-hq/index.html:146:    paypal.Buttons({
+primedox-hq/index.html:149:            return actions.order.create({
+primedox-hq/index.html:157:            return actions.order.capture().then(function(details) {
+primedox-hq/index.html:118:const PAYPAL_CLIENT_ID = "EDE9w4Q3VMkviNPhnt1KkZarBpAzJ_woOJS7HrCzU9L9fGCR6CNtF6866ycC628bunBfOwhjZUriT3X3";
+primedox-hq/index.html:123:    script.src = "https://www.paypal.com/sdk/js?client-id=" + PAYPAL_CLIENT_ID + "&currency=USD&intent=capture";
+primedox-hq/index.html:146:    paypal.Buttons({
+primedox-hq/index.html:149:            return actions.order.create({
+primedox-hq/index.html:157:            return actions.order.capture().then(function(details) {

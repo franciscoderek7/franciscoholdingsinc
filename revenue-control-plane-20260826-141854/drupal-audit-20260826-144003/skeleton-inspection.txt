@@ -1,0 +1,27 @@
+TIMESTAMP=2026-08-26T14:46:49-04:00
+FHI_ROOT=/data/data/com.termux/files/home/franciscoholdingsinc.com
+DRUPAL_ROOT=/data/data/com.termux/files/home/franciscoholdingsinc.com/drupal
+
+PHP:
+PHP 8.5.1 (cli) (built: Dec 23 2025 14:40:26) (NTS)
+Copyright (c) The PHP Group
+Zend Engine v4.5.1, Copyright (c) Zend Technologies
+
+COMPOSER:
+Composer version 2.10.2 2026-07-01 11:24:45
+
+DRUPAL:
+name     : drupal/core
+versions : * 11.4.5
+type     : drupal-core
+source   : [git] https://github.com/drupal/core.git a07143587a57d892a892b8b5a2d0cdc5a98f31c2
+path     : /data/data/com.termux/files/home/franciscoholdingsinc.com/drupal/web/core
+names    : drupal/core, drupal/core-annotation, drupal/core-assertion, drupal/core-class-finder, drupal/core-datetime, drupal/core-dependency-injection, drupal/core-diff, drupal/core-discovery, drupal/core-event-dispatcher, drupal/core-file-cache, drupal/core-file-security, drupal/core-filesystem, drupal/core-front-matter, drupal/core-gettext, drupal/core-graph, drupal/core-http-foundation, drupal/core-php-storage, drupal/core-plugin, drupal/core-proxy-builder, drupal/core-render, drupal/core-serialization, drupal/core-transliteration, drupal/core-utility, drupal/core-uuid, drupal/core-version, drupal/search, drupal/settings_tray, drupal/shortcut, drupal/toolbar
+
+DATABASE_CHANGE=NONE
+SITE_INSTALLATION=NOT_PERFORMED
+PAYMENT=NONE
+PAYPAL_API_CALL=NONE
+DEPLOYMENT=NONE
+DELETION=NONE
+GIT_COMMIT=NONE
