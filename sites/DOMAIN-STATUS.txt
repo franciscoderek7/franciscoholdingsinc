@@ -16,7 +16,6 @@ DNS ONLY (Need sites built):
   9. cleanswarm.com              → Cleaning/optimization service
   10. kiaros.com                 → Next-gen platform placeholder
   11. techpetcage.com            → Tech products store
-  12. techpackcage.com           → Device protection store
 
 IMMEDIATE ACTIONS:
 □ Point primedoxai.com → zprimedoxaihq.com (Porkbun redirect)
