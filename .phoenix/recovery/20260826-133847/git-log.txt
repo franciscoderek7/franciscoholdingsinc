@@ -1,0 +1,30 @@
+91c63d1 (HEAD -> main, origin/main, origin/HEAD) RESTORE: Emperor Command Center v8.0 from git history — real tower + dashboard + empire-floors.js
+2bc623b RESTORE: Emperor Command Center v8.0 from git history — real tower + dashboard + empire-floors.js
+9bb0e4a DEPLOY: Phoenix Core v3.0 MINIMAL — 460-floor tower + tabbed dashboard + revenue tracking
+dddfde9 DEPLOY: Phoenix Core v3.0 MINIMAL — 460-floor tower + tabbed dashboard + revenue tracking
+04ede2e DEPLOY: FHI Empire v2.0 — 460-floor tower + Command Center + OmniAGuard + PrimeDox HQ + CIBC Case #12057596
+25353fa FIX: Chrome/Mirror Glass Tower — 460 floors live
+b186d3a LIVE: Chrome/Mirror Glass Tower + Dashboard + Avatars + Legal + Voice + Revenue
+7b48175 🔄 RESTORED — Friday night's rotating tower (commit 747573e)
+e3b5a84 💎  Trillion Holographic Command Center — WOW Factor
+d031e24 🔥 FORCE RESET — Francisco Holdings Inc.
+0037a73 🌐 Francisco Holdings Inc. — The Best Looking Website on the Internet
+0dddc20 🏛️ RESTORED — Site to 48 hours ago
+9d18bec 🧠 FORCE 3D HOLOGRAPHIC DASHBOARD — CACHE BUSTER 1787532399
+335de66 🏛️ FORCE RESTORE — 3D Rotating Skyscraper
+747573e 🏛️ 3D Rotating Skyscraper — 100 Floors — Fixed
+f7e47f1 🏛️ 3D Rotating Skyscraper — 100 Floors — OmniAGuard lock removed
+479f176 🏛️ 3D Rotating Skyscraper — 100 Floors
+4586cc8 🏛️ Realistic Mirrored Glass Tower — Head of the Snake
+e3c3e66 🏛️ T 3D Holographic Multi-Panel Dashboard
+a241ba6 🏛️ Clean T Aesthetic Dashboard
+320c407 🧠 Dream Core + Phoenix Core — Spin-Off Engines
+33a55fe 🎥 Interactive Demo — T Empire
+d89087b 🌀 3D Holographic Dashboard with Avatars
+4cffc54 🏛️ T Empire Aesthetics
+41cd05f 💰 3-Tier Revenue System — Starter, Professional, Enterprise
+b867495 🔮 3D Holographic Voice Dashboard
+0542952 🏛️ Restored FHI Rotating Skyscraper
+83dad50 🎬 AI Safety Movie — Dedicated Agent Swarm Deployed
+73b255d 🎮 Public Demo Dashboard — Interactive + Realistic
+89333c6 🧠 Triumvirate Architecture — FHI + OmniAGuard + PrimeDox AI
