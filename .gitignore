@@ -1,2 +1,17 @@
 # Phoenix Core local recovery/audit data
 .phoenix/
+
+# Phoenix credential authority — never commit
+.phoenix/credential-authority/
+
+# Credential / environment protection
+.env
+.env.*
+!.env.example
+!.env.template
+*.pem
+*.key
+*credentials*
+*credential*
+*secrets*
+*secret*
