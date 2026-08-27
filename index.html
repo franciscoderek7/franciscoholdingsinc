@@ -3,753 +3,191 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Francisco Holdings Inc. | Phoenix Dominion Empire</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<title>FHI Tower | 460 Floors | Chrome & Mirror Glass</title>
 <style>
-:root {
-  --gold: #D4AF37;
-  --gold-light: #FFD700;
-  --platinum: #E5E4E2;
-  --silver: #C0C0C0;
-  --emerald: #50C878;
-  --ruby: #E0115F;
-  --diamond: #F0F8FF;
-  --black: #050505;
-  --black-glass: rgba(5,5,5,0.85);
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--black);
-  color: var(--platinum);
-  overflow-x: hidden;
-  min-height: 100vh;
-}
-#particle-canvas {
-  position: fixed; top:0; left:0; width:100%; height:100%;
-  z-index: 0; pointer-events: none;
-}
-.glass {
-  background: rgba(255,255,255,0.03);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(212,175,55,0.15);
-  border-radius: 16px;
-}
-.glass-strong {
-  background: rgba(5,5,5,0.7);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
-  border: 1px solid rgba(212,175,55,0.2);
-  border-radius: 20px;
-}
-.glow-gold { box-shadow: 0 0 40px rgba(212,175,55,0.15), inset 0 0 40px rgba(212,175,55,0.05); }
-.glow-emerald { box-shadow: 0 0 40px rgba(80,200,120,0.15), inset 0 0 40px rgba(80,200,120,0.05); }
-.glow-ruby { box-shadow: 0 0 40px rgba(224,17,95,0.15), inset 0 0 40px rgba(224,17,95,0.05); }
-
-/* NAV */
-nav {
-  position: fixed; top:0; left:0; width:100%; z-index:1000;
-  padding: 20px 40px;
-  display: flex; justify-content: space-between; align-items: center;
-  background: linear-gradient(180deg, rgba(5,5,5,0.95) 0%, transparent 100%);
-}
-.nav-logo {
-  font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 900;
-  color: var(--gold); letter-spacing: 4px;
-  text-shadow: 0 0 20px rgba(212,175,55,0.4);
-}
-.nav-links { display: flex; gap: 30px; align-items: center; }
-.nav-links a {
-  color: var(--silver); text-decoration: none; font-size: 0.75rem;
-  text-transform: uppercase; letter-spacing: 2px; font-weight: 600;
-  transition: all 0.3s; position: relative;
-}
-.nav-links a::after {
-  content:''; position: absolute; bottom: -4px; left:0; width:0; height:1px;
-  background: var(--gold); transition: width 0.3s;
-}
-.nav-links a:hover { color: var(--gold); }
-.nav-links a:hover::after { width: 100%; }
-.nav-cta {
-  background: linear-gradient(135deg, var(--gold), #B8941F);
-  color: var(--black) !important; padding: 10px 24px; border-radius: 30px;
-  font-weight: 800; font-size: 0.7rem; letter-spacing: 2px;
-  border: none; cursor: pointer; text-transform: uppercase;
-  box-shadow: 0 0 20px rgba(212,175,55,0.3);
-  transition: all 0.3s;
-}
-.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 5px 30px rgba(212,175,55,0.5); }
-
-/* HERO */
-.hero {
-  position: relative; z-index: 1;
-  min-height: 100vh; display: flex; flex-direction: column;
-  justify-content: center; align-items: center; text-align: center;
-  padding: 120px 20px 80px;
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 8px 20px; border-radius: 30px;
-  border: 1px solid rgba(212,175,55,0.3);
-  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px;
-  color: var(--gold); margin-bottom: 30px;
-  background: rgba(212,175,55,0.05);
-}
-.hero-badge .pulse {
-  width: 8px; height: 8px; border-radius: 50%; background: var(--emerald);
-  animation: pulse 2s infinite; box-shadow: 0 0 10px var(--emerald);
-}
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-.hero h1 {
-  font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 8vw, 7rem);
-  font-weight: 900; line-height: 1.1; letter-spacing: -1px;
-  background: linear-gradient(135deg, var(--gold) 0%, var(--platinum) 50%, var(--gold) 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text; margin-bottom: 20px;
-  filter: drop-shadow(0 0 40px rgba(212,175,55,0.3));
-}
-.hero-subtitle {
-  font-size: clamp(1rem, 2.5vw, 1.5rem); color: var(--silver);
-  font-weight: 300; letter-spacing: 6px; text-transform: uppercase;
-  margin-bottom: 40px;
-}
-.hero-desc {
-  max-width: 700px; font-size: 1.1rem; line-height: 1.8;
-  color: rgba(229,228,226,0.7); margin-bottom: 50px;
-}
-.hero-stats {
-  display: flex; gap: 60px; justify-content: center; flex-wrap: wrap;
-  margin-bottom: 50px;
-}
-.stat { text-align: center; }
-.stat-num {
-  font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 900;
-  color: var(--gold); display: block;
-}
-.stat-label {
-  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px;
-  color: var(--silver); margin-top: 5px;
-}
-.hero-ctas {
-  display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
-}
-.btn-primary {
-  background: linear-gradient(135deg, var(--gold), #B8941F);
-  color: var(--black); padding: 16px 40px; border-radius: 30px;
-  font-weight: 800; font-size: 0.8rem; letter-spacing: 2px;
-  text-transform: uppercase; text-decoration: none;
-  border: none; cursor: pointer;
-  box-shadow: 0 0 30px rgba(212,175,55,0.3);
-  transition: all 0.3s; display: inline-block;
-}
-.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 40px rgba(212,175,55,0.5); }
-.btn-secondary {
-  background: transparent; color: var(--gold);
-  padding: 16px 40px; border-radius: 30px;
-  font-weight: 800; font-size: 0.8rem; letter-spacing: 2px;
-  text-transform: uppercase; text-decoration: none;
-  border: 1px solid rgba(212,175,55,0.4);
-  cursor: pointer; transition: all 0.3s; display: inline-block;
-}
-.btn-secondary:hover { background: rgba(212,175,55,0.1); border-color: var(--gold); }
-
-/* SECTIONS */
-section { position: relative; z-index: 1; padding: 100px 20px; }
-.container { max-width: 1400px; margin: 0 auto; }
-.section-header {
-  text-align: center; margin-bottom: 80px;
-}
-.section-header h2 {
-  font-family: 'Cinzel', serif; font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 900; color: var(--gold); margin-bottom: 15px;
-  letter-spacing: 2px;
-}
-.section-header p {
-  font-size: 1.1rem; color: var(--silver); max-width: 700px;
-  margin: 0 auto; line-height: 1.7;
-}
-.section-label {
-  display: inline-block; padding: 6px 16px; border-radius: 20px;
-  border: 1px solid rgba(212,175,55,0.3); color: var(--gold);
-  font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px;
-  margin-bottom: 20px;
-}
-
-/* MISSION */
-.mission-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
-}
-.mission-text h3 {
-  font-family: 'Cinzel', serif; font-size: 2rem; color: var(--platinum);
-  margin-bottom: 20px; line-height: 1.3;
-}
-.mission-text p {
-  font-size: 1.05rem; line-height: 1.9; color: rgba(229,228,226,0.7);
-  margin-bottom: 20px;
-}
-.mission-visual {
-  position: relative; height: 500px; display: flex;
-  justify-content: center; align-items: center;
-}
-.phoenix-ring {
-  width: 350px; height: 350px; border-radius: 50%;
-  border: 2px solid rgba(212,175,55,0.2);
-  position: relative; animation: rotate 20s linear infinite;
-}
-.phoenix-ring::before, .phoenix-ring::after {
-  content:''; position: absolute; border-radius: 50%;
-  border: 1px solid rgba(212,175,55,0.1);
-}
-.phoenix-ring::before { top:20px; left:20px; right:20px; bottom:20px; }
-.phoenix-ring::after { top:50px; left:50px; right:50px; bottom:50px; }
-@keyframes rotate { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-.phoenix-core {
-  position: absolute; width: 120px; height: 120px; border-radius: 50%;
-  background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
-  filter: blur(20px); opacity: 0.6; animation: breathe 3s ease-in-out infinite;
-}
-@keyframes breathe { 0%,100%{transform:scale(1);opacity:0.6} 50%{transform:scale(1.2);opacity:0.9} }
-.phoenix-icon {
-  position: absolute; font-size: 4rem;
-  filter: drop-shadow(0 0 20px var(--gold));
-}
-@media(max-width:900px){ .mission-grid{grid-template-columns:1fr} }
-
-/* PRODUCTS */
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 25px;
-}
-.product-card {
-  padding: 35px; position: relative; overflow: hidden;
-  transition: all 0.4s; cursor: pointer;
-}
-.product-card::before {
-  content:''; position: absolute; top:0; left:0; width:100%; height:3px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  opacity: 0; transition: opacity 0.3s;
-}
-.product-card:hover::before { opacity: 1; }
-.product-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 60px rgba(212,175,55,0.1), 0 0 40px rgba(212,175,55,0.05);
-  border-color: rgba(212,175,55,0.4);
-}
-.product-icon {
-  width: 60px; height: 60px; border-radius: 16px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.8rem; margin-bottom: 20px;
-  background: rgba(212,175,55,0.08);
-  border: 1px solid rgba(212,175,55,0.15);
-}
-.product-card h4 {
-  font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--platinum);
-  margin-bottom: 12px; letter-spacing: 1px;
-}
-.product-card p {
-  font-size: 0.9rem; line-height: 1.7; color: rgba(229,228,226,0.6);
-}
-.product-tag {
-  display: inline-block; padding: 4px 12px; border-radius: 12px;
-  font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px;
-  margin-top: 15px; font-weight: 700;
-}
-.tag-gold { background: rgba(212,175,55,0.1); color: var(--gold); border: 1px solid rgba(212,175,55,0.2); }
-.tag-emerald { background: rgba(80,200,120,0.1); color: var(--emerald); border: 1px solid rgba(80,200,120,0.2); }
-.tag-ruby { background: rgba(224,17,95,0.1); color: var(--ruby); border: 1px solid rgba(224,17,95,0.2); }
-
-/* ABOUT */
-.about-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-}
-.about-img-wrap {
-  position: relative; padding: 40px;
-}
-.about-img-frame {
-  width: 100%; aspect-ratio: 1; border-radius: 20px;
-  border: 1px solid rgba(212,175,55,0.2);
-  background: linear-gradient(135deg, rgba(212,175,55,0.05), rgba(80,200,120,0.05));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 6rem;
-}
-.about-text h3 {
-  font-family: 'Cinzel', serif; font-size: 2.2rem; color: var(--gold);
-  margin-bottom: 25px; line-height: 1.2;
-}
-.about-text p {
-  font-size: 1.05rem; line-height: 1.9; color: rgba(229,228,226,0.7);
-  margin-bottom: 20px;
-}
-.about-quote {
-  border-left: 3px solid var(--gold); padding-left: 25px;
-  margin: 30px 0; font-style: italic;
-  font-size: 1.1rem; color: var(--platinum); line-height: 1.7;
-}
-@media(max-width:900px){ .about-grid{grid-template-columns:1fr} }
-
-/* REVENUE */
-.revenue-section { background: linear-gradient(180deg, transparent, rgba(212,175,55,0.03), transparent); }
-.pricing-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
-  max-width: 1100px; margin: 0 auto;
-}
-.pricing-card {
-  padding: 50px 35px; text-align: center; position: relative;
-  transition: all 0.4s;
-}
-.pricing-card.featured {
-  border-color: rgba(212,175,55,0.4);
-  transform: scale(1.05);
-}
-.pricing-card.featured::before {
-  content: 'MOST POPULAR'; position: absolute; top:-12px; left:50%; transform:translateX(-50%);
-  background: linear-gradient(135deg, var(--gold), #B8941F);
-  color: var(--black); padding: 6px 20px; border-radius: 20px;
-  font-size: 0.6rem; font-weight: 800; letter-spacing: 2px;
-}
-.pricing-card:hover { transform: translateY(-10px); }
-.pricing-card.featured:hover { transform: scale(1.05) translateY(-10px); }
-.pricing-name {
-  font-family: 'Cinzel', serif; font-size: 1.3rem; color: var(--platinum);
-  margin-bottom: 10px; letter-spacing: 2px;
-}
-.pricing-price {
-  font-family: 'Cinzel', serif; font-size: 3rem; font-weight: 900;
-  color: var(--gold); margin-bottom: 5px;
-}
-.pricing-price span { font-size: 1rem; color: var(--silver); font-weight: 400; }
-.pricing-desc { font-size: 0.85rem; color: var(--silver); margin-bottom: 30px; }
-.pricing-features { list-style: none; margin-bottom: 35px; }
-.pricing-features li {
-  padding: 10px 0; font-size: 0.85rem; color: rgba(229,228,226,0.7);
-  border-bottom: 1px solid rgba(255,255,255,0.03);
-}
-@media(max-width:900px){ .pricing-grid{grid-template-columns:1fr} .pricing-card.featured{transform:scale(1)} }
-
-/* CROSS EMPIRE */
-.cross-empire {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;
-  max-width: 900px; margin: 0 auto;
-}
-.empire-link {
-  padding: 40px; text-align: center; text-decoration: none; color: inherit;
-  display: flex; flex-direction: column; align-items: center; gap: 15px;
-  transition: all 0.4s;
-}
-.empire-link:hover { transform: translateY(-5px); border-color: var(--gold); }
-.empire-link .icon { font-size: 3rem; }
-.empire-link h4 { font-family: 'Cinzel', serif; font-size: 1.2rem; color: var(--gold); }
-.empire-link p { font-size: 0.85rem; color: var(--silver); }
-
-/* FOOTER */
-footer {
-  position: relative; z-index: 1;
-  padding: 60px 20px 30px; text-align: center;
-  border-top: 1px solid rgba(212,175,55,0.1);
-}
-.footer-logo {
-  font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 900;
-  color: var(--gold); letter-spacing: 4px; margin-bottom: 20px;
-}
-.footer-links {
-  display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;
-  margin-bottom: 30px;
-}
-.footer-links a {
-  color: var(--silver); text-decoration: none; font-size: 0.8rem;
-  text-transform: uppercase; letter-spacing: 2px;
-  transition: color 0.3s;
-}
-.footer-links a:hover { color: var(--gold); }
-.footer-disclaimer {
-  max-width: 800px; margin: 0 auto 20px;
-  font-size: 0.75rem; color: rgba(229,228,226,0.4);
-  line-height: 1.7;
-}
-.footer-copy {
-  font-size: 0.7rem; color: rgba(229,228,226,0.3);
-  letter-spacing: 2px; text-transform: uppercase;
-}
-
-/* ANIMATIONS */
-.reveal {
-  opacity: 0; transform: translateY(40px);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* SCROLLBAR */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--black); }
-::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.3); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(212,175,55,0.5); }
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;overflow:hidden;font-family:'Courier New',monospace;color:#fff}
+#canvas-container{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1}
+.scanline{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(to bottom,transparent 50%,rgba(0,255,136,0.02) 50%);background-size:100% 4px;pointer-events:none;z-index:5}
+.hud{position:fixed;z-index:10;pointer-events:none}
+.hud-tl{top:1rem;left:1rem}
+.hud-tr{top:1rem;right:1rem;text-align:right}
+.hud-bl{bottom:3.5rem;left:1rem}
+.hud-br{bottom:3.5rem;right:1rem;text-align:right}
+.hud-label{font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:#888}
+.hud-value{font-size:1.1rem;color:#D4AF37;text-shadow:0 0 10px rgba(212,175,55,0.5);margin-top:0.2rem}
+.nav{position:fixed;top:1rem;right:1rem;z-index:20;display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:flex-end;max-width:60%}
+.nav a{background:rgba(0,0,0,0.7);border:1px solid #D4AF37;color:#D4AF37;padding:0.4rem 0.8rem;font-size:0.65rem;text-decoration:none;border-radius:4px;transition:all 0.3s;pointer-events:auto;white-space:nowrap}
+.nav a:hover{background:rgba(212,175,55,0.2);box-shadow:0 0 15px rgba(212,175,55,0.3)}
+.revenue{position:fixed;bottom:0;left:0;right:0;background:rgba(0,0,0,0.9);border-top:1px solid #D4AF37;padding:0.6rem;text-align:center;z-index:20}
+.revenue a{color:#D4AF37;text-decoration:none;font-size:0.8rem;letter-spacing:1px}
 </style>
 </head>
 <body>
-<canvas id="particle-canvas"></canvas>
+<div id="canvas-container"></div>
+<div class="scanline"></div>
 
-<nav>
-  <div class="nav-logo">FHI</div>
-  <div class="nav-links">
-    <a href="#mission">Mission</a>
-    <a href="#products">Empire</a>
-    <a href="#about">About</a>
-    <a href="#revenue">Invest</a>
-    <a href="https://zprimedoxaihq.com" target="_blank">🧠 PrimeDox</a>
-    <a href="https://omniaguard.com" target="_blank">🛡️ OmniAGuard</a>
-    <a href="#revenue" class="nav-cta">Enter Empire</a>
-  </div>
-</nav>
+<div class="hud hud-tl">
+  <div class="hud-label">FHI Tower</div>
+  <div class="hud-value">460 Floors</div>
+  <div class="hud-label" style="margin-top:0.8rem">Material</div>
+  <div class="hud-value" style="font-size:0.9rem">Chrome & Mirror Glass</div>
+</div>
 
-<section class="hero">
-  <div class="hero-badge reveal"><span class="pulse"></span> Phoenix Dominion Active</div>
-  <h1 class="reveal">FRANCISCO<br>HOLDINGS INC.</h1>
-  <p class="hero-subtitle reveal">The Empire That Builds Empires</p>
-  <p class="hero-desc reveal">
-    A vertically integrated global conglomerate spanning 45+ companies, AI agent swarms, 
-    cybersecurity, luxury brokerage, constitutional law education, and cannabis consulting. 
-    We don't participate in markets — we dominate them.
-  </p>
-  <div class="hero-stats reveal">
-    <div class="stat"><span class="stat-num">45+</span><div class="stat-label">Companies</div></div>
-    <div class="stat"><span class="stat-num">12,847</span><div class="stat-label">AI Agents</div></div>
-    <div class="stat"><span class="stat-num">392</span><div class="stat-label">Empire Floors</div></div>
-    <div class="stat"><span class="stat-num">$3.3M</span><div class="stat-label">Active Claim</div></div>
-  </div>
-  <div class="hero-ctas reveal">
-    <a href="#products" class="btn-primary">Explore the Empire</a>
-    <a href="#revenue" class="btn-secondary">Partner With Us</a>
-  </div>
-</section>
+<div class="hud hud-tr">
+  <div class="hud-label">Active Layers</div>
+  <div class="hud-value">45 Companies</div>
+  <div class="hud-label" style="margin-top:0.8rem">Architecture</div>
+  <div class="hud-value" style="font-size:0.9rem">LogicFold</div>
+</div>
 
-<section id="mission">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-label">Our Purpose</span>
-      <h2>Mission Statement</h2>
-      <p>To disrupt every global market through vertical integration, agentic AI, and uncompromising excellence. We build what others dream.</p>
-    </div>
-    <div class="mission-grid">
-      <div class="mission-text reveal">
-        <h3>Dream-Core & Phoenix-Core</h3>
-        <p><strong>Dream-Core</strong> is the vision engine — where impossible ideas become architectural reality. Every company in our portfolio begins as a Dream-Core projection: analyzed, stress-tested, and built to dominate.</p>
-        <p><strong>Phoenix-Core</strong> is the execution engine — the immortal flame that rises from every setback stronger than before. It powers our agent swarm, our litigation strategy, and our global expansion.</p>
-        <p>Together, they form the operating system of Francisco Holdings Inc. — a trillion-dollar mindset operating at startup speed.</p>
-      </div>
-      <div class="mission-visual reveal">
-        <div class="phoenix-ring"></div>
-        <div class="phoenix-core"></div>
-        <div class="phoenix-icon">🔥</div>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="hud hud-bl">
+  <div class="hud-label">Current Floor</div>
+  <div class="hud-value" id="currentFloor">421 — Phoenix Crown</div>
+</div>
 
-<section id="products" style="background:linear-gradient(180deg, transparent, rgba(212,175,55,0.02), transparent);">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-label">The Portfolio</span>
-      <h2>Empire Products & Services</h2>
-      <p>Every industry. Every niche. Problems identified, gaps filled, revenue guaranteed.</p>
-    </div>
-    <div class="products-grid">
-      <div class="product-card glass glow-gold reveal">
-        <div class="product-icon">👑</div>
-        <h4>Empire Portfolio Management</h4>
-        <p>Centralized command and control for 45+ operating companies. Real-time dashboards, cross-subsidiary analytics, and unified resource allocation.</p>
-        <span class="product-tag tag-gold">Holding Company</span>
-      </div>
-      <div class="product-card glass glow-gold reveal">
-        <div class="product-icon">🧠</div>
-        <h4>PrimeDox AI Concierge</h4>
-        <p>Agentic AI that routes every business task to the correct specialist AI. Legal docs, real estate closings, corporate filings — automated end-to-end.</p>
-        <span class="product-tag tag-gold">Artificial Intelligence</span>
-      </div>
-      <div class="product-card glass glow-emerald reveal">
-        <div class="product-icon">🛡️</div>
-        <h4>OmniAGuard Cybersecurity</h4>
-        <p>World's first agentic AI cybersecurity platform. Honeycomb defense grid, autonomous threat neutralization, and 24/7 empire lockdown protocols.</p>
-        <span class="product-tag tag-emerald">Security</span>
-      </div>
-      <div class="product-card glass glow-gold reveal">
-        <div class="product-icon">🏎️</div>
-        <h4>Vault Velocity Auto</h4>
-        <p>Luxury brokerage for supercars, private jets, yachts, helicopters, and armored vehicles. White-glove concierge. 5-10% brokerage, $50K-$500K sourcing fees.</p>
-        <span class="product-tag tag-gold">Luxury Brokerage</span>
-      </div>
-      <div class="product-card glass glow-emerald reveal">
-        <div class="product-icon">⚖️</div>
-        <h4>CCLDR Constitutional Law</h4>
-        <p>Cannabis Constitutional Law Digital Resource. The definitive archive for lawyers and paralegals on medical marijuana law, Charter arguments, and precedent.</p>
-        <span class="product-tag tag-emerald">Legal Education</span>
-      </div>
-      <div class="product-card glass glow-emerald reveal">
-        <div class="product-icon">🌿</div>
-        <h4>CCC Cannabis Consulting</h4>
-        <p>A-to-Z cannabis industry superhighway. 20 years of expertise. Licensing, compliance, SOPs, regulatory navigation — the complete vertical.</p>
-        <span class="product-tag tag-emerald">Cannabis</span>
-      </div>
-      <div class="product-card glass glow-ruby reveal">
-        <div class="product-icon">📚</div>
-        <h4>Weedlaw Education Platform</h4>
-        <p>The most dangerous legal education platform in the world. Constitutional advocacy, self-representation mastery, and cannabis law history dating back to 2000.</p>
-        <span class="product-tag tag-ruby">Education</span>
-      </div>
-      <div class="product-card glass glow-gold reveal">
-        <div class="product-icon">🏢</div>
-        <h4>Francisco Holdings Real Estate</h4>
-        <p>Property sales integrated with legal services. Capture full commission + legal fees. Vertical integration of the real estate transaction from listing to closing.</p>
-        <span class="product-tag tag-gold">Real Estate</span>
-      </div>
-      <div class="product-card glass glow-gold reveal">
-        <div class="product-icon">🤖</div>
-        <h4>Agent Swarm Technology</h4>
-        <p>Neural graph-powered multi-agent systems that automate entire business workflows. 100x better than Make.com, Zapier, or Jarvis. Self-orchestrating, self-healing.</p>
-        <span class="product-tag tag-gold">Automation</span>
-      </div>
-      <div class="product-card glass glow-gold reveal">
-        <div class="product-icon">💰</div>
-        <h4>Phoenix Dominion Capital</h4>
-        <p>Venture funding and investment arm. We invest in disruptive technologies, distressed assets, and high-velocity market opportunities across all sectors.</p>
-        <span class="product-tag tag-gold">Investment</span>
-      </div>
-      <div class="product-card glass glow-emerald reveal">
-        <div class="product-icon">📋</div>
-        <h4>BENO-X Compliance</h4>
-        <p>Regulatory consulting for cannabis operators. ACMPR, Cannabis Act, provincial regulations — full compliance architecture and audit defense.</p>
-        <span class="product-tag tag-emerald">Compliance</span>
-      </div>
-      <div class="product-card glass glow-gold reveal">
-        <div class="product-icon">🌍</div>
-        <h4>Global Expansion Consulting</h4>
-        <p>International market entry strategy. Jurisdiction selection, entity formation, tax optimization, and regulatory navigation for borderless business.</p>
-        <span class="product-tag tag-gold">Consulting</span>
-      </div>
-      <div class="product-card glass glow-gold reveal">
-        <div class="product-icon">⚙️</div>
-        <h4>Corporate Formation & Governance</h4>
-        <p>End-to-end incorporation, bylaw drafting, shareholder agreements, minute books, and ongoing governance compliance for private and public entities.</p>
-        <span class="product-tag tag-gold">Corporate</span>
-      </div>
-      <div class="product-card glass glow-ruby reveal">
-        <div class="product-icon">🎯</div>
-        <h4>Executive Protection & Intelligence</h4>
-        <p>Security consulting for high-net-worth individuals and corporate principals. Threat assessment, digital privacy, and strategic intelligence.</p>
-        <span class="product-tag tag-ruby">Security</span>
-      </div>
-      <div class="product-card glass glow-gold reveal">
-        <div class="product-icon">🔬</div>
-        <h4>COMPACT Nonprofit Services</h4>
-        <p>Patent licensing, community programming, and nonprofit governance. Registered 2008 with proprietary patent license for social impact technologies.</p>
-        <span class="product-tag tag-gold">Nonprofit</span>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="hud hud-br">
+  <div class="hud-label">Status</div>
+  <div class="hud-value" style="color:#00ff88">OPERATIONAL</div>
+</div>
 
-<section id="about">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-label">The Architect</span>
-      <h2>About Us</h2>
-      <p>One man. One vision. No limits.</p>
-    </div>
-    <div class="about-grid">
-      <div class="about-img-wrap reveal">
-        <div class="about-img-frame">👑</div>
-      </div>
-      <div class="about-text reveal">
-        <h3>Derek Francisco<br><span style="font-size:1rem;color:var(--gold);">Emperor, Francisco Holdings Inc.</span></h3>
-        <p>Derek Francisco is a constitutional advocate, legal educator, and empire builder with 20+ years of self-represented litigation experience. He is not a lawyer — he is something far more dangerous: a man who has mastered the system from the inside.</p>
-        <p>Through Francisco Holdings Inc., Derek is constructing a vertically integrated global conglomerate that spans AI technology, cybersecurity, luxury brokerage, constitutional law education, and cannabis consulting. The mission is singular: <strong>Phoenix Dominion Global Domination</strong>.</p>
-        <div class="about-quote">
-          "I don't ask permission. I don't wait for doors to open. I build the door, I build the building around it, and then I buy the block."
-        </div>
-        <p>Every company under the FHI umbrella is designed to solve real problems, fill market gaps, and generate guaranteed revenue. From PrimeDox AI's document forge to OmniAGuard's honeycomb defense grid, this is not a portfolio — it is an operating system for global market disruption.</p>
-        <p style="font-size:0.85rem;color:var(--ruby);margin-top:20px;">
-          <strong>Legal Notice:</strong> Derek Francisco is a legal educator, not a lawyer. No legal representation, lawyer-client relationship, or legal advice is provided. All services are educational and consultative in nature.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="nav">
+  <a href="dashboard.html">Command</a>
+  <a href="avatar-command.html">Avatars</a>
+  <a href="primedox-legal.html">Legal</a>
+  <a href="voice-primedox.html">Voice</a>
+</div>
 
-<section id="revenue" class="revenue-section">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-label">Revenue Tiers</span>
-      <h2>Partner With the Empire</h2>
-      <p>Choose your level of integration. Every tier delivers guaranteed value.</p>
-    </div>
-    <div class="pricing-grid">
-      <div class="pricing-card glass reveal">
-        <div class="pricing-name">Associate</div>
-        <div class="pricing-price">$499<span>/month</span></div>
-        <div class="pricing-desc">Entry-level empire access</div>
-        <ul class="pricing-features">
-          <li>✓ Access to PrimeDox AI basic forge</li>
-          <li>✓ OmniAGuard standard monitoring</li>
-          <li>✓ Monthly empire briefing</li>
-          <li>✓ CCLDR resource library</li>
-          <li>✓ Email support</li>
-        </ul>
-        <a href="https://www.paypal.com/paypalme/franciscoholdings/499" class="btn-secondary" target="_blank">Subscribe</a>
-      </div>
-      <div class="pricing-card glass glow-gold featured reveal">
-        <div class="pricing-name">Sovereign</div>
-        <div class="pricing-price">$2,499<span>/month</span></div>
-        <div class="pricing-desc">Full empire integration</div>
-        <ul class="pricing-features">
-          <li>✓ Unlimited PrimeDox AI document generation</li>
-          <li>✓ OmniAGuard advanced threat protection</li>
-          <li>✓ Weekly strategy calls</li>
-          <li>✓ CCC cannabis consulting access</li>
-          <li>✓ Weedlaw education platform full access</li>
-          <li>✓ Agent Swarm workflow automation</li>
-          <li>✓ Priority support</li>
-        </ul>
-        <a href="https://www.paypal.com/paypalme/franciscoholdings/2499" class="btn-primary" target="_blank">Subscribe</a>
-      </div>
-      <div class="pricing-card glass reveal">
-        <div class="pricing-name">Emperor</div>
-        <div class="pricing-price">$9,999<span>/month</span></div>
-        <div class="pricing-desc">Total vertical integration</div>
-        <ul class="pricing-features">
-          <li>✓ Everything in Sovereign</li>
-          <li>✓ White-glove concierge service</li>
-          <li>✓ Dedicated agent swarm deployment</li>
-          <li>✓ Vault Velocity Auto brokerage</li>
-          <li>✓ Corporate formation & governance</li>
-          <li>✓ Direct line to empire command</li>
-          <li>✓ 24/7 emergency response</li>
-        </ul>
-        <a href="https://www.paypal.com/paypalme/franciscoholdings/9999" class="btn-secondary" target="_blank">Subscribe</a>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="revenue">
+  <a href="mailto:franciscoderek7@gmail.com?subject=Purchase%20Inquiry">Contact to Purchase — franciscoderek7@gmail.com</a>
+</div>
 
-<section>
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-label">Cross-Empire</span>
-      <h2>Empire Communication Grid</h2>
-      <p>All three command centers are linked. Navigate seamlessly.</p>
-    </div>
-    <div class="cross-empire">
-      <a href="https://zprimedoxaihq.com" target="_blank" class="empire-link glass glow-gold reveal">
-        <div class="icon">🧠</div>
-        <h4>PrimeDox AI Forge</h4>
-        <p>AI document generation, workflow automation, and specialist routing. The brain of the empire.</p>
-      </a>
-      <a href="https://omniaguard.com" target="_blank" class="empire-link glass glow-emerald reveal">
-        <div class="icon">🛡️</div>
-        <h4>OmniAGuard Security</h4>
-        <p>24/7 autonomous cybersecurity, honeycomb defense grid, and threat intelligence. The shield of the empire.</p>
-      </a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-logo">FRANCISCO HOLDINGS INC.</div>
-  <div class="footer-links">
-    <a href="#mission">Mission</a>
-    <a href="#products">Empire</a>
-    <a href="#about">About</a>
-    <a href="#revenue">Invest</a>
-    <a href="https://zprimedoxaihq.com">PrimeDox</a>
-    <a href="https://omniaguard.com">OmniAGuard</a>
-  </div>
-  <div class="footer-disclaimer">
-    <strong>Legal Disclaimer:</strong> Derek Francisco is a legal educator and constitutional advocate, not a lawyer. 
-    Francisco Holdings Inc. and all subsidiary entities provide educational, consultative, and technological services only. 
-    No legal representation, lawyer-client relationship, or legal advice is offered. All content is for educational purposes. 
-    Active litigation: CV-26-00000064-0000 ($3.3M) and CV-26-00000063-0000 ($35M Constitutional Claim).
-  </div>
-  <div class="footer-copy">© 2026 Francisco Holdings Inc. | Phoenix Dominion | All Rights Reserved</div>
-</footer>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-// Particle System
-const canvas = document.getElementById('particle-canvas');
-const ctx = canvas.getContext('2d');
-let particles = [];
-let w, h;
-function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
-window.addEventListener('resize', resize);
-resize();
+const scene=new THREE.Scene();
+scene.fog=new THREE.FogExp2(0x000000,0.0015);
+const camera=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,0.1,2000);
+camera.position.set(0,180,300);
+const renderer=new THREE.WebGLRenderer({antialias:true});
+renderer.setSize(innerWidth,innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+renderer.toneMapping=THREE.ACESFilmicToneMapping;
+document.getElementById('canvas-container').appendChild(renderer.domElement);
 
-class Particle {
-  constructor() {
-    this.x = Math.random() * w;
-    this.y = Math.random() * h;
-    this.vx = (Math.random() - 0.5) * 0.3;
-    this.vy = (Math.random() - 0.5) * 0.3;
-    this.size = Math.random() * 2 + 0.5;
-    this.alpha = Math.random() * 0.5 + 0.1;
-    this.hue = Math.random() > 0.7 ? 45 : (Math.random() > 0.5 ? 140 : 200);
-  }
-  update() {
-    this.x += this.vx; this.y += this.vy;
-    if (this.x < 0) this.x = w; if (this.x > w) this.x = 0;
-    if (this.y < 0) this.y = h; if (this.y > h) this.y = 0;
-  }
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = `hsla(${this.hue}, 70%, 60%, ${this.alpha})`;
-    ctx.fill();
+const totalFloors=460;
+const floorHeight=0.5;
+const gap=0.15;
+const radius=12;
+const keyFloors={1:'FHI HQ',2:'OmniAGuard',3:'CCLDR/CCC',10:'Vault Velocity',11:'MindShift',50:'CleanSwarm',100:'TechPetCage',200:'Kiaros',300:'Vigilax',400:'PrimeDox HQ',421:'Phoenix Crown',460:'Emperor Suite'};
+const floors=[];
+
+for(let i=1;i<=totalFloors;i++){
+  const isKey=keyFloors[i]?true:false;
+  const geo=new THREE.BoxGeometry(radius*2+(isKey?3:0),floorHeight,radius*2+(isKey?3:0));
+  const mat=new THREE.MeshPhysicalMaterial({
+    color:isKey?0xD4AF37:0xe8e8e8,
+    metalness:1.0,
+    roughness:0.02,
+    clearcoat:1.0,
+    clearcoatRoughness:0.02,
+    transparent:true,
+    opacity:isKey?0.95:0.75,
+    emissive:isKey?0xD4AF37:0x111111,
+    emissiveIntensity:isKey?0.5:0.05
+  });
+  const mesh=new THREE.Mesh(geo,mat);
+  mesh.position.y=i*(floorHeight+gap);
+  mesh.userData={floor:i,name:keyFloors[i]||null};
+  scene.add(mesh);
+  floors.push(mesh);
+  if(isKey && i<totalFloors){
+    const bond=new THREE.CylinderGeometry(0.2,0.2,gap*0.8,8);
+    const bondMat=new THREE.MeshBasicMaterial({color:0x00ff88,transparent:true,opacity:0.4});
+    const b=new THREE.Mesh(bond,bondMat);
+    b.position.y=i*(floorHeight+gap)+floorHeight/2+gap/2;
+    scene.add(b);
   }
 }
 
-for (let i = 0; i < 150; i++) particles.push(new Particle());
+const shaftGeo=new THREE.CylinderGeometry(0.6,0.6,totalFloors*(floorHeight+gap),16);
+const shaftMat=new THREE.MeshBasicMaterial({color:0xD4AF37,transparent:true,opacity:0.15});
+const shaft=new THREE.Mesh(shaftGeo,shaftMat);
+shaft.position.y=totalFloors*(floorHeight+gap)/2;
+scene.add(shaft);
 
-function animate() {
-  ctx.clearRect(0, 0, w, h);
-  particles.forEach(p => { p.update(); p.draw(); });
-  // Draw connections
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x;
-      const dy = particles[i].y - particles[j].y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < 120) {
-        ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = `rgba(212,175,55,${0.08 * (1 - dist/120)})`;
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
-      }
-    }
-  }
+const coreGeo=new THREE.SphereGeometry(3,32,32);
+const coreMat=new THREE.MeshBasicMaterial({color:0x00ff88,transparent:true,opacity:0.2});
+const core=new THREE.Mesh(coreGeo,coreMat);
+core.position.y=totalFloors*(floorHeight+gap)/2;
+scene.add(core);
+
+const pGeo=new THREE.BufferGeometry();
+const pCount=1000;
+const pPos=new Float32Array(pCount*3);
+for(let i=0;i<pCount*3;i++)pPos[i]=(Math.random()-0.5)*500;
+pGeo.setAttribute('position',new THREE.BufferAttribute(pPos,3));
+const pMat=new THREE.PointsMaterial({color:0xD4AF37,size:0.6,transparent:true,opacity:0.5});
+scene.add(new THREE.Points(pGeo,pMat));
+
+scene.add(new THREE.AmbientLight(0x404040,0.5));
+const dl=new THREE.DirectionalLight(0xffffff,0.8);
+dl.position.set(50,300,100);
+scene.add(dl);
+const pl=new THREE.PointLight(0xD4AF37,1,300);
+pl.position.set(0,totalFloors*(floorHeight+gap)/2,0);
+scene.add(pl);
+
+const sGeo=new THREE.BufferGeometry();
+const sCount=1500;
+const sPos=new Float32Array(sCount*3);
+for(let i=0;i<sCount*3;i++)sPos[i]=(Math.random()-0.5)*2500;
+sGeo.setAttribute('position',new THREE.BufferAttribute(sPos,3));
+const sMat=new THREE.PointsMaterial({color:0xffffff,size:0.4,transparent:true,opacity:0.6});
+scene.add(new THREE.Points(sGeo,sMat));
+
+let autoRotate=true;
+function animate(){
   requestAnimationFrame(animate);
+  if(autoRotate)scene.rotation.y+=0.0008;
+  const t=Date.now()*0.001;
+  core.scale.setScalar(1+Math.sin(t)*0.12);
+  coreMat.opacity=0.15+Math.sin(t)*0.08;
+  renderer.render(scene,camera);
 }
 animate();
 
-// Scroll Reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1 });
+let drag=false,px=0,py=0;
+document.addEventListener('mousedown',e=>{if(e.target.tagName!=='A'){drag=true;px=e.clientX;py=e.clientY}});
+document.addEventListener('mouseup',()=>drag=false);
+document.addEventListener('mousemove',e=>{
+  if(drag){scene.rotation.y+=(e.clientX-px)*0.005;camera.position.y-=(e.clientY-py)*0.3;px=e.clientX;py=e.clientY;}
+});
+document.addEventListener('wheel',e=>{camera.position.z+=e.deltaY*0.15;camera.position.z=Math.max(60,Math.min(500,camera.position.z));});
+document.addEventListener('touchstart',e=>{px=e.touches[0].clientX;py=e.touches[0].clientY});
+document.addEventListener('touchmove',e=>{
+  scene.rotation.y+=(e.touches[0].clientX-px)*0.005;
+  camera.position.y-=(e.touches[0].clientY-py)*0.3;
+  px=e.touches[0].clientX;py=e.touches[0].clientY;
+});
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+const raycaster=new THREE.Raycaster();
+const mouse=new THREE.Vector2();
+document.addEventListener('click',e=>{
+  if(e.target.tagName==='A')return;
+  mouse.x=(e.clientX/innerWidth)*2-1;
+  mouse.y=-(e.clientY/innerHeight)*2+1;
+  raycaster.setFromCamera(mouse,camera);
+  const hits=raycaster.intersectObjects(floors);
+  if(hits.length>0){
+    const f=hits[0].object.userData;
+    document.getElementById('currentFloor').innerText=f.floor+' — '+(f.name||'Standard Floor');
+  }
+});
 
-// Mouse parallax on hero
-const hero = document.querySelector('.hero');
-document.addEventListener('mousemove', (e) => {
-  const x = (e.clientX / window.innerWidth - 0.5) * 20;
-  const y = (e.clientY / window.innerHeight - 0.5) * 20;
-  hero.style.transform = `translate(${x}px, ${y}px)`;
+window.addEventListener('resize',()=>{
+  camera.aspect=innerWidth/innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth,innerHeight);
 });
 </script>
 </body>
