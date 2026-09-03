@@ -1,0 +1,361 @@
+:root {
+  --bg: #030509;
+  --panel: rgba(12,17,25,.86);
+  --panel2: rgba(255,255,255,.045);
+  --line: rgba(255,255,255,.13);
+  --text: #f3f7fb;
+  --muted: #8995a6;
+  --blue: #8fdcff;
+  --violet: #b89cff;
+  --green: #7ff0c1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(80,150,255,.16), transparent 32%),
+    radial-gradient(circle at 85% 65%, rgba(160,100,255,.10), transparent 30%),
+    var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 5vw;
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(18px);
+}
+
+.eyebrow {
+  color: var(--blue);
+  font-size: .72rem;
+  letter-spacing: .18em;
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3 {
+  margin: .35rem 0;
+}
+
+.authority {
+  border: 1px solid rgba(127,240,193,.35);
+  padding: 10px 15px;
+  border-radius: 999px;
+  color: var(--green);
+  font-size: .75rem;
+  letter-spacing: .08em;
+}
+
+.pulse {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  margin-right: 8px;
+  box-shadow: 0 0 15px var(--green);
+}
+
+main {
+  width: min(1400px, 92vw);
+  margin: auto;
+}
+
+.hero {
+  padding: 70px 0 35px;
+  max-width: 850px;
+}
+
+.hero h2 {
+  font-size: clamp(2rem, 5vw, 4.5rem);
+}
+
+.hero p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.executives {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 18px;
+}
+
+.executive,
+.work-grid button {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 22px;
+  cursor: pointer;
+  text-align: left;
+  transition: .2s ease;
+}
+
+.executive:hover,
+.executive.active,
+.work-grid button:hover {
+  transform: translateY(-3px);
+  border-color: rgba(143,220,255,.5);
+  box-shadow: 0 18px 50px rgba(0,0,0,.35);
+}
+
+.avatar-frame {
+  height: 250px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle, rgba(143,220,255,.18), transparent 48%),
+    linear-gradient(145deg,#111923,#05070b);
+  border: 1px solid var(--line);
+  margin-bottom: 18px;
+}
+
+.avatar-placeholder {
+  font-size: 6rem;
+  font-weight: 200;
+  color: var(--blue);
+  text-shadow: 0 0 35px rgba(143,220,255,.6);
+}
+
+.exec-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.exec-title {
+  margin-top: 5px;
+  color: var(--violet);
+  font-size: .75rem;
+  letter-spacing: .15em;
+}
+
+.exec-domain {
+  color: var(--muted);
+  font-size: .68rem;
+  margin-top: 14px;
+}
+
+.chamber {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  min-height: 580px;
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  overflow: hidden;
+  background: var(--panel);
+}
+
+.executive-stage {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  position: relative;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(143,220,255,.17), transparent 28%),
+    #05080d;
+}
+
+.stage-avatar {
+  width: 270px;
+  height: 360px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(143,220,255,.3);
+  border-radius: 135px 135px 55px 55px;
+  font-size: 8rem;
+  color: var(--blue);
+  background: linear-gradient(160deg,#17212d,#06090d);
+  box-shadow: 0 0 70px rgba(143,220,255,.12);
+}
+
+.stage-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 25px;
+}
+
+.stage-role {
+  color: var(--violet);
+  font-size: .75rem;
+  letter-spacing: .18em;
+}
+
+.stage-status {
+  margin-top: 12px;
+  color: var(--green);
+  font-size: .7rem;
+  letter-spacing: .12em;
+}
+
+.conversation {
+  display: flex;
+  flex-direction: column;
+  min-height: 580px;
+}
+
+.conversation-head {
+  padding: 22px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+}
+
+.connection {
+  color: var(--muted);
+  font-size: .68rem;
+}
+
+.messages {
+  flex: 1;
+  padding: 24px;
+  overflow: auto;
+}
+
+.message {
+  max-width: 88%;
+  padding: 15px 17px;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  line-height: 1.55;
+}
+
+.message.ai {
+  background: var(--panel2);
+  border: 1px solid var(--line);
+}
+
+.message.user {
+  margin-left: auto;
+  background: rgba(143,220,255,.09);
+  border: 1px solid rgba(143,220,255,.2);
+}
+
+#chatForm {
+  display: flex;
+  gap: 10px;
+  padding: 18px;
+  border-top: 1px solid var(--line);
+}
+
+#chatInput {
+  flex: 1;
+  background: #080c12;
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+#chatForm button {
+  border: 1px solid rgba(143,220,255,.4);
+  background: rgba(143,220,255,.1);
+  border-radius: 12px;
+  padding: 0 22px;
+  cursor: pointer;
+}
+
+.workbench,
+.authority-panel {
+  margin: 30px 0;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--panel);
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 15px;
+  margin-top: 22px;
+}
+
+.work-grid button strong,
+.work-grid button span {
+  display: block;
+}
+
+.work-grid button span {
+  color: var(--muted);
+  margin-top: 9px;
+  line-height: 1.4;
+}
+
+.authority-panel {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: center;
+}
+
+.authority-panel p {
+  color: var(--muted);
+  max-width: 800px;
+  line-height: 1.6;
+}
+
+.gate {
+  min-width: 220px;
+  text-align: center;
+  border: 1px solid rgba(127,240,193,.3);
+  padding: 20px;
+  border-radius: 18px;
+}
+
+.gate span,
+.gate small {
+  display: block;
+  color: var(--muted);
+  font-size: .68rem;
+  letter-spacing: .12em;
+}
+
+.gate strong {
+  display: block;
+  color: var(--green);
+  font-size: 1.4rem;
+  margin: 8px 0;
+}
+
+footer {
+  padding: 35px 5vw;
+  color: var(--muted);
+  text-align: center;
+  font-size: .75rem;
+}
+
+@media (max-width: 900px) {
+  .executives,
+  .work-grid,
+  .chamber {
+    grid-template-columns: 1fr;
+  }
+
+  .authority-panel,
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

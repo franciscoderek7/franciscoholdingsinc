@@ -1,0 +1,56 @@
+{
+  "system": "Francisco Holdings Inc. Executive Chamber",
+  "mode": "development",
+  "humanAuthorityRequired": true,
+
+  "executives": {
+    "primedox": {
+      "id": "primedox",
+      "name": "PrimeDox AI",
+      "title": "THE SCHOLAR",
+      "domain": "Documents, legal education, litigation support, document intelligence",
+      "authority": "proposal_only"
+    },
+
+    "vigilax": {
+      "id": "vigilax",
+      "name": "Vigilax AI",
+      "title": "THE SENTINEL",
+      "domain": "Security, risk, threat detection, system protection",
+      "authority": "proposal_only"
+    },
+
+    "soulstack": {
+      "id": "soulstack",
+      "name": "SoulStack AI",
+      "title": "THE STRATEGIST",
+      "domain": "Strategy, operations, business intelligence, Empire coordination",
+      "authority": "proposal_only"
+    }
+  },
+
+  "workstreams": [
+    "cases",
+    "demand_letters",
+    "documents",
+    "correspondence",
+    "email_review",
+    "research",
+    "strategy",
+    "security",
+    "operations"
+  ],
+
+  "authority": {
+    "aiMayAnalyze": true,
+    "aiMayDraft": true,
+    "aiMayRecommend": true,
+    "aiMayPrepareProposal": true,
+    "aiMaySendEmail": false,
+    "aiMayFileLegalDocument": false,
+    "aiMayCreateFinancialTransaction": false,
+    "aiMayChangeProductionSecurity": false,
+    "aiMayPerformDestructiveAction": false,
+    "humanApprovalRequired": true
+  }
+}
