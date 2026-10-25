@@ -18,7 +18,7 @@ permissions:
 
 jobs:
   build:
-    name: Build without deploying
+    name: GitHub Pages 232 compatibility build - no deployment
     runs-on: ubuntu-latest
     steps:
       - name: Check out test branch
@@ -29,8 +29,13 @@ jobs:
         with:
           ruby-version: '3.3'
 
-      - name: Install Jekyll
-        run: gem install jekyll
+      - name: Install GitHub Pages 232 environment
+        run: gem install github-pages -v 232.0.0 --no-document
 
-      - name: Build site
+      - name: Verify installed versions
+        run: |
+          gem list '^github-pages$'
+          gem list '^jekyll$'
+
+      - name: Build site without deployment
         run: jekyll build --source . --destination _site --config _config.yml
