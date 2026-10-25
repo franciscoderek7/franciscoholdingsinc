@@ -1,0 +1,36 @@
+name: Test Jekyll Build Only
+
+on:
+  push:
+    branches:
+      - test/exclude-drupal-jekyll
+    paths:
+      - '_config.yml'
+      - '.github/workflows/test-jekyll.yml'
+      - '*.html'
+      - '*.md'
+      - '*.css'
+      - '*.js'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build without deploying
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out test branch
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Install Jekyll
+        run: gem install jekyll
+
+      - name: Build site
+        run: jekyll build --source . --destination _site --config _config.yml
